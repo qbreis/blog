@@ -1,7 +1,8 @@
-import type { NextPage } from 'next'
+// import type { NextPage } from 'next'
 import Head from 'next/head'
 
-const Home: NextPage = () => {
+// const Home: NextPage = () => {
+export default function Home() {
     return (
         <div className='container'>
             <Head>
@@ -51,4 +52,4 @@ const Home: NextPage = () => {
     )
 }
 
-export default Home
+// export default Home
