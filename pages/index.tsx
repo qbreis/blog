@@ -1,8 +1,7 @@
-// import type { NextPage } from 'next'
 import Head from 'next/head';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-// const Home: NextPage = () => {
 export default function Home() {
     return (
         <div className='container'>
@@ -46,11 +45,7 @@ export default function Home() {
             
             </main>
 
-            <footer className='footer'>
-                Footer
-            </footer>
+            <Footer />
         </div>
     )
 }
-
-// export default Home
