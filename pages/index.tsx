@@ -1,13 +1,9 @@
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import MetaData from '../components/MetaData';
+import Layout from '../components/Layout';
 
 export default function Home() {
     return (
-        <div className='container'>
-            <MetaData />
-            <Header />
-            <main className='main'>
+        <Layout>
+            <section>
                 <h1 className='h1'>
                     Welcome to <a href="https://nextjs.org">Next.js!</a>
                 </h1>
@@ -39,9 +35,7 @@ export default function Home() {
                     </p>
                 </a>
             
-            </main>
-
-            <Footer />
-        </div>
+            </section>
+        </Layout>
     )
 }
