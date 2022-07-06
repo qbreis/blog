@@ -1,5 +1,5 @@
 export default function Header (){
     return <header className="site-header">
-        Header component
+        <h1>Header component</h1>
     </header>
 }
