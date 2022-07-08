@@ -12,17 +12,24 @@ body {
 
 a {
   text-underline-offset: 3px;
-  /*text-decoration-thickness: 2px;*/
+  text-decoration-thickness: 2px;
   color: $color__text-main;
 }
 
-h1 a { text-underline-offset: 10px; }
+h1 a { 
+  text-decoration-thickness: 2px;
+  text-underline-offset: 10px; 
+  &:hover {
+    text-underline-offset: 10px; 
+    text-decoration-thickness: 4px;
+  }
+}
 
 a:active,
 a:hover {
   outline: 0;
   text-underline-offset: 3px;
-  text-decoration-thickness: 2px;
+  text-decoration-thickness: 3px;
 }
 
 * {
