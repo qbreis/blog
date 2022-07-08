@@ -7,6 +7,7 @@ Site - Content - Footer
     text-align: center;
     font-size: $font-size-xs;
     .contact-links{
+        @include color__text-screen();
         margin: 0;
         padding: 0;
         list-style: none;

@@ -25,3 +25,7 @@ Mixins
 @mixin clearfix-after() {
     clear: both;
 }
+
+@mixin color__text-screen() {
+    filter: invert(32%) sepia(7%) saturate(1349%) hue-rotate(182deg) brightness(97%) contrast(92%);
+}

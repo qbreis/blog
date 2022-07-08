@@ -1,5 +1,53 @@
+import Link from 'next/link';
+import Image from 'next/image';
+
 export default function Footer (){
     return <footer className="site-footer">
-        <p>Footer component</p>
+        <p>
+            Si alguien quiere ponerse en contacto conmigo puede hacerlo a través de{' '}
+            <Link href='https://es.linkedin.com/in/enricgatell'>
+                <a target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </Link>
+            {' '}
+            o
+            {' '}
+            <Link href='https://github.com/qbreis/nextjs-blog/issues'>
+                <a target="_blank" rel="noopener noreferrer">GitHub</a>
+            </Link>
+            {' '}
+            (mediante new issue).
+        </p>
+        <ul className="contact-links">
+            <li>
+                <Link
+                    href='https://es.linkedin.com/in/enricgatell'
+                >
+                    <a target="_blank" rel="noopener noreferrer">
+                        <Image
+                            priority
+                            src="/images/logo-linkedin.svg"
+                            height={60}
+                            width={60}
+                            alt="LinkedIn"
+                        />
+                    </a>
+                </Link>
+            </li>
+            <li>
+                <Link
+                href='https://github.com/qbreis/nextjs-blog'
+                >
+                    <a target="_blank" rel="noopener noreferrer">
+                        <Image
+                            priority
+                            src="/images/logo-github.svg"
+                            height={60}
+                            width={60}
+                            alt="GitHub"
+                        />
+                    </a>
+                </Link>
+            </li>
+        </ul>
     </footer>
 }

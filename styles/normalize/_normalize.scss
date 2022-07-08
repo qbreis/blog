@@ -11,8 +11,18 @@ body {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+  text-underline-offset: 3px;
+  /*text-decoration-thickness: 2px;*/
+  color: $color__text-main;
+}
+
+h1 a { text-underline-offset: 10px; }
+
+a:active,
+a:hover {
+  outline: 0;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
 }
 
 * {
