@@ -4,7 +4,7 @@ export default function Header (){
     return <header className="site-header">
         <Image
             priority
-            src="/images/favicon.svg"
+            src="/images/logo.svg"
             height={40}
             width={40}
             alt={'qbreis — enric gatell'}
