@@ -29,6 +29,7 @@ export default function Footer (){
                             height={60}
                             width={60}
                             alt="LinkedIn"
+                            className="color-text-screen-filter"
                         />
                     </a>
                 </Link>
@@ -44,6 +45,7 @@ export default function Footer (){
                             height={60}
                             width={60}
                             alt="GitHub"
+                            className="color-text-screen-filter"
                         />
                     </a>
                 </Link>
