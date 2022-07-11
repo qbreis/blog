@@ -1,9 +1,11 @@
 import Layout from '../../components/Layout';
+import MetaData from '../../components/MetaData';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
     return (
         <Layout>
+            <MetaData title={postData.title} description={postData.excerpt} />
             <article>
                 <h1>{postData.title}</h1>
             </article>
