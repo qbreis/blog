@@ -1,7 +1,8 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 export default function MetaData (){
-    const staticStylesCss = 'static-styles.css';
+    const staticStylesCss = '../'.repeat(useRouter().asPath.split('/').length) + 'static-styles.css';
     return (
         <Head>
             <title>Create Next App</title>
