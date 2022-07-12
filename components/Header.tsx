@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import nextConfig from '../next.config';
+
 export default function Header ({home}: any){
     return <header className="site-header">
         {home ? (
@@ -10,10 +12,10 @@ export default function Header ({home}: any){
                     src="/images/logo.svg"
                     height={40}
                     width={40}
-                    alt={'qbreis — enric gatell'}
+                    alt={nextConfig.siteInfo.title}
                     className="color-text-screen-filter"
                 />
-                <h1>qbreis — enric gatell</h1>
+                <h1>{nextConfig.siteInfo.title}</h1>
             </>
             ) : (
             <>
@@ -24,14 +26,14 @@ export default function Header ({home}: any){
                         src="/images/logo.svg"
                         height={40}
                         width={40}
-                        alt={'qbreis — enric gatell'}
+                        alt={nextConfig.siteInfo.title}
                         className="color-text-screen-filter"
                         />
                     </a>
                 </Link>
                 <h2>
                     <Link href="/">
-                        <a>qbreis — enric gatell</a>
+                        <a>{nextConfig.siteInfo.title}</a>
                     </Link>
                 </h2>
             </>

@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
+import nextConfig from '../next.config';
+
 export default function MetaData ({title, description,}: any){
     const staticStylesCss = '../'.repeat(useRouter().asPath.split('/').length) + 'static-styles.css';
     return (
@@ -17,8 +19,8 @@ export default function MetaData ({title, description,}: any){
 }
 
 MetaData.defaultProps = {
-    title: 'qbreis — enric gatell',
-    description: 'This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things.',
+    title: nextConfig.siteInfo.title,
+    description: nextConfig.siteInfo.description,
 }
 
 MetaData.propTypes = {
