@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Date from '../components/Date';
 
 const Posts = ({posts}: any) => {
     return (
@@ -12,6 +13,7 @@ const Posts = ({posts}: any) => {
                                 <a>{post.title}</a>
                             </Link>
                         </h2>
+                        <Date dateString={post.date} />
                     </li>
                 )
             }

@@ -17,4 +17,10 @@
     }
 }
 
+.posted-on,
+.post-categories {
+    display: inline-block;
+    font-size: $font-size-xxs;
+}
+
 @import 'footer';
