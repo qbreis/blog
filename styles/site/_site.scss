@@ -23,4 +23,22 @@
     font-size: $font-size-xxs;
 }
 
+.entry-meta { margin: 2em 0; }
+
+.post-categories {
+    padding: 0 10px;
+    font-size: $font-size-xxs;
+    a {
+        text-decoration: none;
+        padding: 2px 5px;
+        background-color: $color__text-screen;
+        margin: 5px;
+        color: #fff;
+        transition: all .35s;
+        &:hover {
+            background-color: $color__background-brand;
+        }
+    }
+}
+
 @import 'footer';
