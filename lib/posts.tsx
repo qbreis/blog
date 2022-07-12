@@ -133,3 +133,49 @@ export function getAllCategoryIds() {
         };
     });
 }
+
+export function getSortedCategories() {
+    const categories: any = [];
+    const allPostsData = fileNames.map((fileName) => {
+        // Read markdown file as string
+        const fullPath = path.join(postsDirectory, fileName);
+        const fileContents = fs.readFileSync(fullPath, 'utf8');
+
+        // Use gray-matter to parse the post metadata section
+        const matterResult = matter(fileContents);
+
+        const postCategories = matterResult.data.categories.map((postCategory: any) => {
+            if(!categories.includes(postCategory)){
+                categories.push(postCategory);
+            }
+        });
+    });
+
+    const categoriesResult = categories.map((category: any) => {
+        return {
+            id: category,
+            posts: getSortedPostsData(category).length,
+        };
+    });
+
+    categoriesResult.sort(({ posts: a }: any, { posts: b }: any) => {
+        if (a < b) {
+            return 1;
+        } else if (a > b) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+
+    categoriesResult.map((category: any) => {
+        return {
+            params: {
+                id: category.id,
+                posts: category.posts,
+            },
+        };
+    });
+
+    return categoriesResult;
+}
