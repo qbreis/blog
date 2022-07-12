@@ -7,7 +7,7 @@ export default function Layout ({ children, home }: any){
     return (
         <div className='site-container'>
             <MetaData />
-            <Header />
+            <Header home={home} />
             <main className="site-main">{children}</main>
             {!home && (
                 <Link href="/">
