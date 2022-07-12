@@ -18,9 +18,20 @@ export default function catHome({ allCategoryIds }: any) {
                         (
                             <li key={`${postCategory.id}`}>
                                 <h2 className="h4">
-                                <Link href={`/categories/${postCategory.id}`}>
-                                    <a>{postCategory.id} - ({postCategory.posts} posts)</a>
-                                </Link>
+                                    <Link href={`/categories/${postCategory.id}`}>
+                                        {/*<a>{postCategory.id} - ({postCategory.posts} posts)</a>*/}
+                                        <a>
+                                            {postCategory.id}
+                                            {' '}
+                                            {
+                                                (postCategory.posts == 1) 
+                                                ? 
+                                                '('+postCategory.posts+'post)' 
+                                                : 
+                                                '('+postCategory.posts+'(posts)'
+                                            }
+                                        </a>
+                                    </Link>
                                 </h2>
                             </li>
                         )
