@@ -6,7 +6,7 @@ code[class*="language-"] {
     color: #d8dee9;
     font-size: 1em;
     text-shadow: none;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: $font__code;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -97,7 +97,7 @@ pre[class*="language-"] {
 .token.regex,
 .token.important,
 .token.variable {
-    color: #ee9900;
+    color: #7ec699;
 }
 .token.important,
 .token.bold {
