@@ -16,15 +16,31 @@ export default function Custom404() {
 
 
 <div className="remark-highlight">
-    <pre data-line="2,4" className="language-bash  line-numbers">
+    <pre data-line="2" className="language-bash  line-numbers">
         <code className="language-bash">
             <span style={{display: 'block',}}>// pages/404.tsx</span>
-            <span className="token function">import</span> MetaData from <span className="token string">'../components/MetaData'</span>
-            <span className="token punctuation">;</span>
-            <span style={{display: 'block',}}>ds</span>
             
-            <span className="token function">yarn</span> <span className="token function">add</span> bulma
-            <span className="token function">yarn</span> <span className="token function">add</span> bulma
+            <span style={{display: 'block',}}>
+                <span className="token function">import</span> MetaData from <span className="token string">'../components/MetaData'</span>
+                <span className="token punctuation">;</span>
+            </span>
+
+            <span style={{display: 'block',}}>
+                <span className="token function">import</span> MetaData from <span className="token string">'../components/MetaData'</span>
+                <span className="token punctuation">;</span>
+            </span>
+            
+            <span style={{display: 'block',}}>
+                <span className="token punctuation">&nbsp;&nbsp;&nbsp;&nbsp;&#123;&#125;&#40;&#41;</span>
+            </span>
+
+            <span style={{display: 'block',}}>
+                <span className="token punctuation">&#125;</span>
+            </span>
+            
+            <span style={{display: 'block',}}>&nbsp;</span>
+            
+            
 
             
             
