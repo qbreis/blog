@@ -29,16 +29,25 @@ export default function Custom404() {
                 <span className="token function">import</span> MetaData from <span className="token string">'../components/MetaData'</span>
                 <span className="token punctuation">;</span>
             </span>
-            
+
             <span style={{display: 'block',}}>
-                <span className="token punctuation">&nbsp;&nbsp;&nbsp;&nbsp;&#123;&#125;&#40;&#41;</span>
+                <span className="token function">import</span> MetaData from <span className="token string">'../components/MetaData'</span>
+                <span className="token punctuation">;</span>
             </span>
 
             <span style={{display: 'block',}}>
-                <span className="token punctuation">&#125;</span>
+                <span className="token punctuation">zas</span>
             </span>
             
-            <span style={{display: 'block',}}>&nbsp;</span>
+            <span style={{display: 'block',}}>
+                <span className="token punctuation">&nbsp;&nbsp;&nbsp;&nbsp;&#123;&#125;&#40;&#41;asd</span>
+            </span>
+
+            <span style={{display: 'block',}}>
+                <span className="token punctuation">&#125;asd</span>
+            </span>
+            
+            <span style={{display: 'block',}}>&#125;asd</span>
             
             
 
