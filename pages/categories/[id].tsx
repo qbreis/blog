@@ -11,7 +11,18 @@ export default function Category({ postsByCategoryData }: any) {
                 title={`Category: ${postsByCategoryData.id}`}
                 description={`Posts by category ${postsByCategoryData.id}`}
             />
-            <h2 className="h1">Category: {postsByCategoryData.id}</h2>
+            <h2 className="h1">
+                Category: {postsByCategoryData.id}
+            </h2>
+            <div className="entry-meta posted-on">
+                {
+                    (postsByCategoryData.allPostsData.length == 1) 
+                    ? 
+                    postsByCategoryData.allPostsData.length+' post' 
+                    : 
+                    postsByCategoryData.allPostsData.length+' posts'
+                }
+            </div>
             <section className="all-post-data">
                 <Posts posts={postsByCategoryData.allPostsData} />
             </section>

@@ -11,6 +11,15 @@ export default function catHome({ allCategoryIds }: any) {
                 description="List of categories" 
             />
             <h2 className="h1">List of categories</h2>
+            <div className="entry-meta posted-on">
+                {
+                    (allCategoryIds.length == 1) 
+                    ? 
+                    allCategoryIds.length+' category' 
+                    : 
+                    allCategoryIds.length+' categories'
+                }
+            </div>
             
             <section className="all-post-data">
                 <ul>
@@ -22,17 +31,18 @@ export default function catHome({ allCategoryIds }: any) {
                                         {/*<a>{postCategory.id} - ({postCategory.posts} posts)</a>*/}
                                         <a>
                                             {postCategory.id}
-                                            {' '}
-                                            {
-                                                (postCategory.posts == 1) 
-                                                ? 
-                                                '('+postCategory.posts+'post)' 
-                                                : 
-                                                '('+postCategory.posts+'(posts)'
-                                            }
                                         </a>
                                     </Link>
                                 </h2>
+                                <div className="posted-on">
+                                    {
+                                        (postCategory.posts == 1) 
+                                        ? 
+                                        postCategory.posts+' post' 
+                                        : 
+                                        postCategory.posts+' posts'
+                                    }
+                                </div>
                             </li>
                         )
                     )}
