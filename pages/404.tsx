@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 export default function Custom404() {
     return (
-        <Layout siteTitle="404 - Page Not Found">
-            <MetaData />
+        <Layout>
+            <MetaData title="404 - Page Not Found" />
             <section>
                 <h1>404</h1>
                 <div className="entry-meta posted-on">
@@ -57,16 +57,16 @@ export default function Custom404() {
                             </span>
 
                             <span style={{display: 'block',}}>
-                                <span className="token operator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</span>Layout 
-                                <span className="token assign-left variable">&nbsp;siteTitle</span>
-                                <span className="token operator">=</span>
-                                <span className="token string">"404 - Page Not Found"</span>
+                                <span className="token operator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</span>Layout
                                 <span className="token operator">&gt;</span>
                             </span>
 
                             <span style={{display: 'block',}}>
                                 <span className="token operator">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</span>MetaData 
-                                <span className="token operator">&nbsp;/&gt;</span>
+                                <span className="token assign-left variable">&nbsp;title</span>
+                                <span className="token operator">=</span>
+                                <span className="token string">"404 - Page Not Found"</span>
+                                <span className="token operator">&gt;</span>
                             </span>
 
                             <span style={{display: 'block',}}>
