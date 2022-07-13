@@ -7,6 +7,7 @@
     margin-right: -50vw;
 }
 
+/*** HIGHLIGHT ***/
 .line-numbers span.line-numbers-rows > span {
     position: relative;
 }
@@ -18,4 +19,20 @@
     position: absolute;
     top: -2px;
 }
-  
+
+/*** HIDE NUMBERS **/
+.line-numbers.hide-numbers {
+    padding: 1em !important;
+}
+
+.hide-numbers .line-numbers-rows {
+    width: 0;
+}
+
+.hide-numbers .line-numbers-rows > span::before {
+    content: " ";
+}
+
+.hide-numbers .line-numbers-rows > span {
+    padding-left: 2.8em;
+}
