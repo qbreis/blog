@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     padding: 1em 0;
-    background-color: rgba(0, 255, 0, 0.5);
     @media screen and (min-width: $query__menu-breakpoint) {
         padding: 3em 0;
     }
