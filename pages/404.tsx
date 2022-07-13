@@ -12,6 +12,14 @@ export default function Custom404() {
                 <div className="entry-meta posted-on">
                     Page Not Found
                 </div>
+                <div className="post-categories">
+                    <Link href='/'>
+                        <a>home page</a>
+                    </Link>
+                    <Link href='/categories'>
+                        <a>categories</a>
+                    </Link>
+                </div>
 
                 <div className="remark-highlight">
                     <pre data-line="1, 12, 15, 18" className="language-bash  line-numbers">
