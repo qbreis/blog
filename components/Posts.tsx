@@ -7,9 +7,9 @@ const Posts = ({posts}: any) => {
         <ul>
             {posts.map((post: any) => 
             {
-                if(post.draft) {
+                /*if(post.draft) {
                     return <></>
-                }
+                }*/
                 return (post.id) && (
                     <li key={post.id}>
                         <h2 className="h4">
@@ -17,6 +17,7 @@ const Posts = ({posts}: any) => {
                                 <a>{post.title}</a>
                             </Link>
                         </h2>
+                        <p>{(post.draft)?'draft':'not draft'}</p>
                         <Date dateString={post.date} />
                         <Categories categories={post.categories} />
                     </li>

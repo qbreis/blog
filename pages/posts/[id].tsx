@@ -26,6 +26,21 @@ export default function Post({ postData }: any) {
 export async function getStaticPaths() {
     // Return a list of possible value for id
     const paths = getAllPostIds();
+    console.log(paths);
+    /*
+    const paths = [
+       {
+         params: {
+           id: 'ssg-ssr'
+         }
+       },
+       {
+         params: {
+           id: 'pre-rendering'
+         }
+       }
+    ];
+    */
     return {
         paths,
         fallback: false,
