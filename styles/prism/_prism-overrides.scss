@@ -7,6 +7,11 @@
     margin-right: -50vw;
 }
 
+.remark-highlight .contained{
+    width: calc($size__site-main - 4rem);
+    margin: 0 auto;
+}
+
 /*** HIGHLIGHT ***/
 .line-numbers span.line-numbers-rows > span {
     position: relative;
