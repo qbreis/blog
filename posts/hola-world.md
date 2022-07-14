@@ -4,6 +4,7 @@ excerpt: 'Excerpt test for hola mundo'
 date: '2022-06-01'
 categories: ['nextjs', 'bulma', 'test']
 tags: ['dos', 'tres']
+repository: 'https://github.com/qbreis/blog/tree/dev-chapter-9'
 draft: true
 ---
 

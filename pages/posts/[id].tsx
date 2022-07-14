@@ -2,13 +2,16 @@ import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
 import Categories from '../../components/Categories';
+import Repository from '../../components/Repository';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import Link from 'next/link';
 
 export default function Post({ postData }: any) {
     return (
         <Layout>
             <MetaData title={postData.title} description={postData.excerpt} />
             <article>
+                <Repository repository={postData.repository} />
                 <h1>{postData.title}</h1>
                 <div className="entry-meta">
                     <Date dateString={postData.date} />
