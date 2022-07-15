@@ -14,7 +14,7 @@ const Posts = ({posts}: any) => {
                                 <a>{post.title}</a>
                             </Link>
                         </h2>
-                        <Date dateString={post.date} />
+                        <Date dateString={post.date} lastmod={post.lastmod} />
                         <Categories categories={post.categories} />
                     </li>
                 )

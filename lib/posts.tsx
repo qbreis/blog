@@ -4,6 +4,12 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import prism from 'remark-prism';
+import { format } from 'date-fns';
+
+const getFileUpdatedDate = (path: any) => {
+    const stats = fs.statSync(path);
+    return format(stats.mtime, 'LLLL d, yyyy');
+}
 
 /*********************
 Posts
@@ -13,7 +19,7 @@ const postsDirectory = path.join(process.cwd(), 'posts');
 
 // Get file names under /posts
 const fileNames = fs.readdirSync(postsDirectory);
-
+console.log('postsDirectory', postsDirectory);
 const posts: any = [];
 
 fileNames.map((fileName) => {
@@ -32,6 +38,7 @@ fileNames.map((fileName) => {
         posts.push({
             id,
             ...matterResult.data,
+            lastmod: getFileUpdatedDate(fullPath),
         });
     }
 });
@@ -46,6 +53,8 @@ posts.sort(({ date: a }: any, { date: b }: any) => {
         return 0;
     }
 });
+
+console.log(posts);
 
 /*********************
 Categories
