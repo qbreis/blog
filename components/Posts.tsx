@@ -7,9 +7,6 @@ const Posts = ({posts}: any) => {
         <ul>
             {posts.map((post: any) => 
             {
-                if(post.draft) {
-                    return <></>
-                }
                 return (post.id) && (
                     <li key={post.id}>
                         <h2 className="h4">

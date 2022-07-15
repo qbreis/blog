@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import { getSortedCategories } from '../../lib/posts';
+import { getCategories } from '../../lib/posts';
 import Link from 'next/link';
 
 export default function catHome({ allCategoryIds }: any) {
@@ -53,7 +53,7 @@ export default function catHome({ allCategoryIds }: any) {
 }
 
 export async function getStaticProps() {
-    const allCategoryIds = getSortedCategories();
+    const allCategoryIds = getCategories();
     return {
         props: {
             allCategoryIds

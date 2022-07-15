@@ -3,10 +3,10 @@
 import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 
-import { getSortedPostsData } from '../lib/posts';
+import { getPosts } from '../lib/posts';
 
 export async function getStaticProps() {
-    const allPostsData = getSortedPostsData();
+    const allPostsData = getPosts();
     return {
         props: {
             allPostsData,
