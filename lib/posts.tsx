@@ -114,13 +114,25 @@ export function getAllPostIds() {
     //     }
     //   }
     // ]
-    return posts.map((post: any) => {
+
+    /*
+    return fileNames.map((fileName) => {
         return {
             params: {
-                id: post,
+                id: fileName.replace(/\.md$/, ''),
             },
         };
     });
+    */
+
+    return posts.map((post: any) => {
+        return {
+            params: {
+                id: post.id,
+            },
+        };
+    });
+
 }
 
 export async function getPostData(id: any) {
