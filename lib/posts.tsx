@@ -61,6 +61,7 @@ posts.map((post: any) => {
         }
     });
 });
+
 // count number of posts for each category
 const categories = allCategories.map((category: any) => {
     return {
@@ -68,6 +69,7 @@ const categories = allCategories.map((category: any) => {
         posts: getPosts(category).length,
     };
 });
+
 // sort by number of posts for each category
 categories.sort(({ posts: a }: any, { posts: b }: any) => {
     if (a < b) {
@@ -114,17 +116,6 @@ export function getAllPostIds() {
     //     }
     //   }
     // ]
-
-    /*
-    return fileNames.map((fileName) => {
-        return {
-            params: {
-                id: fileName.replace(/\.md$/, ''),
-            },
-        };
-    });
-    */
-
     return posts.map((post: any) => {
         return {
             params: {
