@@ -1,43 +1,114 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
+import prism from 'remark-prism';
+import { format } from 'date-fns';
+
+const getFileUpdatedDate = (path: any) => {
+    const stats = fs.statSync(path);
+    return format(stats.mtime, 'LLLL d, yyyy');
+}
+
+/*********************
+Posts
+*/
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 // Get file names under /posts
 const fileNames = fs.readdirSync(postsDirectory);
+console.log('postsDirectory', postsDirectory);
+const posts: any = [];
 
-export function getSortedPostsData() {
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const id = fileName.replace(/\.md$/, '');
+fileNames.map((fileName) => {
 
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
+    // Remove ".md" from file name to get id
+    const id = fileName.replace(/\.md$/, '');
 
-        // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents);
+    // Read markdown file as string
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
 
-        // Combine the data with the id
-        return {
+    // Use gray-matter to parse the post metadata section
+    const matterResult = matter(fileContents);
+
+    if(!matterResult.data.draft){
+        posts.push({
             id,
             ...matterResult.data,
-        };
-    });
-    return allPostsData;
-    /*
-    // Sort posts by date
-    return allPostsData.sort(({ date: a }, { date: b }) => {
-        if (a < b) {
-            return 1;
-        } else if (a > b) {
-            return -1;
-        } else {
-            return 0;
+            lastmod: getFileUpdatedDate(fullPath),
+        });
+    }
+});
+
+// Sort posts by date
+posts.sort(({ date: a }: any, { date: b }: any) => {
+    if (a < b) {
+        return 1;
+    } else if (a > b) {
+        return -1;
+    } else {
+        return 0;
+    }
+});
+
+console.log(posts);
+
+/*********************
+Categories
+*/
+
+const allCategories: any = [];
+
+// get all categories
+posts.map((post: any) => {
+    post.categories.map((postCategory: any) => {
+        if(!allCategories.includes(postCategory)){
+            allCategories.push(postCategory);
         }
     });
-    */
+});
+
+// count number of posts for each category
+const categories = allCategories.map((category: any) => {
+    return {
+        id: category,
+        posts: getPosts(category).length,
+    };
+});
+
+// sort by number of posts for each category
+categories.sort(({ posts: a }: any, { posts: b }: any) => {
+    if (a < b) {
+        return 1;
+    } else if (a > b) {
+        return -1;
+    } else {
+        return 0;
+    }
+});
+
+/*********************
+Functions
+*/
+
+export function getPosts(categoryId?: any) { // make optional parameter categoryId?
+    if(!categoryId){
+        return posts;
+    }
+    const getPosts: any = [];
+    posts.map((post: any) => {
+        if(post.categories.includes(categoryId)){
+            getPosts.push(post);
+        }
+    });
+    return getPosts;
+}
+
+export function getCategories() {
+    return categories;
 }
 
 export function getAllPostIds() {
@@ -54,13 +125,14 @@ export function getAllPostIds() {
     //     }
     //   }
     // ]
-    return fileNames.map((fileName) => {
+    return posts.map((post: any) => {
         return {
             params: {
-                id: fileName.replace(/\.md$/, ''),
+                id: post.id,
             },
         };
     });
+
 }
 
 export async function getPostData(id: any) {
@@ -70,9 +142,33 @@ export async function getPostData(id: any) {
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
 
+    // Use remark to convert markdown into HTML string
+    /*
+    const processedContent = await remark()
+        .use(html)
+        .process(matterResult.content);
+    */
+    const processedContent = await remark()
+        .use(html, { sanitize: false })
+        .use(prism, { plugins: ["line-numbers"] })
+        .process(matterResult.content);
+    
+    const contentHtml = processedContent.toString();
+
     // Combine the data with the id and contentHtml
     return {
         id,
+        contentHtml,
         ...matterResult.data,
     };
+}
+
+export function getAllCategoryIds() {
+    return categories.map((category: any) => {
+        return {
+            params: {
+                id: category,
+            },
+        };
+    });
 }

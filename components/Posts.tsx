@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Date from '../components/Date';
+import Categories from '../components/Categories';
 
 const Posts = ({posts}: any) => {
     return (
@@ -12,6 +14,8 @@ const Posts = ({posts}: any) => {
                                 <a>{post.title}</a>
                             </Link>
                         </h2>
+                        <Date dateString={post.date} lastmod={post.lastmod} />
+                        <Categories categories={post.categories} />
                     </li>
                 )
             }
