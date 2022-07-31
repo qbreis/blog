@@ -101,4 +101,14 @@ th {
   padding: 0;
 }
 
+code {
+  background-color: $color__background-text-code;
+  color: $color__text-code;
+}
+
+pre code {
+  background-color: inherit;
+  color: inherit;
+}
+
 @import "reusable";
