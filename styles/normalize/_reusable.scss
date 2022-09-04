@@ -1,0 +1,7 @@
+/*
+Normalize - Reusable
+*/
+
+.color-text-screen-filter {
+  @include color__text-screen();
+}

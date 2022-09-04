@@ -1,0 +1,28 @@
+/* 
+Variables - Colors
+*/
+
+$color__background-body: #ffffff;
+$color__background-brand: #3f9fc7;
+$color__background-screen: #f1f1f1;
+$color__background-alternative: #d8dee9;
+$color__background-hr: #ccc;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+$color__background-text-code: #e8e8e8;
+
+$color__text-screen: rgb(76, 86, 106);
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__text-code: #81a1c1;
+$color__link: $color__text-screen;
+$color__link-visited: $color__text-screen;
+$color__link-hover: $color__text-screen;
+$color__text-main: $color__text-screen;
+
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
