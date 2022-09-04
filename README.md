@@ -1,8 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Blog - Next.js - Chapter #1 - Setup
+# Blog - Next.js - Chapter #2 - Styles
 
-In this chapter / branch I just setup new Next.js app from scratch using Typescript.
+In this chapter / branch I prepare one simple template for my single post view establishing a hierarchical criteria for some general styles based on Sass.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

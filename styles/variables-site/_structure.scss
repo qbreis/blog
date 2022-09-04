@@ -1,0 +1,27 @@
+/* 
+Variables - Structure
+*/
+
+$size__site-main: 1152px;
+$size__site-sidebar: 25%;
+
+$query__small: 600px;
+$query__medium: 900px;
+$query__menu-breakpoint: 600px;
+
+$font-size-xlg: 4rem;
+$font-size-lg: 3rem;
+$font-size-md: 2rem;
+$font-size-sm: 1.1rem;
+$font-size-xs: 1rem;
+$font-size-xxs: 0.7em; /*0.75rem;*/ /*
+
+The unit rem (root em) stands for the font size of the root element. In an HTML document, the root element is the html element.
+
+While em is relative to the font-size of its direct or nearest parent, rem is only relative to the html (root) font-size.
+
+em gives the ability to control an area of a design. As in, scale the type in that specific area relatively. rem gives the ability to scale type across the entire page easily.
+*/
+$font-size-xxxs: 0.65rem;
+
+$column__main: 50rem;

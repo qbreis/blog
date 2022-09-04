@@ -1,0 +1,21 @@
+/*
+Typography
+*/
+
+body,
+button,
+input,
+select,
+textarea {
+  color: $color__text-main;
+  font-family: $font__sans;
+  font-weight: 400;
+  @include font-size(0.9);
+  line-height: $font__line-height-body;
+
+  @media screen and (min-width: $query__small) {
+    @include font-size(1);
+  }
+}
+
+@import 'headings';

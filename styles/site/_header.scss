@@ -1,0 +1,14 @@
+.site-header {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+  @media screen and (min-width: $query__menu-breakpoint) {
+    padding: 3em 0;
+  }
+
+  h1,
+  h2 {
+    font-size: 1em;
+    padding: 0 0.5em;
+  }
+}
