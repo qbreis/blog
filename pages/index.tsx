@@ -2,9 +2,19 @@ import type { NextPage } from 'next';
 import Image from 'next/image'; /* 1 */
 import Link from 'next/link'; /* 2 */
 
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript', javascript);
+
+import React, { useEffect } from 'react';
+
 const Home: NextPage = () => {
+  useEffect(() => {
+    hljs.initHighlighting();
+  }, []);
+
   return (
-    <div className="site-container z">
+    <div className="site-container">
       <header className="site-header">site-header</header>
       <main className="site-main">
         <article>
