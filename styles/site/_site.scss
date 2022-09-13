@@ -10,6 +10,8 @@
     margin: 0 auto;
     height: 13em;
     display: block;
+    max-width: 22em;
+    object-fit: contain;
   }
   .excerpt {
     font-size: 1.2em;
