@@ -1,17 +1,7 @@
 import Image from 'next/image';
 import Layout from '../components/Layout';
 
-import hljs from 'highlight.js';
-import javascript from 'highlight.js/lib/languages/javascript';
-hljs.registerLanguage('javascript', javascript);
-
-import React, { useEffect } from 'react';
-
 export default function Home() {
-  useEffect(() => {
-    hljs.initHighlighting();
-  }, []);
-
   return (
     <Layout>
       <section>
