@@ -317,11 +317,15 @@ highlight.js
 /*--------------------------------------------------------------
 # Custom
 --------------------------------------------------------------*/
-pre.highlighjs {
+pre code:not(.contained).hljs {
   width: 100vw;
   position: relative;
   left: 50%;
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+}
+
+pre code.hljs {
+  margin-bottom: 1em;
 }

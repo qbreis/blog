@@ -3,7 +3,17 @@ import Footer from '../components/Footer';
 import MetaData from '../components/MetaData';
 import Link from 'next/link';
 
+import hljs from 'highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
+hljs.registerLanguage('javascript', javascript);
+
+import React, { useEffect } from 'react';
+
 export default function Layout({ children }: any) {
+  useEffect(() => {
+    hljs.initHighlighting();
+  }, []);
+
   return (
     <div className="site-container">
       <MetaData />

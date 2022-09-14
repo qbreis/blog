@@ -11,9 +11,11 @@ body {
 }
 
 a {
+  text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
   color: $color__text-main;
+  cursor: pointer;
 }
 
 h1 a {
