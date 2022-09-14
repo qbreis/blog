@@ -6,6 +6,7 @@ export default function Post({ postData }: any) {
     <Layout>
       <article>
         <h1>{postData.title}</h1>
+        <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
