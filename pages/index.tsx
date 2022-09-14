@@ -1,5 +1,3 @@
-import Link from 'next/link'; /* 1 */
-
 import Layout from '../components/Layout';
 import { getPosts } from '../lib/posts';
 
