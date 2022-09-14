@@ -1,6 +1,6 @@
 # Blog - Next.js - Chapter #3 - Typefaces
 
-In this chapter / branch I create main components.
+In this chapter / branch I read all Markdown posts and adapt to Html.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
