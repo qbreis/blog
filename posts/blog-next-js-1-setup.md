@@ -58,7 +58,7 @@ Finally I create dev branch: `git checkout -b dev`.
 
 ## 1.4 First cleaning
 
-I create still a new git branch by running: `git checkout -b 'setup`.
+I create still a new git branch by running: `git checkout -b 'dev-chapter-1-setup`.
 
 I update `blog/pages/index.tsx`:
 
@@ -83,9 +83,9 @@ I delete files:
 
 Finaly I do my first git commit by running:
 
-<pre><code class="language-bash contained">git add .
-git commit -m 'feat: first setup'
-git push origin setup
+<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-1-setup) $ git add .
+node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-1-setup) $ git commit -m 'feat: first setup'
+node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-1-setup) $ git push origin dev-chapter-1-setup
 </code></pre>
 
 > From now on I will not write my git commits in these annotations but I just want to make clear how to start. Just remember to use clean ordered branches and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).

@@ -14,11 +14,11 @@ draft: false
 
 In order to install Sass I run:
 
-<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main $ yarn add sass</code></pre>
+<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-2-styles) $ yarn add sass</code></pre>
 
 I want to rename file `blog/styles/globals.css` to `globals.scss /* 1 */` and update `blog/pages/_app.tsx` accordingly:
 
-```js
+```
 import '../styles/globals.scss'; // import '../styles/globals.css'; /* 1 */
 import type { AppProps } from 'next/app';
 
@@ -86,13 +86,7 @@ const Home: NextPage = () => {
             */}
             <p style={{ textAlign: 'center' }}>
               {/* 1 */}
-              {/*Do not use `<img>` element. 
-              Use `<Image />` from `next/image` instead. 
-              See: https://nextjs.org/docs/messages/no-img-element  
-              @next/next/no-img-element*/}
-              {/*
-              <img src="/images/nextjs-logo.svg" alt="Next.js" />
-              */}
+              {/*<img src="/images/nextjs-logo.svg" alt="Next.js" />*/}
               <Image
                 src="/images/nextjs-logo.svg"
                 height={500}
@@ -158,10 +152,6 @@ export default MyApp;`}
         </article>
       </main>
       {/* 2 */}
-      {/*Do not use an `<a>` element to navigate to `/`.
-      Use `<Link />` from `next/link` instead.
-      See: https://nextjs.org/docs/messages/no-html-link-for-pages 
-      @next/next/no-html-link-for-pages*/}
       {/*<a href="/">← Back to home</a>*/}
       <Link href="/">
         <a>← Back to home</a>
