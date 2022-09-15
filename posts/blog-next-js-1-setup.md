@@ -1,9 +1,9 @@
 ---
 title: 'Blog - Next.js - Chapter #1 - Setup'
-excerpt: 'In this chapter I just setup new Next.js app from scratch using Typescript, but first I setup my work environment.'
+excerpt: 'In this chapter, first I setup my dev environment, after I just setup new Next.js app from scratch using Typescript.'
 date: '2021-07-31'
-categories: ['nextjs', 'bulma', 'test']
-tags: ['dos', 'tres']
+categories: ['nextjs']
+tags: ['nextjs', 'typescript']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-1-setup'
 draft: false
 ---
@@ -16,8 +16,7 @@ I go to [Mise en place](https://github.com/isfegu/misenplace.node) and I choose 
 
 I open folder `misenplace.node-main` in Visual Studio Code using the remote container and I install dependencies by running for the first time:
 
-<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main $ yarn
-</code></pre>
+<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main $ yarn</code></pre>
 
 > Note that, as long as I am using Markdown to write these notes, and I just don't find the way to add link attributes to a Markdown URL, I decide not to use `target="_blank"` or `rel="nofollow noreferrer"` links.
 >
@@ -27,17 +26,11 @@ I open folder `misenplace.node-main` in Visual Studio Code using the remote cont
 
 ## 1.2 Create Next.js App
 
-![Next.js](/images/nextjs-logo.svg#img-thumbnail)
-
-![Next.js](/images/nextjs-logo-2.svg)
-
 ![Next.js](/images/nextjs-logo-3.svg)
 
 I will start, more or less, following documentation in [https://nextjs.org/learn](https://nextjs.org/learn), so I run:
 
-```bash[class="line-numbers"][class="contained"][class="hide-numbers"]
-node ➜ /workspaces/misenplace.node-main $ yarn create next-app --typescript blog
-```
+<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main $ yarn create next-app --typescript blog</code></pre>
 
 In this case I want to use typescript and the name for the app will be just "blog".
 
@@ -90,11 +83,10 @@ I delete files:
 
 Finaly I do my first git commit by running:
 
-```bash[class="line-numbers"][class="contained"][class="hide-numbers"]
-git add .
+<pre><code class="language-bash contained">git add .
 git commit -m 'feat: first setup'
 git push origin setup
-```
+</code></pre>
 
 > From now on I will not write my git commits in these annotations but I just want to make clear how to start. Just remember to use clean ordered branches and [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 

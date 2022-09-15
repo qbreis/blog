@@ -9,10 +9,10 @@ export default function MetaData() {
         content="This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things."
       />
       <meta name="theme-color" content="#ffffff" />
-      <link rel="icon" href="favicon.svg" />
-      <link rel="mask-icon" href="mask-icon.svg" color="#000000" />
-      <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-      <link rel="manifest" href="manifest.json"></link>
+      <link rel="icon" href="/images/favicon.svg" />
+      <link rel="mask-icon" href="/images/mask-icon.svg" color="#000000" />
+      <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+      <link rel="manifest" href="/images/manifest.json"></link>
     </Head>
   );
 }
