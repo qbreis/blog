@@ -62,7 +62,7 @@ I create still a new git branch by running: `git checkout -b 'setup`.
 
 I update `blog/pages/index.tsx`:
 
-```js
+```typescript
 import type { NextPage } from 'next';
 // import Head from 'next/head';
 // import Image from 'next/image';
