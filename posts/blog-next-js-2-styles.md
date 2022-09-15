@@ -31,14 +31,13 @@ export default MyApp;
 
 ## 2.2 Simple post template
 
-I want to prepare one simple template for my single post view, so I update `blog/pages/index.tsx`:
+I want to prepare one simple template for my single post view, so I create new `blog/pages/custom-template.tsx`:
 
 ```typescript
-import type { NextPage } from 'next';
 import Image from 'next/image'; /* 1 */
 import Link from 'next/link'; /* 2 */
 
-const Home: NextPage = () => {
+export default function CustomTemplate() {
   return (
     <div className="site-container">
       <header className="site-header">site-header</header>
@@ -159,9 +158,7 @@ export default MyApp;`}
       <footer className="site-footer">site-footer</footer>
     </div>
   );
-};
-
-export default Home;
+}
 ```
 
 This is just plain html template to see how I want to render all possible html tags in any post, including basically:
@@ -189,6 +186,32 @@ This is just plain html template to see how I want to render all possible html t
 
 - Images:  
   `<img>`
+
+And now I update `pages/index.tsx`:
+
+```typescript
+// As I am still not very familiar with types,
+// I feel more comfortable not defining NextPage type and
+// use function declaration instead of arrow function
+
+// import type { NextPage } from 'next';
+
+import Link from 'next/link';
+
+//const Home: NextPage = () => { // arrow function vs function declaration in Next.js
+export default function Home() {
+  return (
+    <>
+      <h1>Home</h1>
+      <Link href="/custom-template">
+        <a>Custom template</a>
+      </Link>
+    </>
+  );
+}
+
+//export default Home;
+```
 
 ### 2.2.1 Svg images
 
