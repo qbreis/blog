@@ -10,7 +10,8 @@ import React, { useEffect } from 'react';
 
 const Home: NextPage = () => {
   useEffect(() => {
-    hljs.initHighlighting();
+    // hljs.initHighlighting(); // Deprecated as of 10.6.0. initHighlighting() deprecated.  Use highlightAll() now.
+    hljs.highlightAll();
   }, []);
 
   return (
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
                 <a href="/tags/tag-name">tag</a>
               </li>
               <li>
-                <a href="/tags/tag-name">nextjs</a>
+                <a href="/tags/tag-name">tag</a>
               </li>
             </ul>
           </div>
@@ -60,13 +61,7 @@ const Home: NextPage = () => {
             */}
             <p style={{ textAlign: 'center' }}>
               {/* 1 */}
-              {/*Do not use `<img>` element. 
-              Use `<Image />` from `next/image` instead. 
-              See: https://nextjs.org/docs/messages/no-img-element  
-              @next/next/no-img-element*/}
-              {/*
-              <img src="/images/nextjs-logo.svg" alt="Next.js" />
-              */}
+              {/*<img src="/images/nextjs-logo.svg" alt="Next.js" />*/}
               <Image
                 src="/images/nextjs-logo.svg"
                 height={500}
@@ -119,9 +114,9 @@ export default MyApp;`}
               <li>tres</li>
             </ul>
 
-            <hr />
-
             <h4>Heading 4 - Ordered lists</h4>
+
+            <hr />
 
             <ol>
               <li>list 1</li>
@@ -132,10 +127,6 @@ export default MyApp;`}
         </article>
       </main>
       {/* 2 */}
-      {/*Do not use an `<a>` element to navigate to `/`.
-      Use `<Link />` from `next/link` instead.
-      See: https://nextjs.org/docs/messages/no-html-link-for-pages 
-      @next/next/no-html-link-for-pages*/}
       {/*<a href="/">← Back to home</a>*/}
       <Link href="/">
         <a>← Back to home</a>
