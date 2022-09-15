@@ -1,10 +1,11 @@
 ---
 title: 'Blog - Next.js - Chapter #2 - Styles'
 excerpt: 'In this chapter I migrate from Css to Scss and prepare one Html simple template for my single post view to see how all the elements are rendered, including links, images and Highlight for pieces of code.'
-date: '2021-08-26'
-categories: ['nextjs', 'bulma', 'test']
-tags: ['dos', 'tres']
-repository: 'https://github.com/qbreis/blog/tree/dev-chapter-2-scss'
+date: '2021-08-30'
+categories: ['nextjs']
+tags:
+  ['nextjs', 'typescript', 'css', 'scss', 'sass', 'svg', 'nord', 'highlight']
+repository: 'https://github.com/qbreis/blog/tree/dev-chapter-2-styles'
 draft: false
 ---
 
@@ -187,7 +188,7 @@ This is just plain html template to see how I want to render all possible html t
 - Images:  
   `<img>`
 
-And now I update `pages/index.tsx`:
+And now I update `blog/pages/index.tsx`:
 
 ```typescript
 // As I am still not very familiar with types,
@@ -220,8 +221,8 @@ To see how images are rendered i also include new Svg file in `blog/public/image
 ```svg
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg width="1212.2428" height="734.28168" viewBox="0 0 320.73924 194.2787" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-   <path style="fill:#ff0000;stroke:#000000;stroke-width:4.7625;stroke-linecap:round;" d="m 145.38925,51.36502 c 17.93955,24.88523 60.10357,87.10579 63.86926,90.21949" />
-   <path style="fill:#ff0000;stroke:#000000;stroke-width:4.7625;stroke-linecap:round;" d="M 142.62081,139.6091 C 157.88996,120.98151 235.77325,11.58027 242.17853,2.3812499" />
+   <path style="stroke:#000000;stroke-width:4.7625;stroke-linecap:round;" d="m 145.38925,51.36502 c 17.93955,24.88523 60.10357,87.10579 63.86926,90.21949" />
+   <path style="stroke:#000000;stroke-width:4.7625;stroke-linecap:round;" d="M 142.62081,139.6091 C 157.88996,120.98151 235.77325,11.58027 242.17853,2.3812499" />
    <path style="fill:none;stroke:#000000;stroke-width:4.7625;stroke-linecap:round;stroke-linejoin:round;" d="M 2.3812499,141.06804 C 4.5155099,113.91862 5.7817659,74.46688 3.4891839,51.88185 18.506696,71.51447 73.564593,163.33349 98.619519,191.89744" />
    <path style="fill:none;stroke:#000000;stroke-width:4.7625;stroke-linecap:round;stroke-linejoin:round;" d="M 135.81833,53.29224 H 79.464092 c -1.912236,14.19094 1.740617,64.75503 -1.567066,83.21049 24.039114,0 43.210054,-0.42687 55.766134,1.16129" />
    <path style="stroke:#000000;stroke-width:4.7625;stroke-linecap:round;" d="M 75.466256,94.70942 C 91.170829,91.74558 129.39201,91.43381 135.04046,93.28824" />
@@ -237,7 +238,7 @@ To see how images are rendered i also include new Svg file in `blog/public/image
 
 ### 2.2.2 Styles
 
-All the classes in this template are defined in styles folder, in the corresponding [dev-chapter-2 branch](https://github.com/qbreis/blog/tree/setup/styles), up in my repository at GitHub. So I will just download `styles` directory from this branch into my `blog/styles` folder, making sure to replace `blog/styles/globals.scss` file.
+All the classes in this template are defined in styles folder, in the corresponding [dev-chapter-2-styles branch](https://github.com/qbreis/blog/tree/dev-chapter-2-styles/styles), up in my repository at GitHub. So I will just download `styles` directory from this branch into my `blog/styles` folder, making sure to replace `blog/styles/globals.scss` file.
 
 #### 2.2.2.1 Minireset
 
@@ -255,14 +256,11 @@ In order to change Svg color I will use same strategy implemenmted in this other
 
 I want to use Highlight.js, so following [How to use Highlight.js on a Next.js site](https://dev.to/kontent_ai/how-to-use-highlight-js-on-a-next-js-site-f9) fisrt I run:
 
-```bash[class="line-numbers"][class="contained"][class="hide-numbers"]
-yarn add highlight.js
-```
+<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-2-styles) $ yarn add highlight.js</code></pre>
 
-And then I update my `blog/pages/index.tsx`:
+And then I update my `blog/pages/custom-template.tsx`:
 
 ```typescript
-import type { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -272,7 +270,7 @@ hljs.registerLanguage('javascript', javascript);
 
 import React, { useEffect } from 'react';
 
-const Home: NextPage = () => {
+export default function CustomTemplate() {
   useEffect(() => {
     hljs.initHighlighting();
   }, []);
