@@ -3,7 +3,7 @@ title: 'Blog - Next.js - Chapter #5 - Markdown'
 excerpt: 'In this chapter I read all Markdown posts and adapt to Html.'
 date: '2021-09-12'
 categories: ['nextjs']
-tags: ['nextjs', 'typescript', 'markdown']
+tags: ['nextjs', 'typescript', 'markdown', 'yaml']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-5-markdown'
 draft: false
 ---
@@ -534,6 +534,8 @@ export default function Home({ posts }: any) {
   );
 }
 ```
+
+I can now update the annotations on how I'm building this blog.
 
 ## Reference links
 
