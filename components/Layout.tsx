@@ -1,3 +1,5 @@
+// blog/components/Layout.tsx
+
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MetaData from '../components/MetaData';
@@ -9,20 +11,26 @@ hljs.registerLanguage('javascript', javascript);
 
 import React, { useEffect } from 'react';
 
-export default function Layout({ children }: any) {
+export default function Layout({ children, home }: any) {
   useEffect(() => {
-    // hljs.initHighlighting(); // Deprecated as of 10.6.0. initHighlighting() deprecated.  Use highlightAll() now.
     hljs.highlightAll();
   }, []);
 
   return (
     <div className="site-container">
       <MetaData />
-      <Header />
+      <Header home={home} />
       <main className="site-main">{children}</main>
+      {/*
       <Link href="/">
         <a>← Back to home</a>
       </Link>
+      */}
+      {!home && (
+        <Link href="/">
+          <a>← Back to home</a>
+        </Link>
+      )}
       <Footer />
     </div>
   );

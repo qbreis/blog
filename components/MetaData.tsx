@@ -1,13 +1,16 @@
-import Head from 'next/head';
+// blog/components/MetaData.tsx
 
-export default function MetaData() {
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import nextConfig from '../next.config';
+
+export default function MetaData({ title, description }: any) {
   return (
     <Head>
-      <title>qbreis — enric gatell</title>
-      <meta
-        name="description"
-        content="This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things."
-      />
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>{title}</title>
+      <meta name="description" content={description} />
       <meta name="theme-color" content="#ffffff" />
       <link rel="icon" href="/images/favicon.svg" />
       <link rel="mask-icon" href="/images/mask-icon.svg" color="#000000" />
@@ -16,3 +19,13 @@ export default function MetaData() {
     </Head>
   );
 }
+
+MetaData.defaultProps = {
+  title: nextConfig.siteInfo.title,
+  description: nextConfig.siteInfo.description,
+};
+
+MetaData.propTypes = {
+  title: PropTypes.string, // title: PropTypes.string.isRequired,
+  description: PropTypes.string, // description: PropTypes.string.isRequired,
+};
