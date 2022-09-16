@@ -1,6 +1,6 @@
 ---
 title: 'Blog - Next.js - Chapter #1 - Setup'
-excerpt: 'In this chapter, first I setup my dev environment, after I just setup new Next.js app from scratch using Typescript.'
+excerpt: 'In this chapter, first I setup my dev environment, after I just setup new Next.js app from scratch using Typescript...'
 date: '2021-08-26'
 categories: ['nextjs']
 tags: ['nextjs', 'typescript']
