@@ -401,7 +401,11 @@ export default function MetaData({ title, description }: any) {
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>{title}</title>
+      <title>
+        {title !== nextConfig.siteInfo.title
+          ? nextConfig.siteInfo.title + ' | ' + title
+          : title}
+      </title>
       <meta name="description" content={description} />
       <meta name="theme-color" content="#ffffff" />
       <link rel="icon" href="/images/favicon.svg" />
