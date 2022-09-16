@@ -12,7 +12,7 @@ import React, { useEffect } from 'react';
 export default function Layout({ children }: any) {
   useEffect(() => {
     // hljs.initHighlighting(); // Deprecated as of 10.6.0. initHighlighting() deprecated.  Use highlightAll() now.
-    hljs.highlightAll(); /* 1 */
+    hljs.highlightAll();
   }, []);
 
   return (

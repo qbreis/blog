@@ -1,4 +1,4 @@
-import Link from 'next/link'; /* 1 */
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getPosts } from '../lib/posts';
 
