@@ -474,14 +474,76 @@ export async function getStaticProps({ params }: any) {
 }
 ```
 
+## 5.4 Component Posts for posts list
+
+I create new component `blog/components/Posts.tsx`:
+
+```typescript
+import Link from 'next/link';
+
+const Posts = ({ posts }: any) => {
+  return (
+    <ul>
+      {posts.map((post: any) => {
+        return (
+          post.id && (
+            <li key={post.id}>
+              <h2 className="h4">
+                <Link href={`/posts/${post.id}`}>
+                  <a>
+                    {post.title} - {post.date}
+                  </a>
+                </Link>
+              </h2>
+            </li>
+          )
+        );
+      })}
+    </ul>
+  );
+};
+
+export default Posts;
+```
+
+And I import into `blog/pages/index.tsx` - `/* 1 */`:
+
+```typescript
+// import Link from 'next/link';
+import Layout from '../components/Layout';
+import { getPosts } from '../lib/posts';
+import Posts from '../components/Posts'; /* 1 */
+
+export async function getStaticProps() {
+  const posts = getPosts();
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+export default function Home({ posts }: any) {
+  return (
+    <Layout>
+      <section className="all-post-data">
+        {/* 1 */}
+        <Posts posts={posts} />
+      </section>
+    </Layout>
+  );
+}
+```
+
 ## Reference links
 
-- https://nextjs.org/learn/basics/data-fetching/blog-data
-- https://github.com/jonschlinkert/gray-matter
-- [Dynamic Routes - Page Path Depends on External Data](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data).
-- [Render Markdown](https://nextjs.org/learn/basics/dynamic-routes/render-markdown).
-- [remark](https://github.com/remarkjs/remark) - Library to render Markdown.
+- [Pre-rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching/blog-data) - Installing gray-matter.
+- [Dynamic Routes](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data) - Page Path Depends on External Data.
+- [Render Markdown](https://nextjs.org/learn/basics/dynamic-routes/render-markdown) - How to transform Markdown into Html.
 
 ## External links
 
 - [Markdown - Wikipedia](https://en.wikipedia.org/wiki/Markdown).
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - Parse front-matter from a string or file. Fast, reliable and easy to use. Parses YAML front matter by default.
+- [YAML](https://en.wikipedia.org/wiki/YAML) - Yet Another Markup Language, repurposed as YAML Ain't Markup Language, a [recursive acronym](https://en.wikipedia.org/wiki/Recursive_acronym).
+- [remark](https://github.com/remarkjs/remark) - Library to render Markdown.
