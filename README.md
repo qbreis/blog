@@ -1,4 +1,4 @@
-# Blog - Next.js - Chapter #3 - Typefaces
+# Blog - Next.js - Chapter #4 - Components
 
 In this chapter / branch I create main components.
 
