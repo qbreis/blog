@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import nextConfig from '../next.config';
 
 export default function Header({ home }: any) {
   return (
@@ -14,10 +13,10 @@ export default function Header({ home }: any) {
             src="/images/favicon.svg"
             height={40}
             width={40}
-            alt={nextConfig.siteInfo.title}
+            alt={process.env.siteInfoTitle}
             className="color-text-screen-filter"
           />
-          <h1>{nextConfig.siteInfo.title}</h1>
+          <h1>{process.env.siteInfoTitle}</h1>
         </>
       ) : (
         <>
@@ -28,14 +27,14 @@ export default function Header({ home }: any) {
                 src="/images/favicon.svg"
                 height={40}
                 width={40}
-                alt={nextConfig.siteInfo.title}
+                alt={process.env.siteInfoTitle}
                 className="color-text-screen-filter"
               />
             </a>
           </Link>
           <h2>
             <Link href="/">
-              <a>{nextConfig.siteInfo.title}</a>
+              <a>{process.env.siteInfoTitle}</a>
             </Link>
           </h2>
         </>
