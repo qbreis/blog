@@ -1,33 +1,10 @@
 import Image from 'next/image';
-// import Link from 'next/link';
-
 import Layout from '../components/Layout';
-// import MetaData from '../components/MetaData'; /* 3 */
-// import Header from '../components/Header'; /* 1 */
-// import Footer from '../components/Footer'; /* 2 */
+import Link from 'next/link';
 
-/*
-import hljs from 'highlight.js';
-import javascript from 'highlight.js/lib/languages/javascript';
-hljs.registerLanguage('javascript', javascript);
-
-import React, { useEffect } from 'react';
-*/
 export default function CustomTemplate() {
-  /*
-  useEffect(() => {
-    // hljs.initHighlighting(); // Deprecated as of 10.6.0. initHighlighting() deprecated.  Use highlightAll() now.
-    hljs.highlightAll();
-  }, []);
-  */
-
   return (
     <Layout>
-      {/*<div className="site-container">*/}
-      {/*<MetaData />*/}
-      {/*<Header />*/}
-      {/*<main className="site-main">*/}
-      {/*<article>*/}
       <h1>Heading 1 - Post simple template</h1>
 
       <div className="entry-meta">
@@ -42,18 +19,26 @@ export default function CustomTemplate() {
         </ul>
         <ul className="post-categories">
           <li>
-            <a href="/categories/category-name">category</a>
+            <Link href="/categories/category-name">
+              <a>category</a>
+            </Link>
           </li>
           <li>
-            <a href="/categories/category-name">category</a>
+            <Link href="/categories/category-name">
+              <a>category</a>
+            </Link>
           </li>
         </ul>
         <ul className="post-tags">
           <li>
-            <a href="/tags/tag-name">tag</a>
+            <Link href="/tags/tag-name">
+              <a>tag</a>
+            </Link>
           </li>
           <li>
-            <a href="/tags/tag-name">tag</a>
+            <Link href="/tags/tag-name">
+              <a>tag</a>
+            </Link>
           </li>
         </ul>
       </div>

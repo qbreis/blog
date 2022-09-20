@@ -1,7 +1,10 @@
-import Link from 'next/link';
-import Date from '../components/Date'; /* 1 */
+// blog/components/Posts.tsx
 
-const Posts = ({ posts }: any) => {
+import Link from 'next/link';
+import Date from '../components/Date';
+import Categories from '../components/Categories';
+
+export default function Posts({ posts }: any) {
   return (
     <ul>
       {posts.map((post: any) => {
@@ -9,7 +12,6 @@ const Posts = ({ posts }: any) => {
           post.id && (
             <li className="sinle-post-item" key={post.id}>
               <h2 className="h4">
-                {/* 1 */}
                 <Link href={`/posts/${post.id}`}>
                   <a>{post.title}</a>
                 </Link>
@@ -17,12 +19,11 @@ const Posts = ({ posts }: any) => {
 
               {/* 1 */}
               <Date dateString={post.date} />
+              <Categories categories={post.categories} />
             </li>
           )
         );
       })}
     </ul>
   );
-};
-
-export default Posts;
+}
