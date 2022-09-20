@@ -1,10 +1,10 @@
-# Blog - Next.js - Chapter #7 -
+# Blog - Next.js - Chapter #7 - Dates and categories
 
-In this chapter I ...
+In this chapter I add the date and categories for each single post in list of posts as well as in every single post page after the title.
 
 I can read the step-by-step process in the corresponding post:
 
-- [Blog - Next.js - Chapter #7 - ](https://blog-qbreis.vercel.app/posts/blog-next-js-7-)
+- [Blog - Next.js - Chapter #7 - Dates and categories](https://blog-qbreis.vercel.app/posts/blog-next-js-7-dates-and-categories)
 
 ## Getting Started
 

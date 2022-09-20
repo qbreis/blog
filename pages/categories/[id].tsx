@@ -2,8 +2,9 @@
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
+import Posts from '../../components/Posts'; /* 2 */
 
-import { getAllCategoryIds } from '../../lib/posts';
+import { getAllCategoryIds, getPosts } from '../../lib/posts'; /* 1 */
 
 export default function Category({ postsByCategoryData }: any) {
   return (
@@ -13,6 +14,17 @@ export default function Category({ postsByCategoryData }: any) {
         description={`Posts by category ${postsByCategoryData.id}`}
       />
       <h2 className="h1">Category: {postsByCategoryData.id}</h2>
+
+      {/* 1 */}
+      <div className="entry-meta posted-on">
+        {postsByCategoryData.allPostsData.length == 1
+          ? postsByCategoryData.allPostsData.length + ' post'
+          : postsByCategoryData.allPostsData.length + ' posts'}
+      </div>
+      <section className="all-post-data">
+        {/* 2 */}
+        <Posts posts={postsByCategoryData.allPostsData} />
+      </section>
     </Layout>
   );
 }
@@ -28,6 +40,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const postsByCategoryData = {
     id: params.id,
+    allPostsData: getPosts(params.id) /* 1 */,
   };
   return {
     props: {

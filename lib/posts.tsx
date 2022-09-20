@@ -47,14 +47,17 @@ posts.sort(({ date: a }: any, { date: b }: any) => {
 Functions - Posts
 */
 
-export function getPosts() {
-  /*
-  const getPosts = posts.map((post: any) => {
-    return post;
+export function getPosts(categoryId?: any) {
+  if (!categoryId) {
+    return posts;
+  }
+  const getPosts: any = [];
+  posts.map((post: any) => {
+    if (post.categories.includes(categoryId)) {
+      getPosts.push(post);
+    }
   });
   return getPosts;
-  */
-  return posts;
 }
 
 export function getAllPostIds() {
@@ -129,7 +132,28 @@ posts.map((post: any) => {
   });
 });
 
-console.log(allCategories);
+// count number of posts for each category
+const categories = allCategories.map((category: any) => {
+  return {
+    id: category,
+    posts: getPosts(category).length,
+  };
+});
+
+// sort by number of posts for each category
+categories.sort(({ posts: a }: any, { posts: b }: any) => {
+  if (a < b) {
+    return 1;
+  } else if (a > b) {
+    return -1;
+  } else {
+    return 0;
+  }
+});
+
+export function getCategories() {
+  return categories;
+}
 
 export function getAllCategoryIds() {
   // Returns an array of possible value for id that looks like this:
@@ -152,10 +176,10 @@ export function getAllCategoryIds() {
   the id key (because we’re using [id] in the file name).
   Otherwise, getStaticPaths in pages/categories/[id].tsx will fail.
   */
-  return allCategories.map((category: any) => {
+  return categories.map((category: any) => {
     return {
       params: {
-        id: category,
+        id: category.id,
       },
     };
   });
