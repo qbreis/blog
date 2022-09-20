@@ -4,7 +4,6 @@ import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
 import Categories from '../../components/Categories';
-
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {

@@ -1,118 +1,14 @@
 ---
-title: 'Blog - Next.js - Chapter #7 - Dates and categories'
+title: 'Blog - Next.js - Chapter #8 - Categories'
 excerpt: 'In this chapter I add the date and categories for each single post in list of posts as well as in every single post page after the title.'
-date: '2021-09-19'
+date: '2021-09-21'
 categories: ['nextjs', 'test']
 tags: ['nextjs', 'typescript']
-repository: 'https://github.com/qbreis/blog/tree/dev-chapter-6-header-and-footer'
+repository: 'https://github.com/qbreis/blog/tree/dev-chapter-8-categories'
 draft: false
 ---
 
-## 7.1 Date Component
-
-I want to ceate a Date Component to show for each post the date. Keep following tutorial indications in [Polishing the Post Page - Formatting the Date](https://nextjs.org/learn/basics/dynamic-routes/polishing-post-page) I install date-fns library in order to format the date:
-
-<pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-7) $ yarn add date-fns</code></pre>
-
-I create Date Component in `blog/components/Date.tsx`:
-
-```typescript
-// blog/components/Date.tsx
-
-import { parseISO, format } from 'date-fns';
-
-export default function Date({ dateString }: any) {
-  const date = parseISO(dateString);
-  return (
-    <ul className="posted-on">
-      <li>
-        <time className="entry-date published" dateTime={dateString}>
-          {format(date, 'LLLL d, yyyy')}
-        </time>
-      </li>
-    </ul>
-  );
-}
-```
-
-I want to add the post date for each post in list of posts `/* 1 */`:
-
-```typescript
-// blog/components/Posts.tsx
-
-import Link from 'next/link';
-import Date from '../components/Date'; /* 1 */
-
-export default function Posts({ posts }: any) {
-  return (
-    <ul>
-      {posts.map((post: any) => {
-        return (
-          post.id && (
-            <li key={post.id}>
-              <h2 className="h4">
-                <Link href={`/posts/${post.id}`}>
-                  <a>{post.title}</a>
-                </Link>
-              </h2>
-
-              {/* 1 */}
-              <Date dateString={post.date} />
-            </li>
-          )
-        );
-      })}
-    </ul>
-  );
-}
-```
-
-To show the date in single post page, I update `blog/pages/posts/[id].tsx`:
-
-```typescript
-// blog/pages/posts/[id].tsx
-
-import Layout from '../../components/Layout';
-import MetaData from '../../components/MetaData';
-import Date from '../../components/Date';
-
-import { getAllPostIds, getPostData } from '../../lib/posts';
-
-export default function Post({ postData }: any) {
-  return (
-    <Layout>
-      <article>
-        <MetaData title={postData.title} description={postData.excerpt} />
-        <h1>{postData.title}</h1>
-        <div className="entry-meta">
-          <Date dateString={postData.date} />
-        </div>
-        <div className="excerpt">{postData.excerpt}</div>
-        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-      </article>
-    </Layout>
-  );
-}
-
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
-}
-```
-
-## 7.2 Categories
+## 8.1 Component Categories
 
 I create new Component to show categories for each post, `blog/components/Categories.tsx`:
 
@@ -218,7 +114,7 @@ export async function getStaticProps({ params }: any) {
 }
 ```
 
-### 7.2.1 Category page with posts list
+## 8.2 Category page with posts list
 
 I want one page for each category showing list of all posts with this one category.
 
@@ -385,7 +281,7 @@ export async function getStaticProps({ params }: any) {
 }
 ```
 
-### 7.2.2 Category page with all categories list
+## 8.3 Category page with all categories list
 
 I also want one page to list all categories, this will be [localhost:3000/categories](localhost:3000/categories) which now is one page not found.
 
@@ -515,7 +411,7 @@ export async function getStaticProps() {
 }
 ```
 
-### 7.2.3 Index page with all posts list
+## 8.4 Index page with all posts list
 
 Similarly, now I realize, route [localhost:3000/posts](localhost:3000/posts) is also a 404 page not found. I can solve that by creating a new index file in `blog/pages/posts/index.tsx` as follows:
 
@@ -536,11 +432,3 @@ export async function getStaticProps() {
 
 export default Home;
 ```
-
-## Reference links
-
-- [Polishing the Post Page](https://nextjs.org/learn/basics/dynamic-routes/polishing-post-page) - Formatting the Date
-
-## External links
-
-- [date-fns](https://date-fns.org/) - Modern JavaScript date utility library.
