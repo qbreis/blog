@@ -44,14 +44,17 @@ posts.sort(({ date: a }: any, { date: b }: any) => {
 });
 
 /*********************
-Functions
+Functions - Posts
 */
 
 export function getPosts() {
+  /*
   const getPosts = posts.map((post: any) => {
     return post;
   });
   return getPosts;
+  */
+  return posts;
 }
 
 export function getAllPostIds() {
@@ -109,4 +112,51 @@ export async function getPostData(id: any) {
     contentHtml,
     ...matterResult.data,
   };
+}
+
+/*********************
+Categories
+*/
+
+const allCategories: any = [];
+
+// get all categories like this: [ 'nextjs', 'test' ]
+posts.map((post: any) => {
+  post.categories.map((postCategory: any) => {
+    if (!allCategories.includes(postCategory)) {
+      allCategories.push(postCategory);
+    }
+  });
+});
+
+console.log(allCategories);
+
+export function getAllCategoryIds() {
+  // Returns an array of possible value for id that looks like this:
+  // [
+  //   {
+  //     params: {
+  //       id: 'nextjs'
+  //     }
+  //   },
+  //   {
+  //     params: {
+  //       id: 'test'
+  //     }
+  //   }
+  // ]
+  /*
+  Important: The returned list is not just an array of strings —
+  it must be an array of objects that look like the comment above.
+  Each object must have the params key and contain an object with
+  the id key (because we’re using [id] in the file name).
+  Otherwise, getStaticPaths in pages/categories/[id].tsx will fail.
+  */
+  return allCategories.map((category: any) => {
+    return {
+      params: {
+        id: category,
+      },
+    };
+  });
 }

@@ -24,7 +24,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    li {
+    li.sinle-post-item {
       margin: 2em 0;
     }
   }
@@ -56,6 +56,9 @@
       }
     }
   }
+}
+.post-categories {
+  padding: 0 5px;
 }
 .post-tags li a {
   background-color: $color__background-alternative;
