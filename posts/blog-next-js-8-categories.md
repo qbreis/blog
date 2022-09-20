@@ -1,7 +1,7 @@
 ---
 title: 'Blog - Next.js - Chapter #8 - Categories'
-excerpt: 'In this chapter I add the date and categories for each single post in list of posts as well as in every single post page after the title.'
-date: '2021-09-21'
+excerpt: 'In this chapter I add the categories for each single post in list of posts as well as in every single post page after the title. I also add page to list all post for one single category as well as the page with list of all categories.'
+date: '2021-09-22'
 categories: ['nextjs', 'test']
 tags: ['nextjs', 'typescript']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-8-categories'
