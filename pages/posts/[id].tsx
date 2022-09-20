@@ -1,8 +1,9 @@
 // blog/pages/posts/[id].tsx
 
 import Layout from '../../components/Layout';
-import { getAllPostIds, getPostData } from '../../lib/posts';
 import MetaData from '../../components/MetaData';
+import Date from '../../components/Date';
+import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
   return (
@@ -10,6 +11,9 @@ export default function Post({ postData }: any) {
       <article>
         <MetaData title={postData.title} description={postData.excerpt} />
         <h1>{postData.title}</h1>
+        <div className="entry-meta">
+          <Date dateString={postData.date} />
+        </div>
         <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
