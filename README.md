@@ -1,20 +1,12 @@
-<<<<<<< HEAD
-# Blog - Next.js - Chapter #7 - Dates and categories
+# Blog - Next.js - Chapter #8 - Categories
 
-In this chapter I add the date and categories for each single post in list of posts as well as in every single post page after the title.
+In this chapter / branch I add the categories for each single post in list of posts as well as in every single post page after the title.
 
-I can read the step-by-step process in the corresponding post:
-
-- [Blog - Next.js - Chapter #7 - Dates and categories](https://blog-qbreis.vercel.app/posts/blog-next-js-7-dates-and-categories)
-=======
-# Blog - Next.js - Chapter #7 - Dates
-
-In this chapter / branch I add the date for each single post in list of posts as well as in every single post page after the title.
+I also add page to list all post for one single category as well as the page with list of all categories.
 
 I can read the step-by-step process in the corresponding post:
 
-- [Blog - Next.js - Chapter #7 - Dates](https://blog-qbreis.vercel.app/posts/blog-next-js-7-dates)
->>>>>>> dev-chapter-7-dates
+- [Blog - Next.js - Chapter #8 - Categories](https://blog-qbreis.vercel.app/posts/blog-next-js-8-categories)
 
 ## Getting Started
 
