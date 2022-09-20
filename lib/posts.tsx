@@ -48,10 +48,13 @@ Functions
 */
 
 export function getPosts() {
+  /*
   const getPosts = posts.map((post: any) => {
     return post;
   });
   return getPosts;
+  */
+  return posts;
 }
 
 export function getAllPostIds() {
