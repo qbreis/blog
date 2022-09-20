@@ -2,7 +2,7 @@
 title: 'Blog - Next.js - Chapter #6 - Header, Footer and MetaData'
 excerpt: 'In this chapter I arrange Header, Footer and MetaData Components.'
 date: '2021-09-14'
-categories: ['nextjs']
+categories: ['nextjs', 'test']
 tags: ['nextjs', 'typescript']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-6-header-and-footer'
 draft: false
