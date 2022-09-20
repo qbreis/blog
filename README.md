@@ -1,10 +1,10 @@
-# Blog - Next.js - Chapter #6 - Header, Footer and MetaData
+# Blog - Next.js - Chapter #7 - Dates
 
-In this chapter I arrange Header, Footer and MetaData Components.
+In this chapter / branch I add the date for each single post in list of posts as well as in every single post page after the title.
 
 I can read the step-by-step process in the corresponding post:
 
-- [Blog - Next.js - Chapter #6 - Header, Footer and MetaData](https://blog-qbreis.vercel.app/posts/blog-next-js-6)
+- [Blog - Next.js - Chapter #7 - Dates](https://blog-qbreis.vercel.app/posts/blog-next-js-7-dates)
 
 ## Getting Started
 
