@@ -2,6 +2,7 @@
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
+import Link from 'next/link';
 import Date from '../../components/Date';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
@@ -9,6 +10,20 @@ export default function Post({ postData }: any) {
   return (
     <Layout>
       <article>
+        {postData.repository && (
+          <>
+            <span style={{ fontSize: '0.7em' }}>Repository: </span>
+            <Link href={postData.repository}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.7em', textDecoration: 'none' }}
+              >
+                {postData.repository}
+              </a>
+            </Link>
+          </>
+        )}
         <MetaData title={postData.title} description={postData.excerpt} />
         <h1>{postData.title}</h1>
         <div className="entry-meta">
