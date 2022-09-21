@@ -10,6 +10,7 @@ export default function Post({ postData }: any) {
   return (
     <Layout>
       <article>
+        <MetaData title={postData.title} description={postData.excerpt} />
         {postData.repository && (
           <>
             <span style={{ fontSize: '0.7em' }}>Repository: </span>
@@ -24,7 +25,6 @@ export default function Post({ postData }: any) {
             </Link>
           </>
         )}
-        <MetaData title={postData.title} description={postData.excerpt} />
         <h1>{postData.title}</h1>
         <div className="entry-meta">
           <Date dateString={postData.date} />
