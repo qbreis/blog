@@ -16,6 +16,7 @@ This is an ongoing project, which I started in summer 2022 as an own personal co
 - [Chapter #6 - Header, Footer and Metadata](https://github.com/qbreis/blog/tree/dev-chapter-6-header-and-footer)
 - [Chapter #7 - Dates](https://github.com/qbreis/blog/tree/dev-chapter-7-dates)
 - [Chapter #8 - Categories](https://github.com/qbreis/blog/tree/dev-chapter-8-categories)
+- [Chapter #9 - Tags](https://github.com/qbreis/blog/tree/dev-chapter-9-tags)
 
 ## Deploy on Vercel
 
