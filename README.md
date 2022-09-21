@@ -1,10 +1,10 @@
-# Blog - Next.js - Chapter #5 - Markdown
+# Blog - Next.js - Chapter #6 - Header, Footer and MetaData
 
-In this chapter / branch I read all Markdown posts and adapt to Html.
+In this chapter I arrange Header, Footer and MetaData Components.
 
 I can read the step-by-step process in the corresponding post:
 
-- [Blog - Next.js - Chapter #5 - Markdown](https://blog-qbreis.vercel.app/posts/blog-next-js-5-markdown)
+- [Blog - Next.js - Chapter #6 - Header, Footer and MetaData](https://blog-qbreis.vercel.app/posts/blog-next-js-6)
 
 ## Getting Started
 
