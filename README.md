@@ -1,8 +1,27 @@
-# Blog - Next.js - Chapter #3 - Typefaces
+# Blog - Next.js
 
-In this chapter / branch I arrange Header, Footer and MetaData Components.
+This is a static [Next.js](https://nextjs.org/) site blog project deployment, connected to a [Github](https://github.com/) repo to [Vercel](https://vercel.com/).
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repo contains all the code for my first-person-singular [personal blog](https://blog-qbreis.vercel.app), including all the posts in [Markdown](https://www.markdownguide.org/), consisting in my own step-by-step annotations of what I learn and consolidate, day by day, in terms of coding and web design, among other things.
+
+## Step-by-step, Chapters, Branches
+
+This is an ongoing project, which I started in summer 2022 as an own personal commitment. Soon I decided to maintain all the clean dev branches I was using to build the entire thing, so I could check them out in order to understand, learn some more, improve and enjoy. Here is the list so far:
+
+- [Chapter #1 - Setup](https://github.com/qbreis/blog/tree/dev-chapter-1-setup)
+- [Chapter #2 - Styles](https://github.com/qbreis/blog/tree/dev-chapter-2-styles)
+- [Chapter #3 - Typefaces](https://github.com/qbreis/blog/tree/dev-chapter-3-typefaces)
+- [Chapter #4 - Components](https://github.com/qbreis/blog/tree/dev-chapter-4-components)
+- [Chapter #5 - Markdown](https://github.com/qbreis/blog/tree/dev-chapter-5-markdown)
+- [Chapter #6 - Header, Footer and Metadata](https://github.com/qbreis/blog/tree/dev-chapter-6-header-and-footer)
+- [Chapter #7 - Dates](https://github.com/qbreis/blog/tree/dev-chapter-7-dates)
+- [Chapter #8 - Categories](https://github.com/qbreis/blog/tree/dev-chapter-8-categories)
+
+## Deploy on Vercel
+
+This blog is deployed on [Vercel](https://vercel.com/) every time I push some code to main branch in this same repo.
+
+The temporary URL of this blog is [https://blog-qbreis.vercel.app](https://blog-qbreis.vercel.app), where I can read the step-by-step annotations for each stage, chapter or branch of the project.
 
 ## Getting Started
 
@@ -15,24 +34,3 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
