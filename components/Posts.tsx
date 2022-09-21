@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Date from '../components/Date';
 import Categories from '../components/Categories';
+import Tags from '../components/Tags';
 
 export default function Posts({ posts }: any) {
   return (
@@ -16,10 +17,9 @@ export default function Posts({ posts }: any) {
                   <a>{post.title}</a>
                 </Link>
               </h2>
-
-              {/* 1 */}
               <Date dateString={post.date} />
               <Categories categories={post.categories} />
+              <Tags tags={post.tags} />
             </li>
           )
         );

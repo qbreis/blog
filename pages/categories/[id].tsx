@@ -2,9 +2,9 @@
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import Posts from '../../components/Posts'; /* 2 */
+import Posts from '../../components/Posts';
 
-import { getAllCategoryIds, getPosts } from '../../lib/posts'; /* 1 */
+import { getAllCategoryIds, getPosts } from '../../lib/posts';
 
 export default function Category({ postsByCategoryData }: any) {
   return (
@@ -40,7 +40,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const postsByCategoryData = {
     id: params.id,
-    allPostsData: getPosts(params.id) /* 1 */,
+    // allPostsData: getPosts(params.id),
+    allPostsData: getPosts({ category: params.id }),
   };
   return {
     props: {

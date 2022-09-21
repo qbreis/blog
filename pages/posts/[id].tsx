@@ -5,6 +5,7 @@ import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
 import Link from 'next/link';
 import Categories from '../../components/Categories';
+import Tags from '../../components/Tags';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
@@ -30,6 +31,7 @@ export default function Post({ postData }: any) {
         <div className="entry-meta">
           <Date dateString={postData.date} />
           <Categories categories={postData.categories} />
+          <Tags tags={postData.tags} />
         </div>
         <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
