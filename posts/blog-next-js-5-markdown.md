@@ -27,6 +27,8 @@ draft: true
 This is sample content. The section above is called Frontmatter where we can add post metadata like title and date. You can add as little or as many properties in the frontmatter using YAML syntax.
 ```
 
+Each markdown file has a metadata section at the top containing title and date among other parameters or keywords. This is called YAML Front Matter, which can be parsed using a library called [gray-matter](https://github.com/jonschlinkert/gray-matter).
+
 Now, following tutorial indications in [Pre-rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching/blog-data) I install gray-matter to parse the metadata in each Markdown file:
 
 <pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-5-markdown) $ yarn add gray-matter</code></pre>
@@ -472,6 +474,35 @@ export async function getStaticProps({ params }: any) {
     },
   };
 }
+```
+
+I want each single post to be optionally attached to a GitHub repo. For that I add corresponding repository keyword into my gray-matter for each post and I update `blog/pages/posts/[id].tsx`:
+
+```typescript
+import Layout from '../../components/Layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
+import Link from 'next/link';
+
+export default function Post({ postData }: any) {
+  return (
+    <Layout>
+      <article>
+        {postData.repository && (
+          <>
+            <span style={{ fontSize: '0.7em' }}>Repository: </span>
+            <Link href={postData.repository}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.7em', textDecoration: 'none' }}
+              >
+                {postData.repository}
+              </a>
+            </Link>
+          </>
+        )}
+        <h1>{postData.title}</h1>
+        {/* Keep the existing code here */}
 ```
 
 ## 5.4 Component Posts for posts list

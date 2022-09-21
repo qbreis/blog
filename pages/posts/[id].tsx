@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout';
 import { getAllPostIds /* 1 */, getPostData /* 2 */ } from '../../lib/posts';
+import Link from 'next/link';
 
 export default function Post({ postData }: any) {
   /*
@@ -35,6 +36,20 @@ export default function Post({ postData }: any) {
   return (
     <Layout>
       <article>
+        {postData.repository && (
+          <>
+            <span style={{ fontSize: '0.7em' }}>Repository: </span>
+            <Link href={postData.repository}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.7em', textDecoration: 'none' }}
+              >
+                {postData.repository}
+              </a>
+            </Link>
+          </>
+        )}
         <h1>{postData.title}</h1>
         <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
