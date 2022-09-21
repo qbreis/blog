@@ -44,12 +44,18 @@ posts.sort(({ date: a }: any, { date: b }: any) => {
 });
 
 /*********************
-Functions
+Functions - Posts
 */
 
-export function getPosts() {
-  const getPosts = posts.map((post: any) => {
-    return post;
+export function getPosts(categoryId?: any) {
+  if (!categoryId) {
+    return posts;
+  }
+  const getPosts: any = [];
+  posts.map((post: any) => {
+    if (post.categories.includes(categoryId)) {
+      getPosts.push(post);
+    }
   });
   return getPosts;
 }
@@ -109,4 +115,72 @@ export async function getPostData(id: any) {
     contentHtml,
     ...matterResult.data,
   };
+}
+
+/*********************
+Categories
+*/
+
+const allCategories: any = [];
+
+// get all categories like this: [ 'nextjs', 'test' ]
+posts.map((post: any) => {
+  post.categories.map((postCategory: any) => {
+    if (!allCategories.includes(postCategory)) {
+      allCategories.push(postCategory);
+    }
+  });
+});
+
+// count number of posts for each category
+const categories = allCategories.map((category: any) => {
+  return {
+    id: category,
+    posts: getPosts(category).length,
+  };
+});
+
+// sort by number of posts for each category
+categories.sort(({ posts: a }: any, { posts: b }: any) => {
+  if (a < b) {
+    return 1;
+  } else if (a > b) {
+    return -1;
+  } else {
+    return 0;
+  }
+});
+
+export function getCategories() {
+  return categories;
+}
+
+export function getAllCategoryIds() {
+  // Returns an array of possible value for id that looks like this:
+  // [
+  //   {
+  //     params: {
+  //       id: 'nextjs'
+  //     }
+  //   },
+  //   {
+  //     params: {
+  //       id: 'test'
+  //     }
+  //   }
+  // ]
+  /*
+  Important: The returned list is not just an array of strings —
+  it must be an array of objects that look like the comment above.
+  Each object must have the params key and contain an object with
+  the id key (because we’re using [id] in the file name).
+  Otherwise, getStaticPaths in pages/categories/[id].tsx will fail.
+  */
+  return categories.map((category: any) => {
+    return {
+      params: {
+        id: category.id,
+      },
+    };
+  });
 }

@@ -2,14 +2,17 @@
 
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import nextConfig from '../next.config';
 
 export default function MetaData({ title, description }: any) {
   return (
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>{title}</title>
+      <title>
+        {title !== process.env.siteInfoTitle
+          ? process.env.siteInfoTitle + ' | ' + title
+          : title}
+      </title>
       <meta name="description" content={description} />
       <meta name="theme-color" content="#ffffff" />
       <link rel="icon" href="/images/favicon.svg" />
@@ -21,8 +24,8 @@ export default function MetaData({ title, description }: any) {
 }
 
 MetaData.defaultProps = {
-  title: nextConfig.siteInfo.title,
-  description: nextConfig.siteInfo.description,
+  title: process.env.siteInfoTitle,
+  description: process.env.siteInfoDescription,
 };
 
 MetaData.propTypes = {

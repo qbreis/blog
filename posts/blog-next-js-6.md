@@ -2,7 +2,7 @@
 title: 'Blog - Next.js - Chapter #6 - Header, Footer and MetaData'
 excerpt: 'In this chapter I arrange Header, Footer and MetaData Components.'
 date: '2021-09-14'
-categories: ['nextjs']
+categories: ['nextjs', 'test']
 tags: ['nextjs', 'typescript']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-6-header-and-footer'
 draft: false
@@ -320,31 +320,29 @@ export async function getStaticProps({ params }: any) {
 
 ## 6.4 Some site constants
 
-I want to have some constants for site info, so I will update `blog/next.config.js`:
+I want to have some constants for site info, I can use [Environment Variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables), so I update `blog/next.config.js`:
 
 ```javascript
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  siteInfo: {
-    title: 'qbreis — enric gatell',
-    description:
-      'This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things.',
+  env: {
+    siteInfoTitle: siteInfoTitle,
+    siteInfoDescription: siteInfoDescription,
   },
 };
 
 module.exports = nextConfig;
 ```
 
-Then I also update `blog/components/Header.tsx`:
+Then I also update `blog/components/Header.tsx` to use `process.env.siteInfoTitle`:
 
 ```typescript
 // blog/components/Header.tsx
 
 import Image from 'next/image';
 import Link from 'next/link';
-import nextConfig from '../next.config';
 
 export default function Header({ home }: any) {
   return (
@@ -356,10 +354,10 @@ export default function Header({ home }: any) {
             src="/images/favicon.svg"
             height={40}
             width={40}
-            alt={nextConfig.siteInfo.title}
+            alt={process.env.siteInfoTitle}
             className="color-text-screen-filter"
           />
-          <h1>{nextConfig.siteInfo.title}</h1>
+          <h1>{process.env.siteInfoTitle}</h1>
         </>
       ) : (
         <>
@@ -370,14 +368,14 @@ export default function Header({ home }: any) {
                 src="/images/favicon.svg"
                 height={40}
                 width={40}
-                alt={nextConfig.siteInfo.title}
+                alt={process.env.siteInfoTitle}
                 className="color-text-screen-filter"
               />
             </a>
           </Link>
           <h2>
             <Link href="/">
-              <a>{nextConfig.siteInfo.title}</a>
+              <a>{process.env.siteInfoTitle}</a>
             </Link>
           </h2>
         </>
@@ -387,21 +385,24 @@ export default function Header({ home }: any) {
 }
 ```
 
-And also `blog/components/MetaData.tsx`:
+And also `blog/components/MetaData.tsx` to use `process.env.siteInfoTitle` and `process.env.siteInfoDescription`:
 
 ```typescript
 // blog/components/MetaData.tsx
 
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import nextConfig from '../next.config';
 
 export default function MetaData({ title, description }: any) {
   return (
     <Head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>{title}</title>
+      <title>
+        {title !== process.env.siteInfoTitle
+          ? process.env.siteInfoTitle + ' | ' + title
+          : title}
+      </title>
       <meta name="description" content={description} />
       <meta name="theme-color" content="#ffffff" />
       <link rel="icon" href="/images/favicon.svg" />
@@ -413,8 +414,8 @@ export default function MetaData({ title, description }: any) {
 }
 
 MetaData.defaultProps = {
-  title: nextConfig.siteInfo.title,
-  description: nextConfig.siteInfo.description,
+  title: process.env.siteInfoTitle,
+  description: process.env.siteInfoDescription,
 };
 
 MetaData.propTypes = {
@@ -423,6 +424,41 @@ MetaData.propTypes = {
 };
 ```
 
+In order to include a general description `/* 1 */` in home page I also want to use `process.env.siteInfoDescription` into `blog/pages/index.tsx`:
+
+```typescript
+// blog/pages/index.tsx
+
+import Layout from '../components/Layout';
+import { getPosts } from '../lib/posts';
+import Posts from '../components/Posts';
+
+export async function getStaticProps() {
+  const posts = getPosts();
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
+export default function Home({ posts }: any) {
+  return (
+    <Layout home>
+      <div className="excerpt">{process.env.siteInfoDescription}</div>
+      <section className="all-post-data">
+        <Posts posts={posts} />
+      </section>
+    </Layout>
+  );
+}
+```
+
+## Reference links
+
+- [Environment Variables in next.config.js](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) - To add environment variables to the JavaScript bundle, by adding the `env` config into `next.config.js`.
+
 ## External links
 
 - [Metadata](https://en.wikipedia.org/wiki/Metadata).
+- [Environment Variables in next.js versions 9.4 and up](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) - Since the release of Next.js 9.4 I now have a more intuitive and ergonomic experience for adding environment variables. Maybe I can give it a try in the future!
