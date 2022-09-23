@@ -347,53 +347,55 @@ export function getAllTagIds() {
 }
 ```
 
-And blog/pages/tags/index.tsx:
+And `blog/pages/tags/index.tsx`:
 
 ```typescript
-// blog/pages/tags/[id].tsx
+// blog/pages/tags/index.tsx
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import Posts from '../../components/Posts';
+import { getTags } from '../../lib/posts';
+import Link from 'next/link';
 
-import { getAllTagIds, getPosts } from '../../lib/posts';
-
-export default function Tag({ postsByTagData }: any) {
+export default function catHome({ allTagIds }: any) {
   return (
     <Layout>
-      <MetaData
-        title={`Tag: ${postsByTagData.id}`}
-        description={`Posts by tag ${postsByTagData.id}`}
-      />
-      <h2 className="h1">Tag: {postsByTagData.id}</h2>
+      <MetaData title="List of tags" description="List of tags" />
+      <h2 className="h1">List of tags</h2>
+
       <div className="entry-meta posted-on">
-        {postsByTagData.allPostsData.length == 1
-          ? postsByTagData.allPostsData.length + ' post'
-          : postsByTagData.allPostsData.length + ' posts'}
+        {allTagIds.length == 1
+          ? allTagIds.length + ' tag'
+          : allTagIds.length + ' tags'}
       </div>
+
       <section className="all-post-data">
-        <Posts posts={postsByTagData.allPostsData} />
+        <ul>
+          {allTagIds?.map((postTag: any) => (
+            <li key={`${postTag.id}`}>
+              <h2 className="h4">
+                <Link href={`/tags/${postTag.id}`}>
+                  <a>{postTag.id}</a>
+                </Link>
+              </h2>
+              <div className="posted-on">
+                {postTag.posts == 1
+                  ? postTag.posts + ' post'
+                  : postTag.posts + ' posts'}
+              </div>
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   );
 }
 
-export async function getStaticPaths() {
-  const paths = getAllTagIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const postsByTagData = {
-    id: params.id,
-    allPostsData: getPosts({ tag: params.id }),
-  };
+export async function getStaticProps() {
+  const allTagIds = getTags();
   return {
     props: {
-      postsByTagData,
+      allTagIds,
     },
   };
 }
