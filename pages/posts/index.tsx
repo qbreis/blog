@@ -4,7 +4,7 @@ import Home from '../index';
 import { getPosts } from '../../lib/posts';
 
 export async function getStaticProps() {
-  const posts = getPosts();
+  const posts = getPosts({ limit: 3 });
   return {
     props: {
       posts,

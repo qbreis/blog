@@ -1,12 +1,11 @@
 // blog/pages/index.tsx
 
 import Layout from '../components/Layout';
-import { getPosts } from '../lib/posts';
 import Posts from '../components/Posts';
-//import nextConfig from '../next.config';
+import { getPosts } from '../lib/posts';
 
 export async function getStaticProps() {
-  const posts = getPosts();
+  const posts = getPosts({ limit: 3 });
   return {
     props: {
       posts,

@@ -6,9 +6,14 @@ import Date from '../../components/Date';
 import Link from 'next/link';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
-import { getAllPostIds, getPostData } from '../../lib/posts';
+// import { getAllPostIds, getPostData } from '../../lib/posts';
+import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
+  if (!postData) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <Layout>
       <article>
@@ -41,10 +46,13 @@ export default function Post({ postData }: any) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  // const paths = getAllPostIds();
+  const paths = getPostsPaginatedIds();
   return {
     paths,
-    fallback: false,
+    // fallback: false,
+    // fallback: true,
+    fallback: 'blocking',
   };
 }
 

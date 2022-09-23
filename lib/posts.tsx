@@ -48,19 +48,52 @@ Functions - Posts
 */
 
 export function getPosts(params?: any) {
-  if (!params?.category && !params?.tag) {
+  if (!params?.category && !params?.tag && !params?.limit) {
     return posts;
   }
   const getPosts: any = [];
+
+  let counter = 0;
+
   posts.map((post: any) => {
     if (
       (params?.category && post.categories.includes(params?.category)) ||
-      (params?.tag && post.tags.includes(params?.tag))
+      (params?.tag && post.tags.includes(params?.tag)) ||
+      (params?.limit && counter < params?.limit)
     ) {
+      counter++;
+      getPosts.push(post);
+    }
+  });
+
+  return getPosts;
+}
+
+/*
+export function getPostsPaginated(params?: any) {
+  if (!params?.limit) {
+    return posts;
+  }
+  const getPosts: any = [];
+  let counter = 0;
+  posts.map((post: any) => {
+    if (counter < params?.limit) {
+      counter++;
       getPosts.push(post);
     }
   });
   return getPosts;
+}
+*/
+
+export function getPostsPaginatedIds() {
+  return getPosts({ limit: 3 }).map((post: any) => {
+    return {
+      params: {
+        id: post.id,
+      },
+    };
+  });
 }
 
 export function getAllPostIds() {
