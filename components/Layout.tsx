@@ -21,7 +21,7 @@ export default function Layout({ children }: any) {
       <Header />
       <main className="site-main">{children}</main>
       <Link href="/">
-        <a>← Back to home</a>
+        <a className="icon-arrow align-left pointing-left">Back to home</a>
       </Link>
       <Footer />
     </div>

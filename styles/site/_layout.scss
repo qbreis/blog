@@ -22,7 +22,6 @@ Site - Content - Layout
 .icon-arrow {
   position: relative;
   margin-left: 45px;
-  cursor: pointer;
   &:before {
     content: '';
     position: absolute;
@@ -49,6 +48,7 @@ Site - Content - Layout
     transform: rotate(180deg);
   }
   &.link-alike {
+    cursor: pointer;
     text-decoration: underline;
     &:hover {
       text-underline-offset: 3px;
