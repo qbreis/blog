@@ -6,8 +6,8 @@ import Date from '../../components/Date';
 import Link from 'next/link';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
-// import { getAllPostIds, getPostData } from '../../lib/posts';
-import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
+import { getAllPostIds, getPostData } from '../../lib/posts';
+// import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
   if (!postData) {
@@ -38,7 +38,9 @@ export default function Post({ postData }: any) {
           <Categories categories={postData.categories} />
           <Tags tags={postData.tags} />
         </div>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {postData.excerpt.replace('\\n', '&lt;br /&gt;')}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
@@ -46,8 +48,8 @@ export default function Post({ postData }: any) {
 }
 
 export async function getStaticPaths() {
-  // const paths = getAllPostIds();
-  const paths = getPostsPaginatedIds();
+  const paths = getAllPostIds({ limit: 3 });
+  //const paths = getPostsPaginatedIds();
   return {
     paths,
     // fallback: false,
