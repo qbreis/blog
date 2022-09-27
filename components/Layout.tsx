@@ -28,7 +28,7 @@ export default function Layout({ children, home }: any) {
       */}
       {!home && (
         <Link href="/">
-          <a>← Back to home</a>
+          <a className="icon-arrow align-left">Back to home</a>
         </Link>
       )}
       <Footer />

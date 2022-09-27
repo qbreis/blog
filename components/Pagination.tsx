@@ -9,7 +9,14 @@ export default function Pagination({
       {listOfPosts.length < totalOfPosts && ( // I only want to show this if there is something to show
         <p className="pagination">
           Showing {listOfPosts.length} posts out of {totalOfPosts}
-          {onClick && <span onClick={onClick}>Load more posts</span>}
+          {onClick && (
+            <span
+              className="icon-arrow pointing-right align-left"
+              onClick={onClick}
+            >
+              Load more posts
+            </span>
+          )}
         </p>
       )}
     </>
