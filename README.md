@@ -1,10 +1,10 @@
-# Blog - Next.js - Chapter #6 - Header, Footer and MetaData
+# Blog - Next.js - Chapter #4 - Components
 
 In this chapter I arrange Header, Footer and MetaData Components.
 
 I can read the step-by-step process in the corresponding post:
 
-- [Blog - Next.js - Chapter #6 - Header, Footer and MetaData](https://blog-qbreis.vercel.app/posts/blog-next-js-6)
+- [Blog - Next.js - Chapter #4 - Components](https://blog-qbreis.vercel.app/posts/blog-nextjs-4-components)
 
 ## Getting Started
 
