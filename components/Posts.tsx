@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Date from '../components/Date';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
+import Pagination from '../components/Pagination';
 
 import { useState } from 'react';
 
@@ -19,9 +20,7 @@ export default function Posts({ posts, totalOfPosts }: any) {
   };
   return (
     <>
-      <p className="pagination">
-        {listOfPosts.length} posts out of {totalOfPosts}
-      </p>
+      <Pagination listOfPosts={listOfPosts} totalOfPosts={totalOfPosts} />
       <ul>
         {listOfPosts.map((post: any) => {
           return (
@@ -40,11 +39,11 @@ export default function Posts({ posts, totalOfPosts }: any) {
           );
         })}
       </ul>
-      <p className="pagination">
-        Showing {listOfPosts.length} posts out of {totalOfPosts}
-        <span onClick={loadMorePosts}>Load more posts</span>
-      </p>
-      <button onClick={loadMorePosts}>Load more posts</button>
+      <Pagination
+        listOfPosts={listOfPosts}
+        totalOfPosts={totalOfPosts}
+        onClick={loadMorePosts}
+      />
     </>
   );
 }

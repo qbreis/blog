@@ -1,22 +1,17 @@
-import { useState } from 'react';
-
-export default function Pagination({ posts, totalOfPosts }: any) {
-  const [paginationPage, setPaginationPage] = useState(1);
-  const [listOfPosts, setListOfPosts] = useState(posts);
-
-  const loadMorePosts = async () => {
-    const res = await fetch('/api/posts/' + (paginationPage + 1));
-    const posts = await res.json();
-    setListOfPosts((value: any) => [...value, ...posts]);
-    setPaginationPage(paginationPage + 1);
-  };
+//blog/components/Pagination.tsx
+export default function Pagination({
+  listOfPosts,
+  totalOfPosts,
+  onClick,
+}: any) {
   return (
     <>
-      <p className="pagination">
-        Showing {listOfPosts.length} posts out of {totalOfPosts}
-        <span onClick={loadMorePosts}>Load more posts</span>
-      </p>
-      <button onClick={loadMorePosts}>Load more posts</button>
+      {listOfPosts.length < totalOfPosts && ( // I only want to show this if there is something to show
+        <p className="pagination">
+          Showing {listOfPosts.length} posts out of {totalOfPosts}
+          {onClick && <span onClick={onClick}>Load more posts</span>}
+        </p>
+      )}
     </>
   );
 }
