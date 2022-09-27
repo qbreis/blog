@@ -1,5 +1,6 @@
 // blog/pages/posts/[id].tsx
 
+import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import MetaData from '../../components/MetaData';
 import Link from 'next/link';
