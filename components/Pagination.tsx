@@ -11,7 +11,7 @@ export default function Pagination({
           Showing {listOfPosts.length} posts out of {totalOfPosts}
           {onClick && (
             <span
-              className="icon-arrow pointing-right align-left"
+              className="icon-arrow pointing-right align-left link-alike"
               onClick={onClick}
             >
               Load more posts
