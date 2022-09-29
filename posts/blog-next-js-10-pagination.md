@@ -190,13 +190,16 @@ export function getPosts(params?: any) {
   if (!params?.category && !params?.tag && !params?.limit) {
     return posts;
   }
-  let getPosts = posts.map((post: any) => {
-    return (
-      ((params?.category && post.categories.includes(params?.category)) ||
-        (params?.tag && post.tags.includes(params?.tag))) &&
-      post
-    );
-  });
+  let getPosts = posts
+    .map((post: any) => {
+      return (params?.category && post.categories.includes(params?.category)) ||
+        (params?.tag && post.tags.includes(params?.tag))
+        ? post
+        : '';
+    })
+    .filter((element) => {
+      return element !== '';
+    });
   return params?.limit ? posts.slice(0, params?.limit) : getPosts;
 }
 
@@ -363,13 +366,16 @@ export function getPosts(params?: any) {
     return posts;
   }
 
-  let getPosts = posts.map((post: any) => {
-    return (
-      ((params?.category && post.categories.includes(params?.category)) ||
-        (params?.tag && post.tags.includes(params?.tag))) &&
-      post
-    );
-  });
+  let getPosts = posts
+    .map((post: any) => {
+      return (params?.category && post.categories.includes(params?.category)) ||
+        (params?.tag && post.tags.includes(params?.tag))
+        ? post
+        : '';
+    })
+    .filter((element) => {
+      return element !== '';
+    });
 
   return params?.limit
     ? posts.slice(params?.start ? params?.start : 0, params?.limit)
