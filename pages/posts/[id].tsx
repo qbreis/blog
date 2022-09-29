@@ -4,7 +4,6 @@ import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
 import Link from 'next/link';
 import Date from '../../components/Date';
-import Link from 'next/link';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 import { getAllPostIds, getPostData } from '../../lib/posts';
