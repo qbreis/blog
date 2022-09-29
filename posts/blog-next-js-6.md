@@ -512,12 +512,14 @@ import { newLinesIntoParagraphs } from '../../lib/functions';
 export default function Post({ postData }: any) {
   return (
     <Layout>
-      <article>
-        <MetaData title={postData.title} description={postData.excerpt} />
+
+/* Keep the existing code here */
+
         <h1>{postData.title}</h1>
         <div className="excerpt">
           {newLinesIntoParagraphs(postData.excerpt)}
         </div>
+
 /* Keep the existing code here */
 ```
 
