@@ -5,6 +5,7 @@ import MetaData from '../../components/MetaData';
 import Link from 'next/link';
 import Date from '../../components/Date';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
   return (
@@ -29,7 +30,9 @@ export default function Post({ postData }: any) {
         <div className="entry-meta">
           <Date dateString={postData.date} />
         </div>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>

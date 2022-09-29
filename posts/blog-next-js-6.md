@@ -237,7 +237,7 @@ For the footer I add two Svg files and update `blog/components/Footer.tsx`, I ca
 - [blog/public/images/logo-github.svg](https://github.com/qbreis/blog/blob/dev-chapter-6-header-and-footer/public/images/logo-github.svg)
 - [blog/public/images/logo-linkedin.svg](https://github.com/qbreis/blog/blob/dev-chapter-6-header-and-footer/public/images/logo-linkedin.svg)
 
-## 6.3 MetaData
+## 6.4 MetaData
 
 I want to add default props and type into `blog/components/MetaData.tsx`:
 
@@ -276,7 +276,7 @@ MetaData.propTypes = {
 };
 ```
 
-### 6.3.1 MetaData title and description for each post
+### 6.4.1 MetaData title and description for each post
 
 Now it is quite easy to add title and description Metadata to each single post in `blog/pages/posts/[id].tsx`:
 
@@ -318,12 +318,15 @@ export async function getStaticProps({ params }: any) {
 }
 ```
 
-## 6.4 Some site constants
+## 6.5 Some site constants
 
 I want to have some constants for site info, I can use [Environment Variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables), so I update `blog/next.config.js`:
 
 ```javascript
 /** @type {import('next').NextConfig} */
+const siteInfoTitle = 'qbreis — enric gatell';
+const siteInfoDescription =
+  'This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things.';
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -452,6 +455,90 @@ export default function Home({ posts }: any) {
     </Layout>
   );
 }
+```
+
+## 6.6 New Lines into Paragraphs
+
+I want to add some paragraph to main description in `blog/next.config.js`:
+
+```typescript
+const siteInfoDescription = `This blog contains the step-by-step annotations of what I learn and consolidate, day by day, in terms of programming and web design, among other things.
+  
+Many of these annotations are related to their corresponding Git repository.`;
+```
+
+In order to convert new lines into paragraphs I define custom function for that purpose in new file `blog/lib/functions.tsx`:
+
+```typescript
+export function newLinesIntoParagraphs(string: string) {
+  return string.split('\n').map((paragraph: string, counter: number) => {
+    return <p key={counter}>{paragraph}</p>;
+  });
+}
+```
+
+And now I update `blog/pages/index.tsx`:
+
+```typescript
+// blog/pages/index.tsx
+
+import Layout from '../components/Layout';
+import { getPosts } from '../lib/posts';
+import Posts from '../components/Posts';
+import { newLinesIntoParagraphs } from '../lib/functions';
+
+/* Keep the existing code here */
+
+export default function Home({ posts }: any) {
+  return (
+    <Layout home>
+      <div className="excerpt">
+        {newLinesIntoParagraphs(String(process.env.siteInfoDescription))}
+      </div>
+
+/* Keep the existing code here */
+```
+
+I also update `blog/pages/posts/[id].tsx` for the excerpt in Markdown posts:
+
+```typescript
+// blog/pages/posts/[id].tsx
+
+import Layout from '../../components/Layout';
+import { getAllPostIds, getPostData } from '../../lib/posts';
+import MetaData from '../../components/MetaData';
+import { newLinesIntoParagraphs } from '../../lib/functions';
+
+export default function Post({ postData }: any) {
+  return (
+    <Layout>
+
+/* Keep the existing code here */
+
+        <h1>{postData.title}</h1>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
+
+/* Keep the existing code here */
+```
+
+Now I want to add some paragraph to excerpt in [Blog - Next.js - Chapter #1](blog-next-js-1-setup), so I update corresponding Markdown file `blog/posts/blog-next-js-1-setup.md`:
+
+```md
+---
+title: 'Blog - Next.js - Chapter #1 - Setup'
+excerpt: 'This is part of a series of annotations, about building a blog to explain how to build a blog to explain how to build a blog about...
+
+In this chapter, first I setup my dev environment, after I just setup new Next.js app from scratch using Typescript.'
+date: '2021-08-26'
+categories: ['nextjs']
+tags: ['nextjs', 'typescript']
+repository: 'https://github.com/qbreis/blog/tree/dev-chapter-1-setup'
+draft: false
+---
+
+/_ Keep the existing code here _/
 ```
 
 ## Reference links
