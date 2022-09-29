@@ -22,7 +22,7 @@ export default function catHome({ allTagIds }: any) {
           {allTagIds?.map((postTag: any) => (
             <li key={`${postTag.id}`}>
               <h2 className="h4">
-                <Link href={`/categories/${postTag.id}`}>
+                <Link href={`/tags/${postTag.id}`}>
                   <a>{postTag.id}</a>
                 </Link>
               </h2>

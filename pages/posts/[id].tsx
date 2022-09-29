@@ -2,13 +2,18 @@
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import Date from '../../components/Date';
 import Link from 'next/link';
+import Date from '../../components/Date';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
+  if (!postData) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <Layout>
       <article>
@@ -33,7 +38,9 @@ export default function Post({ postData }: any) {
           <Categories categories={postData.categories} />
           <Tags tags={postData.tags} />
         </div>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
@@ -41,10 +48,13 @@ export default function Post({ postData }: any) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const paths = getAllPostIds({ limit: 3 });
+  //const paths = getPostsPaginatedIds();
   return {
     paths,
-    fallback: false,
+    // fallback: false,
+    // fallback: true,
+    fallback: 'blocking',
   };
 }
 

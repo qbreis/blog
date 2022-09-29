@@ -48,23 +48,56 @@ Functions - Posts
 */
 
 export function getPosts(params?: any) {
-  if (!params?.category && !params?.tag) {
+  if (!params?.category && !params?.tag && !params?.limit) {
+    return posts;
+  }
+
+  let getPosts = posts.map((post: any) => {
+    return (
+      ((params?.category && post.categories.includes(params?.category)) ||
+        (params?.tag && post.tags.includes(params?.tag))) &&
+      post
+    );
+  });
+
+  return params?.limit
+    ? posts.slice(
+        params?.start ? params?.start : 0,
+        (params?.start ? params?.start * 1 : 0) + params?.limit
+      )
+    : getPosts;
+}
+
+/*
+export function getPostsPaginated(params?: any) {
+  if (!params?.limit) {
     return posts;
   }
   const getPosts: any = [];
+  let counter = 0;
   posts.map((post: any) => {
-    if (
-      (params?.category && post.categories.includes(params?.category)) ||
-      (params?.tag && post.tags.includes(params?.tag))
-    ) {
+    if (counter < params?.limit) {
+      counter++;
       getPosts.push(post);
     }
   });
   return getPosts;
 }
+*/
 
-export function getAllPostIds() {
-  /* 4 */
+/*
+export function getPostsPaginatedIds() {
+  return getPosts({ limit: 3 }).map((post: any) => {
+    return {
+      params: {
+        id: post.id,
+      },
+    };
+  });
+}
+*/
+
+export function getAllPostIds(params?: any) {
   // Returns an array of possible value for id that looks like this:
   // [
   //   {
@@ -85,13 +118,25 @@ export function getAllPostIds() {
   the id key (because we’re using [id] in the file name).
   Otherwise, getStaticPaths in pages/posts/[id].tsx will fail.
   */
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ''),
-      },
-    };
-  });
+
+  return params?.limit
+    ? getPosts({
+        limit: params?.limit,
+        start: params?.start ? params?.start : 0,
+      }).map((post: any) => {
+        return {
+          params: {
+            id: post.id,
+          },
+        };
+      })
+    : fileNames.map((fileName) => {
+        return {
+          params: {
+            id: fileName.replace(/\.md$/, ''),
+          },
+        };
+      });
 }
 
 export async function getPostData(id: any) {
