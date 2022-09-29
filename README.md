@@ -17,7 +17,7 @@ This is an ongoing project, which I started in summer 2022 as an own personal co
 - [Chapter #7 - Dates](https://github.com/qbreis/blog/tree/dev-chapter-7-dates)
 - [Chapter #8 - Categories](https://github.com/qbreis/blog/tree/dev-chapter-8-categories)
 - [Chapter #9 - Tags](https://github.com/qbreis/blog/tree/dev-chapter-9-tags)
-- [Chapter #10 - Pagination](https://blog-qbreis.vercel.app/posts/blog-next-js-10-pagination)
+- [Chapter #10 - Pagination](https://github.com/qbreis/blog/tree/dev-chapter-10-pagination)
 
 ## Deploy on Vercel
 
