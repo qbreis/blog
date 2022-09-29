@@ -3,6 +3,7 @@
 import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import MetaData from '../../components/MetaData';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
   return (
@@ -10,7 +11,9 @@ export default function Post({ postData }: any) {
       <article>
         <MetaData title={postData.title} description={postData.excerpt} />
         <h1>{postData.title}</h1>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
