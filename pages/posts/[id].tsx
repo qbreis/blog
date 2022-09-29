@@ -2,11 +2,12 @@
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import Date from '../../components/Date';
 import Link from 'next/link';
+import Date from '../../components/Date';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
   return (
@@ -33,7 +34,9 @@ export default function Post({ postData }: any) {
           <Categories categories={postData.categories} />
           <Tags tags={postData.tags} />
         </div>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
