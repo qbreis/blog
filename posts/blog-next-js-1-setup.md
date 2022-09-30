@@ -8,6 +8,10 @@ repository: 'https://github.com/qbreis/blog/tree/dev-chapter-1-setup'
 draft: false
 ---
 
+<img src="/images/droste-effect.svg" alt="Droste Effect" style="height: 25em;" />
+
+This is part of a series of annotations, about building a blog to explain how to build a blog to explain how to build a blog to explain... This has something to do with [Droste Effect](https://en.wikipedia.org/wiki/Droste_effect).
+
 ## 1.1 Setting up my work env
 
 I want to use for my work environment the [Mise en place](https://github.com/isfegu/misenplace.node) proposed by [isfegu](https://github.com/isfegu).
@@ -103,3 +107,4 @@ node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-1-setup) $ git push 
 - [Next.js - Wikipedia](https://en.wikipedia.org/wiki/Next.js) - To know about Next.js.
 - [Git - Wikipedia](https://en.wikipedia.org/wiki/Git) - Maybe I want to read about Git.
 - [GitHub - Wikipedia](https://en.wikipedia.org/wiki/GitHub) - Maybe I want to know more about the hosting service I am using.
+- [Droste Effect](https://en.wikipedia.org/wiki/Droste_effect) - ... is the effect of a picture recursively appearing within itself...
