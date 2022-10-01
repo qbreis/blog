@@ -127,40 +127,8 @@ export default MyApp;`}
       </main>
       {/* 2 */}
       {/*<a href="/">← Back to home</a>*/}
-      <span className="icon-arrow align-left pointing-left">
-        icon-arrow align-left pointing-left
-      </span>
-      <br />
-      <span className="icon-arrow align-left pointing-right">
-        icon-arrow align-left pointing-right
-      </span>
-      <br />
-      <span className="icon-arrow align-right pointing-left">
-        icon-arrow align-right pointing-left
-      </span>
-      <br />
-      <span className="icon-arrow align-right pointing-right">
-        icon-arrow align-right pointing-right
-      </span>
-      <br />
-      <span className="icon-arrow align-left pointing-left link-alike">
-        icon-arrow align-left pointing-left link-alike
-      </span>
-      <br />
-      <span className="icon-arrow align-left pointing-right link-alike">
-        icon-arrow align-left pointing-right link-alike
-      </span>
-      <br />
-      <span className="icon-arrow align-right pointing-left link-alike">
-        icon-arrow align-right pointing-left link-alike
-      </span>
-      <br />
-      <span className="icon-arrow align-right pointing-right link-alike">
-        icon-arrow align-right pointing-right link-alike
-      </span>
-      <br />
       <Link href="/">
-        <a className="icon-arrow align-left pointing-left">Back to home</a>
+        <a>← Back to home</a>
       </Link>
       <footer className="site-footer">site-footer</footer>
     </div>
