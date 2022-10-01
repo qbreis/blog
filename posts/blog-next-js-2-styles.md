@@ -190,16 +190,13 @@ This is just plain html template to see how I want to render all possible html t
 
 And now I update `blog/pages/index.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(30px * 6 + 10px);height: calc(33px * 3);"></div>
+</div>
+
 ```typescript
-// As I am still not very familiar with types,
-// I feel more comfortable not defining NextPage type and
-// use function declaration instead of arrow function
-
-// import type { NextPage } from 'next';
-
 import Link from 'next/link';
 
-//const Home: NextPage = () => { // arrow function vs function declaration in Next.js
 export default function Home() {
   return (
     <>
@@ -210,8 +207,6 @@ export default function Home() {
     </>
   );
 }
-
-//export default Home;
 ```
 
 ### 2.2.1 Svg images

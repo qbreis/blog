@@ -329,3 +329,29 @@ pre code:not(.contained).hljs {
 pre code.hljs {
   margin-bottom: 1em;
 }
+
+/*--------------------------------------------------------------
+  # Custom highlight lines
+  --------------------------------------------------------------*/
+
+pre code:not(.contained).hljs {
+  font-size: 21.6px;
+}
+
+.hljs-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  .hljs-lines {
+    /*border-bottom: 1px rgba(255, 255, 255, 0.2) solid;
+        border-top: 1px rgba(255, 255, 255, 0.2) solid;*/
+    background-color: rgba(255, 255, 255, 0.1);
+    position: absolute;
+    left: 0;
+    width: calc(100% - 2px);
+    z-index: 1;
+  }
+}
