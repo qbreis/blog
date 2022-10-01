@@ -22,12 +22,6 @@ I open folder `misenplace.node-main` in Visual Studio Code using the remote cont
 
 <pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main $ yarn</code></pre>
 
-> Note that, as long as I am using Markdown to write these notes, and I just don't find the way to add link attributes to a Markdown URL, I decide not to use `target="_blank"` or `rel="nofollow noreferrer"` links.
->
-> I could use plain Html here, but in my opinion, it keeps my Markdown clean, which is the point of Markdown. Besides it can be a better user experience to keep things in one browser. Users can just hit back or Ctrl-click to open in new tab. My main reason is letting the user to decide what he or she wants:
->
-> "If I want to launch that link in a new window, I'll ctrl-click it myself, thanks."
-
 ## 1.2 Create Next.js App
 
 ![Next.js](/images/nextjs-logo-3.svg)
@@ -64,19 +58,20 @@ Finally I create dev branch: `git checkout -b dev`.
 
 I create still a new git branch by running: `git checkout -b 'dev-chapter-1-setup`.
 
-I update `blog/pages/index.tsx`:
+I feel more comfortable not defining NextPage type and use function declaration instead of arrow function, so I update `blog/pages/index.tsx`:
 
 ```typescript
-import type { NextPage } from 'next';
+// import type { NextPage } from 'next';
 // import Head from 'next/head';
 // import Image from 'next/image';
 // import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+//  Home: NextPage = () => { // arrow function vs function declaration in Next.js
+export default function Home() {
   return <>Hola</>;
-};
+}
 
-export default Home;
+// export default Home;
 ```
 
 I delete files:
