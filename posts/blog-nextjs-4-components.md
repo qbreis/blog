@@ -424,6 +424,52 @@ return (
 /* Keep the existing code here */
 ```
 
+Before I define these classes I update `blog/pages/custom-template.tsx` to see all options for this arrow:
+
+```typescript
+/* Keep the existing code here */
+
+<ol>
+  <li>list 1</li>
+  <li>list 2</li>
+  <li>list 3</li>
+</ol>
+
+<span className="icon-arrow align-left pointing-left">
+  icon-arrow align-left pointing-left
+</span>
+<br />
+<span className="icon-arrow align-left pointing-right">
+  icon-arrow align-left pointing-right
+</span>
+<br />
+<span className="icon-arrow align-right pointing-left">
+  icon-arrow align-right pointing-left
+</span>
+<br />
+<span className="icon-arrow align-right pointing-right">
+  icon-arrow align-right pointing-right
+</span>
+<br />
+<span className="icon-arrow align-left pointing-left link-alike">
+  icon-arrow align-left pointing-left link-alike
+</span>
+<br />
+<span className="icon-arrow align-left pointing-right link-alike">
+  icon-arrow align-left pointing-right link-alike
+</span>
+<br />
+<span className="icon-arrow align-right pointing-left link-alike">
+  icon-arrow align-right pointing-left link-alike
+</span>
+<br />
+<span className="icon-arrow align-right pointing-right link-alike">
+  icon-arrow align-right pointing-right link-alike
+</span>
+
+/* Keep the existing code here */
+```
+
 And finally define those classes in `blog/styles/site/_layout.scss`:
 
 ```scss
@@ -467,6 +513,8 @@ And finally define those classes in `blog/styles/site/_layout.scss`:
   }
 }
 ```
+
+Now I can check how it looks like in [Custom template](http://localhost:3000/custom-template).
 
 ## Reference links
 

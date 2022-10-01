@@ -191,7 +191,7 @@ This is just plain html template to see how I want to render all possible html t
 And now I update `blog/pages/index.tsx`:
 
 <div class="hljs-wrapper">
-<div class="hljs-lines" style="top: calc(30px * 6 + 10px);height: calc(33px * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.27em * 6 + 10px);height: calc(1.27em * 3);"></div>
 </div>
 
 ```typescript
