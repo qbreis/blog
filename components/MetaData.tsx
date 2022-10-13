@@ -3,6 +3,8 @@ import Head from 'next/head';
 export default function MetaData() {
   return (
     <Head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>qbreis — enric gatell</title>
       <meta
         name="description"
