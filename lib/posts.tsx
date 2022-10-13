@@ -2,8 +2,8 @@ import fs from 'fs'; // fs is a Node.js module that let's you read files from th
 import path from 'path'; // path is a Node.js module that let's you manipulate file paths. /* 2 */
 import matter from 'gray-matter'; // matter is a library that let's you parse the metadata in each markdown file./* 3 */
 
-import { remark } from 'remark'; // remark is a library to render Markdown /* 6 */
-import html from 'remark-html'; // turn the syntax tree into serialized HTML
+import { remark } from 'remark'; // remark is a library to render Markdown /* 4 */
+import html from 'remark-html'; // turn the syntax tree into serialized HTML /* 5 */
 
 /*********************
 Posts
@@ -89,7 +89,6 @@ export function getAllPostIds() {
 }
 
 export async function getPostData(id: any) {
-  /* 5 */
   // Fetch necessary data for the blog post using params.id
   // in pages/posts/[id].tsx.
   // Return the post data based on id.
@@ -99,10 +98,10 @@ export async function getPostData(id: any) {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string /* 6 */
-  const processedContent = await remark()
+  // Use remark to convert markdown into HTML string /* 4 */
+  const processedContent = await remark() /* 4 */
     // .use(html)
-    .use(html, { sanitize: false })
+    .use(html, { sanitize: false }) /* 5 */
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 

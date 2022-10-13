@@ -207,6 +207,7 @@ export default function Post({ postData }: any) {
     <Layout>
       <article>
         <h1>{postData.title}</h1>
+        <div className="excerpt">{postData.excerpt}</div>
       </article>
     </Layout>
   );
@@ -310,12 +311,12 @@ I update `blog/lib/posts.tsx` to convert markdown into HTML string using remark 
 </div>
 
 ```typescript
-import fs from 'fs'; // fs is a Node.js module that let's you read files from the file system. /* 1 */
-import path from 'path'; // path is a Node.js module that let's you manipulate file paths. /* 2 */
-import matter from 'gray-matter'; // matter is a library that let's you parse the metadata in each markdown file./* 3 */
+import fs from 'fs'; // fs is a Node.js module that let's you read files from the file system.
+import path from 'path'; // path is a Node.js module that let's you manipulate file paths.
+import matter from 'gray-matter'; // matter is a library that let's you parse the metadata in each markdown file.
 
-import { remark } from 'remark'; // remark is a library to render Markdown /* 6 */
-import html from 'remark-html'; // turn the syntax tree into serialized HTML
+import { remark } from 'remark'; // remark is a library to render Markdown /* 1 */
+import html from 'remark-html'; // turn the syntax tree into serialized HTML /* 2 */
 
 /* Keep the existing code here */
 
@@ -330,8 +331,8 @@ export async function getPostData(id: any) {
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html, { sanitize: false })
+  const processedContent = await remark() /* 1 */
+    .use(html, { sanitize: false }) /* 2 */
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
@@ -344,10 +345,24 @@ export async function getPostData(id: any) {
 }
 ```
 
+> `/* 2 */` Note that, according to [remark-html / Security](https://github.com/remarkjs/remark-html#security):
+>
+> Use of `remark-html` is unsafe by default and opens you up to [cross-site scripting (XSS)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks. Pass `sanitize: true` to prevent attacks. Setting sanitize to anything else can be unsafe.
+>
+> I am setting sanitize to false because I want to maintain in Markdown files some Html code, specifically in these two cases:
+>
+> - When I want to show some code contained:  
+>   `<pre><code class="language-bash contained">`
+> - To highlight specific lines of code through Css:  
+>   `<div class="hljs-wrapper">`  
+>   `<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 2);"></div>`  
+>   `<div class="hljs-lines" style="top: calc(1.26em * 19 + 10px);height: calc(1.26em * 5);"></div>`  
+>   `</div>`
+
 Now I update `blog/pages/posts/[id].tsx`:
 
 <div class="hljs-wrapper">
-<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 9 + 10px);height: calc(1.26em * 1);"></div>
 </div>
 
 ```typescript
@@ -359,6 +374,7 @@ export default function Post({ postData }: any) {
     <Layout>
       <article>
         <h1>{postData.title}</h1>
+        <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
@@ -399,6 +415,7 @@ export default function Post({ postData }: any) {
           </>
         )}
         <h1>{postData.title}</h1>
+        <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
@@ -440,13 +457,18 @@ const Posts = ({ posts }: any) => {
 export default Posts;
 ```
 
-And I import into `blog/pages/index.tsx` - `/* 1 */`:
+And I import into `blog/pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 18 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getPosts } from '../lib/posts';
-import Posts from '../components/Posts'; /* 1 */
+import Posts from '../components/Posts';
 
 export async function getStaticProps() {
   const posts = getPosts();
@@ -461,7 +483,6 @@ export default function Home({ posts }: any) {
   return (
     <Layout>
       <section className="all-post-data">
-        {/* 1 */}
         <Posts posts={posts} />
       </section>
     </Layout>
