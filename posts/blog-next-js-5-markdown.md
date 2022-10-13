@@ -315,7 +315,7 @@ import path from 'path'; // path is a Node.js module that let's you manipulate f
 import matter from 'gray-matter'; // matter is a library that let's you parse the metadata in each markdown file./* 3 */
 
 import { remark } from 'remark'; // remark is a library to render Markdown /* 6 */
-import html from 'remark-html';
+import html from 'remark-html'; // turn the syntax tree into serialized HTML
 
 /* Keep the existing code here */
 
