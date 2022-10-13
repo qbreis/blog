@@ -111,6 +111,8 @@ import Head from 'next/head';
 export default function MetaData() {
   return (
     <Head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>qbreis — enric gatell</title>
       <meta
         name="description"
@@ -285,7 +287,7 @@ In this same post its author offers me a nice tip for dark mode that I plan foll
 Finally I do update `blog/components/MetaData.tsx`:
 
 <div class="hljs-wrapper">
-<div class="hljs-lines" style="top: calc(1.26em * 10 + 10px);height: calc(1.26em * 5);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 12 + 10px);height: calc(1.26em * 5);"></div>
 </div>
 
 ```typescript
@@ -294,6 +296,8 @@ import Head from 'next/head';
 export default function MetaData() {
   return (
     <Head>
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>qbreis — enric gatell</title>
       <meta
         name="description"
@@ -371,6 +375,7 @@ export default function Home() {
 }
 ```
 
+<<<<<<< HEAD
 I also want to update `blog/pages/custom-template.tsx`:
 
 <div class="hljs-wrapper">
@@ -432,6 +437,11 @@ I still want to add some className to link to go back home with left arrow in `b
 <div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 1);"></div>
 </div>
 
+=======
+I still want to add some className to link to go back home with left arrow in `blog/components/Layout.tsx`:
+
+> > > > > > > dev-chapter-4-components
+
 ```typescript
 /* Keep the existing code here */
 
@@ -450,15 +460,65 @@ return (
 /* Keep the existing code here */
 ```
 
+<<<<<<< HEAD
 Before I define these classes I update `blog/pages/custom-template.tsx` to see all options for this arrow:
 
 <div class="hljs-wrapper">
 <div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 31);"></div>
 </div>
+=======
+And finally define those classes in `blog/styles/site/_layout.scss`:
+
+```scss
+/* Keep the existing code here */
+
+.icon-arrow {
+  position: relative;
+  margin-left: 45px;
+  &:before {
+    content: '';
+    position: absolute;
+    left: -45px;
+    top: 10px;
+    width: 35px;
+    height: 25px;
+    @include color__text-screen();
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: auto 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="49.315025" height="32.375172" viewBox="0 0 13.047934 8.5659309" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-57.877174,-111.10988)"><path style="stroke:%23000000;stroke-width:1;stroke-linecap:round;" d="m 59.119216,115.57979 c 6.496992,-0.95053 10.012207,-0.79292 11.305892,-0.70856" /><path style="fill:none;stroke:%23000000;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;" d="m 62.371086,111.60988 c -1.582983,0.96463 -2.98405,2.38514 -3.993933,3.70048 1.946524,1.37222 2.995501,2.67134 4.042563,3.86545" /></g></svg>');
+  }
+  &.align-right {
+    margin-left: inherit;
+    margin-right: 45px;
+    &:before {
+      left: inherit;
+      right: -45px;
+    }
+  }
+  &.pointing-right:before {
+    top: 5px;
+    transform: rotate(180deg);
+  }
+  &.link-alike {
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+      text-underline-offset: 3px;
+      text-decoration-thickness: 3px;
+    }
+  }
+}
+```
+
+I still want to add some className to link to go back home with left arrow in `blog/components/Layout.tsx`:
+
+> > > > > > > dev-chapter-4-components
 
 ```typescript
 /* Keep the existing code here */
 
+<<<<<<< HEAD
 <ol>
   <li>list 1</li>
   <li>list 2</li>
@@ -496,6 +556,19 @@ Before I define these classes I update `blog/pages/custom-template.tsx` to see a
 <span className="icon-arrow align-right pointing-right link-alike">
   icon-arrow align-right pointing-right link-alike
 </span>
+=======
+return (
+  <div className="site-container">
+    <MetaData />
+    <Header />
+    <main className="site-main">{children}</main>
+    <Link href="/">
+      <a className="icon-arrow align-left pointing-left">Back to home</a>
+    </Link>
+    <Footer />
+  </div>
+);
+>>>>>>> dev-chapter-4-components
 
 /* Keep the existing code here */
 ```
@@ -544,7 +617,12 @@ And finally define those classes in `blog/styles/site/_layout.scss`:
 }
 ```
 
+<<<<<<< HEAD
 Now I can check how it looks like in [Custom template](http://localhost:3000/custom-template).
+
+=======
+
+> > > > > > > dev-chapter-4-components
 
 ## Reference links
 
