@@ -17,10 +17,15 @@ In order to install Sass I run:
 
 <pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-2-styles) $ yarn add sass</code></pre>
 
-I want to rename file `blog/styles/globals.css` to `globals.scss /* 1 */` and update `blog/pages/_app.tsx` accordingly:
+I want to rename file `blog/styles/globals.css` to `globals.scss` and update `blog/pages/_app.tsx` accordingly:
 
-```
-import '../styles/globals.scss'; // import '../styles/globals.css'; /* 1 */
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 0 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
+```typescript
+// import '../styles/globals.css';
+import '../styles/globals.scss';
 import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -188,10 +193,10 @@ This is just plain html template to see how I want to render all possible html t
 - Images:  
   `<img>`
 
-And now I update `blog/pages/index.tsx`:
+And now I update `blog/pages/index.tsx` to add a link to [Custom Template](localhost:3000/custom-template):
 
 <div class="hljs-wrapper">
-<div class="hljs-lines" style="top: calc(1.27em * 6 + 10px);height: calc(1.27em * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 3);"></div>
 </div>
 
 ```typescript
@@ -255,6 +260,12 @@ I want to use Highlight.js, so following [How to use Highlight.js on a Next.js s
 
 And then I update my `blog/pages/custom-template.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 10 + 10px);height: calc(1.26em * 4);"></div>
+</div>
+
 ```typescript
 import Image from 'next/image';
 import Link from 'next/link';
@@ -267,12 +278,14 @@ import React, { useEffect } from 'react';
 
 export default function CustomTemplate() {
   useEffect(() => {
-    hljs.initHighlighting();
+    // hljs.initHighlighting(); // Deprecated as of 10.6.0. initHighlighting() deprecated.  Use highlightAll() now.
+    hljs.highlightAll();
   }, []);
 
   return (
     <div className="site-container">
       <header className="site-header">site-header</header>
+
       {/* Keep the existing code here */}
 ```
 

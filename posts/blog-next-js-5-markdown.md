@@ -29,6 +29,8 @@ This is sample content. The section above is called Frontmatter where we can add
 
 Each markdown file has a metadata section at the top containing title and date among other parameters or keywords. This is called YAML Front Matter, which can be parsed using a library called [gray-matter](https://github.com/jonschlinkert/gray-matter).
 
+![YAML](/images/logo-yaml-2.svg)
+
 Now, following tutorial indications in [Pre-rendering and Data Fetching](https://nextjs.org/learn/basics/data-fetching/blog-data) I install gray-matter to parse the metadata in each Markdown file:
 
 <pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-5-markdown) $ yarn add gray-matter</code></pre>
@@ -95,6 +97,13 @@ export function getPosts() {
 
 And finally I update `blog/pages/index.tsx` to show list of all posts:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 1 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 8);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 12 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 15 + 10px);height: calc(1.26em * 16);"></div>
+</div>
+
 ```typescript
 import Layout from '../components/Layout';
 import { getPosts } from '../lib/posts';
@@ -134,67 +143,12 @@ export default function Home({ posts }: any) {
 
 ## 5.2 Single MD post - Dynamic Routes
 
-Following [Dynamic Routes - Page Path Depends on External Data](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data), I update now `blog/lib/posts.tsx` with `getAllPostIds` `/* 4 */` and `getPostData` `/* 5 */` functions:
+Following [Dynamic Routes - Page Path Depends on External Data](https://nextjs.org/learn/basics/dynamic-routes/page-path-external-data), I update now `blog/lib/posts.tsx` with `getAllPostIds` and `getPostData` functions:
 
 ```typescript
-import fs from 'fs'; // fs is a Node.js module that let's you read files from the file system. /* 1 */
-import path from 'path'; // path is a Node.js module that let's you manipulate file paths. /* 2 */
-import matter from 'gray-matter'; // matter is a library that let's you parse the metadata in each markdown file./* 3 */
-
-/*********************
-Posts
-*/
-
-const postsDirectory = path.join(process.cwd(), 'posts'); /* 2 */
-
-// Get file names under /posts
-const fileNames = fs.readdirSync(postsDirectory); /* 1 */
-
-const posts = fileNames.map((fileName) => {
-  // Remove ".md" from file name to get id
-  const id = fileName.replace(/\.md$/, '');
-
-  // Read markdown file as string
-  const fullPath = path.join(postsDirectory, fileName); /* 2 */
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents); /* 3 */
-
-  // Combine the data with the id
-  return {
-    id,
-    ...matterResult.data,
-  };
-});
-
-// Sort posts by date
-posts.sort(({ date: a }: any, { date: b }: any) => {
-  if (a < b) {
-    return 1;
-  } else if (a > b) {
-    return -1;
-  } else {
-    return 0;
-  }
-});
-
-/*********************
-Functions
-*/
-
-export function getPosts() {
-  /*
-  const getPosts = posts.map((post: any) => {
-    return post;
-  });
-  return getPosts;
-  */
-  return posts;
-}
+/* Keep the existing code here */
 
 export function getAllPostIds() {
-  /* 4 */
   // Returns an array of possible value for id that looks like this:
   // [
   //   {
@@ -225,7 +179,6 @@ export function getAllPostIds() {
 }
 
 export async function getPostData(id: any) {
-  /* 5 */
   // Fetch necessary data for the blog post using params.id
   // in pages/posts/[id].tsx.
   // Return the post data based on id.
@@ -279,10 +232,15 @@ export async function getStaticProps({ params }: any) {
 }
 ```
 
-I will finally update `blog/pages/index.tsx` to add a link `/* 1 */` to each single post:
+I will finally update `blog/pages/index.tsx` to add a link to each single post:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 0 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 23 + 10px);height: calc(1.26em * 5);"></div>
+</div>
 
 ```typescript
-import Link from 'next/link'; /* 1 */
+import Link from 'next/link';
 import Layout from '../components/Layout';
 import { getPosts } from '../lib/posts';
 
@@ -305,7 +263,6 @@ export default function Home({ posts }: any) {
               post.id && (
                 <li key={post.id}>
                   <h2 className="h4">
-                    {/* 1 */}
                     <Link href={`/posts/${post.id}`}>
                       <a>
                         {post.title} - {post.date}
@@ -325,11 +282,19 @@ export default function Home({ posts }: any) {
 
 ## 5.3 Markdown
 
+![Markdown](/images/logo-markdown.svg)
+
 Following [Render Markdown](https://nextjs.org/learn/basics/dynamic-routes/render-markdown) suggestions I install [remark](https://github.com/remarkjs/remark):
 
 <pre><code class="language-bash contained">node ➜ /workspaces/misenplace.node-main/blog (dev-chapter-5-markdown) $ yarn add remark remark-html</code></pre>
 
-I update `blog/lib/posts.tsx` to convert markdown into HTML string using remark library `/* 6 */`:
+I update `blog/lib/posts.tsx` to convert markdown into HTML string using remark library:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 19 + 10px);height: calc(1.26em * 5);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 28 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 import fs from 'fs'; // fs is a Node.js module that let's you read files from the file system. /* 1 */
@@ -339,91 +304,9 @@ import matter from 'gray-matter'; // matter is a library that let's you parse th
 import { remark } from 'remark'; // remark is a library to render Markdown /* 6 */
 import html from 'remark-html';
 
-/*********************
-Posts
-*/
-
-const postsDirectory = path.join(process.cwd(), 'posts'); /* 2 */
-
-// Get file names under /posts
-const fileNames = fs.readdirSync(postsDirectory); /* 1 */
-
-const posts = fileNames.map((fileName) => {
-  // Remove ".md" from file name to get id
-  const id = fileName.replace(/\.md$/, '');
-
-  // Read markdown file as string
-  const fullPath = path.join(postsDirectory, fileName); /* 2 */
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents); /* 3 */
-
-  // Combine the data with the id
-  return {
-    id,
-    ...matterResult.data,
-  };
-});
-
-// Sort posts by date
-posts.sort(({ date: a }: any, { date: b }: any) => {
-  if (a < b) {
-    return 1;
-  } else if (a > b) {
-    return -1;
-  } else {
-    return 0;
-  }
-});
-
-/*********************
-Functions
-*/
-
-export function getPosts() {
-  /*
-  const getPosts = posts.map((post: any) => {
-    return post;
-  });
-  return getPosts;
-  */
-  return posts;
-}
-
-export function getAllPostIds() {
-  /* 4 */
-  // Returns an array of possible value for id that looks like this:
-  // [
-  //   {
-  //     params: {
-  //       id: 'ssg-ssr'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'pre-rendering'
-  //     }
-  //   }
-  // ]
-  /*
-  Important: The returned list is not just an array of strings —
-  it must be an array of objects that look like the comment above.
-  Each object must have the params key and contain an object with
-  the id key (because we’re using [id] in the file name).
-  Otherwise, getStaticPaths in pages/posts/[id].tsx will fail.
-  */
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ''),
-      },
-    };
-  });
-}
+/* Keep the existing code here */
 
 export async function getPostData(id: any) {
-  /* 5 */
   // Fetch necessary data for the blog post using params.id
   // in pages/posts/[id].tsx.
   // Return the post data based on id.
@@ -433,7 +316,7 @@ export async function getPostData(id: any) {
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
 
-  // Use remark to convert markdown into HTML string /* 6 */
+  // Use remark to convert markdown into HTML string
   const processedContent = await remark()
     .use(html, { sanitize: false })
     .process(matterResult.content);
@@ -450,9 +333,13 @@ export async function getPostData(id: any) {
 
 Now I update `blog/pages/posts/[id].tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 import Layout from '../../components/Layout';
-import { getAllPostIds /* 1 */, getPostData /* 2 */ } from '../../lib/posts';
+import { getAllPostIds, getPostData } from '../../lib/posts';
 
 export default function Post({ postData }: any) {
   return (
@@ -465,27 +352,15 @@ export default function Post({ postData }: any) {
   );
 }
 
-export async function getStaticPaths() {
-  // Return a list of possible value for id
-  const paths = getAllPostIds(); /* 1 */
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  // Fetch necessary data for the blog post using params.id
-  const postData = await getPostData(params.id); /* 2 */
-  return {
-    props: {
-      postData,
-    },
-  };
-}
+/* Keep the existing code here */
 ```
 
 I want each single post to be optionally attached to a GitHub repo. For that I add corresponding repository keyword into my gray-matter for each post and I update `blog/pages/posts/[id].tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 14);"></div>
+</div>
 
 ```typescript
 import Layout from '../../components/Layout';
@@ -511,7 +386,13 @@ export default function Post({ postData }: any) {
           </>
         )}
         <h1>{postData.title}</h1>
-        {/* Keep the existing code here */}
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </article>
+    </Layout>
+  );
+}
+
+/* Keep the existing code here */
 ```
 
 ## 5.4 Component Posts for posts list

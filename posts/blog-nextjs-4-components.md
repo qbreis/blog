@@ -20,18 +20,22 @@ export default function Header() {
 }
 ```
 
-I do import Header component into `blog/pages/index.tsx` `/* 1 */`:
+I do import Header component into `blog/pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 import Link from 'next/link';
 
-import Header from '../components/Header'; /* 1 */
+import Header from '../components/Header';
 
 export default function Home() {
   return (
     <div className="site-container">
       {/*<header className="site-header">site-header</header>*/}
-      {/* 1 */}
       <Header />
 
       <main className="site-main">
@@ -65,17 +69,20 @@ export default function Footer() {
 
 I do import Footer component into `blog/pages/index.tsx` `/* 2 */`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 19 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
 ```js
 import Link from 'next/link';
 
-import Header from '../components/Header'; /* 1 */
-import Footer from '../components/Footer'; /* 2 */
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
     <div className="site-container">
-      {/*<header className="site-header">site-header</header>*/}
-      {/* 1 */}
       <Header />
 
       <main className="site-main">
@@ -88,7 +95,6 @@ export default function Home() {
       </main>
 
       {/*<footer className="site-footer">site-footer</footer>*/}
-      {/* 2 */}
       <Footer />
     </div>
   );
@@ -116,25 +122,25 @@ export default function MetaData() {
 }
 ```
 
-I do import MetaData component into `pages/index.tsx` `/* 1 */`:
+I do import MetaData component into `pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 9 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 import Link from 'next/link';
 
-import MetaData from '../components/MetaData'; /* 3 */
-import Header from '../components/Header'; /* 1 */
-import Footer from '../components/Footer'; /* 2 */
+import MetaData from '../components/MetaData';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
     <div className="site-container">
-      {/* 3 */}
       <MetaData />
-
-      {/*<header className="site-header">site-header</header>*/}
-      {/* 1 */}
       <Header />
-
       <main className="site-main">
         <article>
           <h1>Home</h1>
@@ -143,9 +149,6 @@ export default function Home() {
           </Link>
         </article>
       </main>
-
-      {/*<footer className="site-footer">site-footer</footer>*/}
-      {/* 2 */}
       <Footer />
     </div>
   );
@@ -154,13 +157,19 @@ export default function Home() {
 
 I want to do the same thing into `blog/pages/custom-template.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 21 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 32 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 import Image from 'next/image';
 import Link from 'next/link';
 
-import MetaData from '../components/MetaData'; /* 3 */
-import Header from '../components/Header'; /* 1 */
-import Footer from '../components/Footer'; /* 2 */
+import MetaData from '../components/MetaData';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 import hljs from 'highlight.js';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -176,11 +185,7 @@ export default function CustomTemplate() {
 
   return (
     <div className="site-container">
-      {/* 3 */}
       <MetaData />
-
-      {/*<header className="site-header">site-header</header>*/}
-      {/* 1 */}
       <Header />
       <main className="site-main">
         <article>
@@ -191,9 +196,6 @@ export default function CustomTemplate() {
       <Link href="/">
         <a>← Back to home</a>
       </Link>
-
-      {/*<footer className="site-footer">site-footer</footer>*/}
-      {/* 2 */}
       <Footer />
     </div>
   );
@@ -255,6 +257,10 @@ From downloaded Zip file `favicon_io.zip` I also want to copy `favicon.ico` to `
 
 In this same post its author offers me a nice tip for dark mode that I plan following, so I will update my Svg file `blog/public/images/favicon.svg`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 10);"></div>
+</div>
+
 ```svg
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="686.875" height="735.83337" viewBox="0 0 515.15625 551.87503">
@@ -278,7 +284,11 @@ In this same post its author offers me a nice tip for dark mode that I plan foll
 
 Finally I do update `blog/components/MetaData.tsx`:
 
-```js
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 10 + 10px);height: calc(1.26em * 5);"></div>
+</div>
+
+```typescript
 import Head from 'next/head';
 
 export default function MetaData() {
@@ -303,7 +313,7 @@ export default function MetaData() {
 
 I create new file `blog/components/Layout.tsx`:
 
-```js
+```typescript
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MetaData from '../components/MetaData';
@@ -337,6 +347,12 @@ export default function Layout({ children }: any) {
 
 I also want to update `blog/pages/index.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 1 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 5 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 12 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 import Link from 'next/link';
 import Layout from '../components/Layout';
@@ -356,6 +372,12 @@ export default function Home() {
 ```
 
 I also want to update `blog/pages/custom-template.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 24 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 41 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 import Image from 'next/image';
@@ -406,6 +428,10 @@ export default function CustomTemplate() {
 
 I still want to add some className to link to go back home with left arrow in `blog/components/Layout.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 /* Keep the existing code here */
 
@@ -425,6 +451,10 @@ return (
 ```
 
 Before I define these classes I update `blog/pages/custom-template.tsx` to see all options for this arrow:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 31);"></div>
+</div>
 
 ```typescript
 /* Keep the existing code here */
