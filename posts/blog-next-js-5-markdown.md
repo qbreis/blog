@@ -224,6 +224,19 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   // Fetch necessary data for the blog post using params.id
   const postData = await getPostData(params.id); /* 2 */
+  /*
+  console.log(postData);
+  postData will be something like:
+  {
+    id: 'hola-world',
+    title: 'Hola world',
+    excerpt: 'Excerpt test for hola mundo',
+    date: '2022-07-08',
+    categories: [ 'nextjs', 'bulma', 'test' ],
+    tags: [ 'dos', 'tres', 'cuatro' ],
+    draft: true
+  }
+  */
   return {
     props: {
       postData,
