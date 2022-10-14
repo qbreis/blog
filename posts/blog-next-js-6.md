@@ -206,6 +206,11 @@ export default function Header({ home }: any) {
 
 Now it is very easy not to show link to go bach home when you are in home page in `blog/components/Layout.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 23 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 27 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/components/Layout.tsx
 
@@ -230,14 +235,9 @@ export default function Layout({ children, home }: any) {
       <MetaData />
       <Header home={home} />
       <main className="site-main">{children}</main>
-      {/*
-      <Link href="/">
-        <a>← Back to home</a>
-      </Link>
-      */}
       {!home && (
         <Link href="/">
-          <a>← Back to home</a>
+          <a className="icon-arrow align-left pointing-left">Back to home</a>
         </Link>
       )}
       <Footer />
