@@ -10,7 +10,7 @@ draft: false
 
 ## 5.1 List of MD posts
 
-I create one first post in Markdown into `blog/posts\hola-world.md`:
+I create one first post in Markdown into `blog/posts/hola-world.md`:
 
 ```md
 ---
