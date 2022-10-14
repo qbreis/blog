@@ -21,11 +21,6 @@ export default function Layout({ children, home }: any) {
       <MetaData />
       <Header home={home} />
       <main className="site-main">{children}</main>
-      {/*
-      <Link href="/">
-        <a>← Back to home</a>
-      </Link>
-      */}
       {!home && (
         <Link href="/">
           <a className="icon-arrow align-left pointing-left">Back to home</a>

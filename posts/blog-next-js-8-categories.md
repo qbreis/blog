@@ -37,6 +37,11 @@ export default function Categories({ categories }: any) {
 
 And then I update `blog/components/Posts.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 19 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/components/Posts.tsx
 
@@ -50,7 +55,7 @@ export default function Posts({ posts }: any) {
       {posts.map((post: any) => {
         return (
           post.id && (
-            <li key={post.id}>
+            <li className="sinle-post-item" key={post.id}>
               <h2 className="h4">
                 <Link href={`/posts/${post.id}`}>
                   <a>{post.title}</a>
@@ -69,49 +74,56 @@ export default function Posts({ posts }: any) {
 
 To show categories in single post page, I update `blog/pages/posts/[id].tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 32 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
 import Categories from '../../components/Categories';
-
 import { getAllPostIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
   return (
     <Layout>
       <article>
         <MetaData title={postData.title} description={postData.excerpt} />
+        {postData.repository && (
+          <>
+            <span style={{ fontSize: '0.7em' }}>Repository: </span>
+            <Link href={postData.repository}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.7em', textDecoration: 'none' }}
+              >
+                {postData.repository}
+              </a>
+            </Link>
+          </>
+        )}
         <h1>{postData.title}</h1>
         <div className="entry-meta">
           <Date dateString={postData.date} />
           <Categories categories={postData.categories} />
         </div>
-        <div className="excerpt">{postData.excerpt}</div>
+        <div className="excerpt">
+          {newLinesIntoParagraphs(postData.excerpt)}
+        </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
   );
 }
 
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
-}
+/* Keep the existing code here */
 ```
 
 ## 8.2 Category page with posts list
@@ -121,6 +133,8 @@ I want one page for each category showing list of all posts with this one catego
 I start adding following code to `blog/lib/posts.tsx` to get all categories:
 
 ```typescript
+/* Keep the existing code here */
+
 /*********************
 Categories
 */
@@ -226,16 +240,23 @@ export function getPosts(categoryId?: any) {
 }
 ```
 
-Now in `blog/pages/categories/[id].tsx` - `/* 1 */` - `/* 2 */`:
+Now in `blog/pages/categories/[id].tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 17 + 10px);height: calc(1.26em * 8);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 40 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/categories/[id].tsx
 
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
-import Posts from '../../components/Posts'; /* 2 */
+import Posts from '../../components/Posts'; /* 1 */
 
-import { getAllCategoryIds, getPosts } from '../../lib/posts'; /* 1 */
+import { getAllCategoryIds /* 2 */, getPosts /* 3 */ } from '../../lib/posts';
 
 export default function Category({ postsByCategoryData }: any) {
   return (
@@ -246,22 +267,20 @@ export default function Category({ postsByCategoryData }: any) {
       />
       <h2 className="h1">Category: {postsByCategoryData.id}</h2>
 
-      {/* 1 */}
       <div className="entry-meta posted-on">
-        {postsByCategoryData.allPostsData.length == 1
-          ? postsByCategoryData.allPostsData.length + ' post'
-          : postsByCategoryData.allPostsData.length + ' posts'}
+        {postsByCategoryData.allPostsData /* 4 */.length == 1
+          ? postsByCategoryData.allPostsData /* 4 */.length + ' post'
+          : postsByCategoryData.allPostsData /* 4 */.length + ' posts'}
       </div>
       <section className="all-post-data">
-        {/* 2 */}
-        <Posts posts={postsByCategoryData.allPostsData} />
+        <Posts /* 1 */ posts={postsByCategoryData.allPostsData /* 4 */} />
       </section>
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
-  const paths = getAllCategoryIds();
+  const paths = getAllCategoryIds(); /* 2 */
   return {
     paths,
     fallback: false,
@@ -271,7 +290,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const postsByCategoryData = {
     id: params.id,
-    allPostsData: getPosts(params.id) /* 1 */,
+    allPostsData /* 4 */: getPosts(params.id) /* 3 */,
   };
   return {
     props: {
@@ -287,7 +306,15 @@ I also want one page to list all categories, this will be [localhost:3000/catego
 
 First I will add some functions to `blog/lib/posts.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 17 + 10px);height: calc(1.26em * 7);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 25 + 10px);height: calc(1.26em * 10);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 36 + 10px);height: calc(1.26em * 3);"></div>
+</div>
+
 ```typescript
+/* Keep the existing code here */
+
 /*********************
 Categories
 */
@@ -327,34 +354,8 @@ export function getCategories() {
 }
 
 export function getAllCategoryIds() {
-  // Returns an array of possible value for id that looks like this:
-  // [
-  //   {
-  //     params: {
-  //       id: 'nextjs'
-  //     }
-  //   },
-  //   {
-  //     params: {
-  //       id: 'test'
-  //     }
-  //   }
-  // ]
-  /*
-  Important: The returned list is not just an array of strings —
-  it must be an array of objects that look like the comment above.
-  Each object must have the params key and contain an object with
-  the id key (because we’re using [id] in the file name).
-  Otherwise, getStaticPaths in pages/categories/[id].tsx will fail.
-  */
-  return categories.map((category: any) => {
-    return {
-      params: {
-        id: category.id,
-      },
-    };
-  });
-}
+
+/* Keep the existing code here */
 ```
 
 And `blog/pages/categories/index.tsx`:
