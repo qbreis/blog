@@ -15,10 +15,8 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }: any) {
-  // I pass prop home as attribute home to Layout component */}
   return (
     <Layout>
-      <div className="excerpt">{process.env.siteInfoDescription}</div>
       <section className="all-post-data">
         <Posts posts={posts} />
       </section>
