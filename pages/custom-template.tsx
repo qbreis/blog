@@ -67,11 +67,9 @@ export default function CustomTemplate() {
 >>>>>>> dev-chapter-4-components
 import '../styles/globals.scss'; /*{ 1 }*/
 import type { AppProps } from 'next/app'; /*{ 2 }*/
-
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
-
 export default MyApp;`}
           </code>
         </pre>
@@ -110,6 +108,38 @@ export default MyApp;`}
           <li>list 2</li>
           <li>list 3</li>
         </ol>
+
+        <span className="icon-arrow align-left pointing-left">
+          icon-arrow align-left pointing-left
+        </span>
+        <br />
+        <span className="icon-arrow align-left pointing-right">
+          icon-arrow align-left pointing-right
+        </span>
+        <br />
+        <span className="icon-arrow align-right pointing-left">
+          icon-arrow align-right pointing-left
+        </span>
+        <br />
+        <span className="icon-arrow align-right pointing-right">
+          icon-arrow align-right pointing-right
+        </span>
+        <br />
+        <span className="icon-arrow align-left pointing-left link-alike">
+          icon-arrow align-left pointing-left link-alike
+        </span>
+        <br />
+        <span className="icon-arrow align-left pointing-right link-alike">
+          icon-arrow align-left pointing-right link-alike
+        </span>
+        <br />
+        <span className="icon-arrow align-right pointing-left link-alike">
+          icon-arrow align-right pointing-left link-alike
+        </span>
+        <br />
+        <span className="icon-arrow align-right pointing-right link-alike">
+          icon-arrow align-right pointing-right link-alike
+        </span>
       </div>
       {/*</article>*/}
       {/*</main>*/}

@@ -16,8 +16,6 @@ export default function Posts({ posts }: any) {
                   <a>{post.title}</a>
                 </Link>
               </h2>
-
-              {/* 1 */}
               <Date dateString={post.date} />
               <Categories categories={post.categories} />
             </li>
