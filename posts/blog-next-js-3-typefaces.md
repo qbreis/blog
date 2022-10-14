@@ -10,9 +10,13 @@ draft: false
 
 ## 3.1 JetBrains Mono
 
-I recently discovered [JetBrains Mono](https://www.jetbrains.com/lp/mono/), a typeface for developers, by the Russians Philipp Nurullin, designer, and Konstantin Bulenkov, JetBrains project manager. And it is at [Google Font](https://fonts.google.com/specimen/JetBrains+Mono).
+I recently discovered [JetBrains Mono](https://www.jetbrains.com/lp/mono/), a typeface for developers, by the Russians Philipp Nurullin, designer, and Konstantin Bulenkov, JetBrains project manager. And it is at [Google Fonts](https://fonts.google.com/specimen/JetBrains+Mono).
 
 Following [Font Optimization](https://nextjs.org/docs/basic-features/font-optimization) I add this font to a custom document in `blog/pages/_document.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 4);"></div>
+</div>
 
 ```typescript
 // pages/_document.js
@@ -37,17 +41,20 @@ export default function Document() {
 }
 ```
 
-I check that JetBrains Mono is first option in font code list `/* 1 */` in `blog/styles/variables-site/_typography.scss`:
+I check that JetBrains Mono is first option in font code list in `blog/styles/variables-site/_typography.scss`:
 
-```scss
-/* 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
+```typescript
+/*
 Variables - Typography
 */
 
 $font__serif: Georgia, Cambria, 'Times New Roman', Times, serif;
 $font__sans: $font__serif;
-$font__code: 'JetBrains Mono', Monaco, Consolas, 'Andale Mono',
-  'DejaVu Sans Mono', monospace; /* 1 */
+$font__code: 'JetBrains Mono', Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
 $font__pre: 'Courier 10 Pitch', Courier, monospace;
 $font__line-height-body: 1.5;
 $font__line-height-pre: 1.6;
@@ -90,15 +97,18 @@ I can read this article by Thierry Blancpain: [Understanding Web Fonts and Getti
 
 Now I can open file `stylesheet.css` I just unzipped from `webfontkit-whatever.zip`, copy css code, paste in `blog/styles/typography/_typography.scss` and adapt a bit:
 
-```scss
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 0 + 10px);height: calc(1.26em * 35);"></div>
+</div>
+
+```typescript
 /*
 Typography
 */
 
 @font-face {
   font-family: Mallory;
-  src: url('/../fonts/mallory_book-webfont.woff2') format('woff2'), url('/../fonts/mallory_book-webfont.woff')
-      format('woff');
+  src: url('/../fonts/mallory_book-webfont.woff2') format('woff2'), url('/../fonts/mallory_book-webfont.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -106,8 +116,7 @@ Typography
 
 @font-face {
   font-family: Mallory;
-  src: url('/../fonts/mallory_book_italic-webfont.woff2') format('woff2'), url('/../fonts/mallory_book_italic-webfont.woff')
-      format('woff');
+  src: url('/../fonts/mallory_book_italic-webfont.woff2') format('woff2'), url('/../fonts/mallory_book_italic-webfont.woff') format('woff');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -115,8 +124,7 @@ Typography
 
 @font-face {
   font-family: Mallory;
-  src: url('/../fonts/mallory_bold-webfont.woff2') format('woff2'), url('/../fonts/mallory_bold-webfont.woff')
-      format('woff');
+  src: url('/../fonts/mallory_bold-webfont.woff2') format('woff2'), url('/../fonts/mallory_bold-webfont.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -124,8 +132,7 @@ Typography
 
 @font-face {
   font-family: Mallory;
-  src: url('/../fonts/mallory_bold_italic-webfont.woff2') format('woff2'), url('/../fonts/mallory_bold_italic-webfont.woff')
-      format('woff');
+  src: url('/../fonts/mallory_bold_italic-webfont.woff2') format('woff2'), url('/../fonts/mallory_bold_italic-webfont.woff') format('woff');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -154,14 +161,18 @@ textarea {
 @import 'headings';
 ```
 
-I also want to add Mallory `/* 1 */` into `blog/styles/variables-site/_typography.scss`:
+I also want to add Mallory into `blog/styles/variables-site/_typography.scss`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```scss
 /* 
 Variables - Typography
 */
 
-$font__serif: Mallory, Georgia, Cambria, 'Times New Roman', Times, serif; /* 1 */
+$font__serif: Mallory, Georgia, Cambria, 'Times New Roman', Times, serif;
 $font__sans: $font__serif;
 $font__code: 'JetBrains Mono', Monaco, Consolas, 'Andale Mono',
   'DejaVu Sans Mono', monospace;
