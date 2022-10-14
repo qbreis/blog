@@ -322,6 +322,20 @@ export default function Post({ postData }: any) {
     <Layout>
       <article>
         <MetaData title={postData.title} description={postData.excerpt} />
+        {postData.repository && (
+          <>
+            <span style={{ fontSize: '0.7em' }}>Repository: </span>
+            <Link href={postData.repository}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: '0.7em', textDecoration: 'none' }}
+              >
+                {postData.repository}
+              </a>
+            </Link>
+          </>
+        )}
         <h1>{postData.title}</h1>
         <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
@@ -336,6 +350,11 @@ export default function Post({ postData }: any) {
 ## 6.5 Some site constants
 
 I want to have some constants for site info, I can use [Environment Variables](https://nextjs.org/docs/api-reference/next.config.js/environment-variables), so I update `blog/next.config.js`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 1 + 10px);height: calc(1.26em * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 4);"></div>
+</div>
 
 ```javascript
 /** @type {import('next').NextConfig} */
@@ -355,6 +374,13 @@ module.exports = nextConfig;
 ```
 
 Then I also update `blog/components/Header.tsx` to use `process.env.siteInfoTitle`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 15 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 18 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 29 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 36 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/components/Header.tsx
@@ -405,6 +431,11 @@ export default function Header({ home }: any) {
 
 And also `blog/components/MetaData.tsx` to use `process.env.siteInfoTitle` and `process.env.siteInfoDescription`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 11 + 10px);height: calc(1.26em * 3);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 26 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
 ```typescript
 // blog/components/MetaData.tsx
 
@@ -442,23 +473,16 @@ MetaData.propTypes = {
 };
 ```
 
-In order to include a general description `/* 1 */` in home page I also want to use `process.env.siteInfoDescription` into `blog/pages/index.tsx`:
+In order to include a general description in home page I also want to use `process.env.siteInfoDescription` into `blog/pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/index.tsx
 
-import Layout from '../components/Layout';
-import { getPosts } from '../lib/posts';
-import Posts from '../components/Posts';
-
-export async function getStaticProps() {
-  const posts = getPosts();
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+/* Keep the existing code here */
 
 export default function Home({ posts }: any) {
   return (
@@ -494,6 +518,11 @@ export function newLinesIntoParagraphs(string: string) {
 
 And now I update `blog/pages/index.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 5 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 13 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/pages/index.tsx
 
@@ -516,12 +545,18 @@ export default function Home({ posts }: any) {
 
 I also update `blog/pages/posts/[id].tsx` for the excerpt in Markdown posts:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 16 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
 import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 import MetaData from '../../components/MetaData';
+import Link from 'next/link';
 import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
@@ -539,6 +574,10 @@ export default function Post({ postData }: any) {
 ```
 
 Now I want to add some paragraph to excerpt in [Blog - Next.js - Chapter #1](blog-next-js-1-setup), so I update corresponding Markdown file `blog/posts/blog-next-js-1-setup.md`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 3);"></div>
+</div>
 
 ```md
 ---
