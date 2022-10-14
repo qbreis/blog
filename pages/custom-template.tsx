@@ -6,7 +6,6 @@ export default function CustomTemplate() {
   return (
     <Layout>
       <h1>Heading 1 - Post simple template</h1>
-
       <div className="entry-meta">
         <ul className="posted-on">
           <li>
@@ -141,13 +140,6 @@ export default MyApp;`}
           icon-arrow align-right pointing-right link-alike
         </span>
       </div>
-      {/*</article>*/}
-      {/*</main>*/}
-      {/*<Link href="/">*/}
-      {/*<a>← Back to home</a>*/}
-      {/*</Link>*/}
-      {/*<Footer />*/}
-      {/*</div>*/}
     </Layout>
   );
 }
