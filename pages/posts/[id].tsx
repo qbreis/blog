@@ -2,7 +2,6 @@
 
 import Layout from '../../components/Layout';
 import { getAllPostIds, getPostData } from '../../lib/posts';
-import MetaData from '../../components/MetaData';
 import Link from 'next/link';
 
 export default function Post({ postData }: any) {
@@ -23,7 +22,6 @@ export default function Post({ postData }: any) {
             </Link>
           </>
         )}
-        <MetaData title={postData.title} description={postData.excerpt} />
         <h1>{postData.title}</h1>
         <div className="excerpt">{postData.excerpt}</div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
