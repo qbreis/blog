@@ -202,7 +202,7 @@ posts.map((post: any) => {
   });
 });
 
-// count number of posts for each category
+// count number of posts for each tag
 const tags = allTags.map((tag: any) => {
   return {
     id: tag,
@@ -210,7 +210,7 @@ const tags = allTags.map((tag: any) => {
   };
 });
 
-// sort by number of posts for each category
+// sort by number of posts for each tag
 tags.sort(({ posts: a }: any, { posts: b }: any) => {
   if (a < b) {
     return 1;
