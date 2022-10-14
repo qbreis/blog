@@ -15,14 +15,12 @@ export default function Category({ postsByCategoryData }: any) {
       />
       <h2 className="h1">Category: {postsByCategoryData.id}</h2>
 
-      {/* 1 */}
       <div className="entry-meta posted-on">
         {postsByCategoryData.allPostsData.length == 1
           ? postsByCategoryData.allPostsData.length + ' post'
           : postsByCategoryData.allPostsData.length + ' posts'}
       </div>
       <section className="all-post-data">
-        {/* 2 */}
         <Posts posts={postsByCategoryData.allPostsData} />
       </section>
     </Layout>
@@ -40,8 +38,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const postsByCategoryData = {
     id: params.id,
-    // allPostsData: getPosts(params.id),
-    allPostsData: getPosts({ category: params.id }),
+    allPostsData: getPosts(params.id),
   };
   return {
     props: {
