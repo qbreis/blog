@@ -47,6 +47,11 @@ export function getPostsPaginatedIds() {
 
 Now in `blog/pages/posts/[id].tsx`, in function `getStaticPaths` I just define `const paths = getPostsPaginatedIds();`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 15 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
@@ -58,10 +63,9 @@ import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 // import { getAllPostIds, getPostData } from '../../lib/posts';
 import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
-export default function Post({ postData }: any) {
-  /* Keep the existing code here */
-}
+/* Keep the existing code here */
 
 export async function getStaticPaths() {
   // const paths = getAllPostIds();
@@ -69,7 +73,6 @@ export async function getStaticPaths() {
   return {
     paths,
     fallback: false,
-    // fallback: true,
   };
 }
 
@@ -77,6 +80,11 @@ export async function getStaticPaths() {
 ```
 
 I also need to do in `blog/pages/posts/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 // blog/pages/posts/index.tsx
@@ -99,6 +107,11 @@ export default Home;
 ```
 
 And in `blog/pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 5 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 9 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 // blog/pages/index.tsx
@@ -136,6 +149,11 @@ Changing `fallback: false` to `fallback: true` in `getStaticPaths` function into
 
 To avoid that error I just need to make sure `postData` is defined as follows:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 13 + 10px);height: calc(1.26em * 4);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 30 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
@@ -147,6 +165,7 @@ import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 // import { getAllPostIds, getPostData } from '../../lib/posts';
 import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
   {/* make sure `postData` is defined */}
@@ -176,13 +195,41 @@ export async function getStaticPaths() {
 
 Now after I run `yarn build` and then `yarn start`, when I browse [http://localhost:3000/posts/blog-next-js-1-setup](http://localhost:3000/posts/blog-next-js-1-setup) I see that `<h1>Loading...</h1>` before the corresponding post, no 404 plus when I check `blog/.next/server/pages/posts` I can also see the corresponding Html file `blog/.next/server/pages/posts/blog-next-js-1-setup.html`, that is what I want.
 
-Changing `fallback: true` to `fallback: 'blocking'` I won't see that `<h1>Loading...</h1>`.
+Changing `fallback: true` to `fallback: 'blocking'` I won't see that `<h1>Loading...</h1>`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 11 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
+```typescript
+// blog/pages/posts/[id].tsx
+
+/* Keep the existing code here */
+
+export async function getStaticPaths() {
+  // const paths = getAllPostIds();
+  const paths = getPostsPaginatedIds();
+  return {
+    paths,
+    // fallback: false,
+    // fallback: true,
+    fallback: 'blocking',
+  };
+}
+
+/* Keep the existing code here */
+```
 
 ## 10.3 Refactoring `getPosts` and `getAllPostIds`
 
 I don't want to have these two functions `getPosts` and `getPostsPaginated` but instead only one `getPosts`.
 
 By now I don't want to paginate list of categories or paths, so in `blog/lib/posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 1 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 12);"></div>
+</div>
 
 ```typescript
 export function getPosts(params?: any) {
@@ -222,6 +269,10 @@ export function getPostsPaginated(params?: any) {
 
 Now I need to adapt `blog/pages/posts/index.tsx` and `blog/pages/index.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/index.tsx
 
@@ -233,6 +284,10 @@ export async function getStaticProps() {
 
   /* Keep the existing code here */
 ```
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/index.tsx
@@ -248,6 +303,11 @@ export async function getStaticProps() {
 ```
 
 Similarly I don't want to have these two functions `getAllPostIds` and `getPostsPaginatedIds` but instead only one `getAllPostIds`, so in `blog/lib/posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 12 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 33 + 10px);height: calc(1.26em * 9);"></div>
+</div>
 
 ```typescript
 /*
@@ -303,21 +363,25 @@ export function getAllPostIds(params?: any) {
 
 And then in `blog/pages/posts/[id].tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 15 + 10px);height: calc(1.26em * 2);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
+import Link from 'next/link';
 import Layout from '../../components/Layout';
 import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
-import Link from 'next/link';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
 import { getAllPostIds, getPostData } from '../../lib/posts';
 // import { getPostsPaginatedIds, getPostData } from '../../lib/posts';
+import { newLinesIntoParagraphs } from '../../lib/functions';
 
-export default function Post({ postData }: any) {
-  /* Keep the existing code here */
-}
+/* Keep the existing code here */
 
 export async function getStaticPaths() {
   const paths = getAllPostIds({ limit: 3 });
@@ -332,6 +396,11 @@ export async function getStaticPaths() {
 ```
 
 Also `blog/pages/posts/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/posts/index.tsx
@@ -356,6 +425,11 @@ export default Home;
 Preventing what I will need for pagination, not only do I want to get 3 posts (limit), but I also want to specify from how many (start).
 
 So in `blog/lib/posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 19 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 28 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 /* Keep the existing code here */
@@ -409,6 +483,10 @@ export function getAllPostIds(params?: any) {
 
 And then also update in `blog/pages/index.tsx` and `blog/pages/posts/index.tsx` to set start to 4:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 1 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 export async function getStaticProps() {
   const posts = getPosts({ limit: 3, start: 4 });
@@ -421,6 +499,10 @@ export async function getStaticProps() {
 ```
 
 I want to set pagination limit in `blog/next.config.js`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```javascript
 env: {
@@ -459,28 +541,36 @@ export default function getPaginatedPosts(
 
 So now, having set pagination limit to 3 posts I can browse [http://localhost:3000/api/posts](http://localhost:3000/api/posts) to get first three posts and after I can browse [http://localhost:3000/api/posts/3](http://localhost:3000/api/posts/3) to get next three posts in the list and [http://localhost:3000/api/posts/6](http://localhost:3000/api/posts/6) to get next and so on.
 
-I still want to adjust page to browse [http://localhost:3000/api/posts](http://localhost:3000/api/posts) to get first three posts and [http://localhost:3000/api/posts/2](http://localhost:3000/api/posts/2) to get next three, so what comes after [http://localhost:3000/api/posts/](http://localhost:3000/api/posts/) to be the _page_ instead of _start_, so in `blog/pages/api/posts/[page].tsx`, when I specify start I do:
+I still want to adjust page to browse [http://localhost:3000/api/posts](http://localhost:3000/api/posts) to get first three posts and [http://localhost:3000/api/posts/2](http://localhost:3000/api/posts/2) to get next three, so what comes after [http://localhost:3000/api/posts/](http://localhost:3000/api/posts/) to be the _page_ instead of _start_, so in `blog/pages/api/posts/[page].tsx`, when I specify `start` I do:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 3);"></div>
+</div>
 
 ```typescript
-start: req.query.page
-  ? (Number(req.query.page) - 1) * Number(process.env.paginationLimit)
-  : 0;
+const posts = getPosts({
+  limit: process.env.paginationLimit,
+  start: req.query.page
+    ? (Number(req.query.page) - 1) * Number(process.env.paginationLimit)
+    : 0,
+});
 ```
 
 ## 10.6 Load more posts
 
-I add in `blog/components/Posts.tsx` after unordered list `<ul>` of posts, a button to load more posts:
-
-```typescript
-/* Keep the existing code here */
-</ul>
-<button onClick={loadMorePosts}>Load more posts</button>
-/* Keep the existing code here */
-```
+I add in `blog/components/Posts.tsx` after unordered list `<ul>` of posts, a button to load more posts.
 
 In order to load more posts I want to use two state variables; one to hold the page number which will be `paginationPage` and it will be set initially to `1`, and yet another one to hold the posts to add to the list, which will be `listOfPosts` and it will be set initially to `posts`.
 
 So in `blog/components/Posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 7 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 10 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 13 + 10px);height: calc(1.26em * 6);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 21 + 10px);height: calc(1.26em * 5);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 44 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/components/Posts.tsx
@@ -510,10 +600,37 @@ export default function Posts({ posts }: any) {
         posts: {listOfPosts.length} out of 10
       </p>
       <ul>
-/* Keep the existing code here */
+        {listOfPosts.map((post: any) => {
+          return (
+            post.id && (
+              <li className="sinle-post-item" key={post.id}>
+                <h2 className="h4">
+                  <Link href={`/posts/${post.id}`}>
+                    <a>{post.title}</a>
+                  </Link>
+                </h2>
+                <Date dateString={post.date} />
+                <Categories categories={post.categories} />
+                <Tags tags={post.tags} />
+              </li>
+            )
+          );
+        })}
+      </ul>
+      <button onClick={loadMorePosts}>Load more posts</button>
+    </>
+  );
+}
 ```
 
-I also want to know total of posts, for that purpose I update `/* 1 */` in `blog/pages/index.tsx`:
+I also want to know total of posts, for that purpose I update in `blog/pages/index.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 9 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 13 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 18 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 25 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/index.tsx
@@ -521,26 +638,26 @@ I also want to know total of posts, for that purpose I update `/* 1 */` in `blog
 import Layout from '../components/Layout';
 import Posts from '../components/Posts';
 import { getPosts } from '../lib/posts';
+import { newLinesIntoParagraphs } from '../lib/functions';
 
 export async function getStaticProps() {
   const posts = getPosts({ limit: process.env.paginationLimit, start: 0 });
-  const totalOfPosts = getPosts().length; /* 1 */
+  const totalOfPosts = getPosts().length;
   return {
     props: {
       posts,
-      totalOfPosts /* 1 */,
+      totalOfPosts,
     },
   };
 }
 
 export default function Home({ posts, totalOfPosts }: any) {
-  /* 1 */
   return (
     <Layout home>
-      <div className="excerpt">{process.env.siteInfoDescription}</div>
+      <div className="excerpt">
+        {newLinesIntoParagraphs(String(process.env.siteInfoDescription))}
+      </div>
       <section className="all-post-data">
-        {/* Add totalOfPosts attribute to Posts component */
-        /* 1 */}
         <Posts posts={posts} totalOfPosts={totalOfPosts} />
       </section>
     </Layout>
@@ -549,6 +666,11 @@ export default function Home({ posts, totalOfPosts }: any) {
 ```
 
 And then in `blog/components/Posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 2 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 9 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 /* Keep the existing code here */
@@ -572,6 +694,7 @@ I create new file `blog/components/Pagination.tsx`:
 
 ```typescript
 //blog/components/Pagination.tsx
+
 export default function Pagination({
   listOfPosts,
   totalOfPosts,
@@ -591,6 +714,12 @@ export default function Pagination({
 ```
 
 and I update `blog/components/Posts.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 6 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 22 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 41 + 10px);height: calc(1.26em * 5);"></div>
+</div>
 
 ```typescript
 // blog/components/Posts.tsx

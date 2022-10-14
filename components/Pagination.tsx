@@ -1,4 +1,5 @@
 //blog/components/Pagination.tsx
+
 export default function Pagination({
   listOfPosts,
   totalOfPosts,
