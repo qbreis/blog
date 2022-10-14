@@ -305,6 +305,11 @@ MetaData.propTypes = {
 
 Now it is quite easy to add title and description Metadata to each single post in `blog/pages/posts/[id].tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 10 + 10px);height: calc(1.26em * 1);"></div>
+</div>
+
 ```typescript
 // blog/pages/posts/[id].tsx
 
@@ -325,22 +330,7 @@ export default function Post({ postData }: any) {
   );
 }
 
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }: any) {
-  const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
-}
+/* Keep the existing code here */
 ```
 
 ## 6.5 Some site constants
