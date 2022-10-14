@@ -258,6 +258,14 @@ For the footer I add two Svg files and update `blog/components/Footer.tsx`, I ca
 
 I want to add default props and type into `blog/components/MetaData.tsx`:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 5 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 11 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 22 + 10px);height: calc(1.26em * 5);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 28 + 10px);height: calc(1.26em * 4);"></div>
+</div>
+
 ```typescript
 // blog/components/MetaData.tsx
 
