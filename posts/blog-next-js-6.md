@@ -38,7 +38,11 @@ export default function Header() {
 
 I want to link the header logo and site title on top left, but not when we are already in home page.
 
-First I update `blog/pages/index.tsx` to pass prop home as attribute home to Layout component `/* 1 */`:
+First I update `blog/pages/index.tsx` to pass prop home as attribute home to Layout component:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 17 + 10px);height: calc(1.26em * 1);"></div>
+</div>
 
 ```typescript
 // blog/pages/index.tsx
@@ -57,7 +61,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }: any) {
-  // I pass prop home as attribute home to Layout component: <Layout home> /* 1 */
   return (
     <Layout home>
       <section className="all-post-data">
@@ -68,7 +71,12 @@ export default function Home({ posts }: any) {
 }
 ```
 
-Now I update `blog/components/Layout.tsx` to get prop home and pass as attribute home to Header component `/* 1 */`:
+Now I update `blog/components/Layout.tsx` to get prop home and pass as attribute home to Header component:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 13 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 22 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 // blog/components/Layout.tsx
@@ -84,7 +92,7 @@ hljs.registerLanguage('javascript', javascript);
 
 import React, { useEffect } from 'react';
 
-// Layout component expect a prop called home: Layout({ children, home }: any) /* 1 */
+// Layout component expect a prop called home: Layout({ children, home }: any)
 export default function Layout({ children, home }: any) {
   useEffect(() => {
     hljs.highlightAll();
@@ -93,27 +101,33 @@ export default function Layout({ children, home }: any) {
   return (
     <div className="site-container">
       <MetaData />
-      {/* I pass prop home as attribute home to Header component: <Header home={home} /> */
-      /* 1 */}
+      {/* I pass prop home as attribute home to Header component: <Header home={home} /> */}
       <Header home={home} />
       <main className="site-main">{children}</main>
-      <Link href="/">
-        <a>← Back to home</a>
-      </Link>
+      {!home && (
+        <Link href="/">
+          <a className="icon-arrow align-left pointing-left">Back to home</a>
+        </Link>
+      )}
       <Footer />
     </div>
   );
 }
 ```
 
-Finally, in `blog/components/Header.tsx` - `/* 1 */`:
+Finally, in `blog/components/Header.tsx`:
+
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 4 + 10px);height: calc(1.26em * 2);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 17 + 10px);height: calc(1.26em * 2);"></div>
+</div>
 
 ```typescript
 // blog/components/Header.tsx
 
 import Image from 'next/image';
 
-// Header component expect a prop called home: Header({ home }: any) /* 1 */
+// Header component expect a prop called home: Header({ home }: any)
 export default function Header({ home }: any) {
   return (
     <header className="site-header">
@@ -126,8 +140,7 @@ export default function Header({ home }: any) {
         className="color-text-screen-filter"
       />
       <h1>
-        {/* I get home prop: {home ? 'Y' : 'N'} */
-        /* 1 */}
+        {/* I get home prop: {home ? 'Y' : 'N'} */}
         qbreis — enric gatell - home is {home ? 'Y' : 'N'}
       </h1>
     </header>
@@ -137,13 +150,17 @@ export default function Header({ home }: any) {
 
 Now I can link header logo and site title on top left when we are not in home page:
 
+<div class="hljs-wrapper">
+<div class="hljs-lines" style="top: calc(1.26em * 3 + 10px);height: calc(1.26em * 1);"></div>
+<div class="hljs-lines" style="top: calc(1.26em * 8 + 10px);height: calc(1.26em * 33);"></div>
+</div>
+
 ```typescript
 // blog/components/Header.tsx
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Header component expect a prop called home
 export default function Header({ home }: any) {
   return (
     <header className="site-header">
