@@ -1,7 +1,6 @@
 ---
 title: 'Blog - Next.js - Chapter #10 - Pagination'
-excerpt: 'This is part of a series of annotations, about building a blog to explain how to build a blog to explain how to build a blog about...
-In this chapter I ...'
+excerpt: 'In this chapter I cover pagination functionality for list of posts.'
 date: '2021-09-24'
 categories: ['nextjs']
 tags: ['nextjs', 'typescript']
