@@ -7,22 +7,23 @@ import Tags from '../components/Tags';
 
 import { useState } from 'react';
 
-export default function Posts({ posts }: any) {
-  const [limit, setLimit] = useState(3);
-  const [listOfPosts, setListOfPosts] = useState(posts.slice(0, 3));
+import Pagination from '../components/Pagination';
+
+export default function Posts({ posts, paginationLimit }: any) {
+  const [limit, setLimit] = useState(paginationLimit);
+  const [listOfPosts, setListOfPosts] = useState(
+    posts.slice(0, paginationLimit)
+  );
 
   const loadMorePosts = async () => {
-    console.log('Load more posts');
-    const newLimit = limit + 3;
+    const newLimit = limit + paginationLimit;
     setLimit(newLimit);
     setListOfPosts(posts.slice(0, newLimit));
   };
 
   return (
     <>
-      <p className="pagination">
-        limit: {limit} out of {posts.length}
-      </p>
+      <Pagination posts={posts} limit={limit} />
       <ul>
         {listOfPosts.map((post: any) => {
           return (
@@ -41,7 +42,7 @@ export default function Posts({ posts }: any) {
           );
         })}
       </ul>
-      <button onClick={loadMorePosts}>Load more posts</button>
+      <Pagination posts={posts} limit={limit} onClick={loadMorePosts} />
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function Home({ posts }: any) {
         {newLinesIntoParagraphs(String(process.env.siteInfoDescription))}
       </div>
       <section className="all-post-data">
-        <Posts posts={posts} />
+        <Posts posts={posts} paginationLimit={process.env.paginationLimit} />
       </section>
     </Layout>
   );

@@ -21,7 +21,11 @@ export default function Category({ postsByCategoryData }: any) {
           : postsByCategoryData.allPostsData.length + ' posts'}
       </div>
       <section className="all-post-data">
-        <Posts posts={postsByCategoryData.allPostsData} />
+        <Posts
+          posts={postsByCategoryData.allPostsData}
+          paginationLimit={process.env.paginationLimit}
+          key={`Category: ${postsByCategoryData.id}`}
+        />
       </section>
     </Layout>
   );
