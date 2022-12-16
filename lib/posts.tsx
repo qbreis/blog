@@ -47,13 +47,16 @@ posts.sort(({ date: a }: any, { date: b }: any) => {
 Functions - Posts
 */
 
-export function getPosts(categoryId?: any) {
-  if (!categoryId) {
+export function getPosts(params?: any) {
+  if (!params?.category && !params?.tag) {
     return posts;
   }
   const getPosts: any = [];
   posts.map((post: any) => {
-    if (post.categories.includes(categoryId)) {
+    if (
+      (params?.category && post.categories.includes(params?.category)) ||
+      (params?.tag && post.tags.includes(params?.tag))
+    ) {
       getPosts.push(post);
     }
   });
@@ -135,7 +138,7 @@ posts.map((post: any) => {
 const categories = allCategories.map((category: any) => {
   return {
     id: category,
-    posts: getPosts(category).length,
+    posts: getPosts({ category: category }).length,
   };
 });
 
@@ -179,6 +182,74 @@ export function getAllCategoryIds() {
     return {
       params: {
         id: category.id,
+      },
+    };
+  });
+}
+
+/*********************
+Tags
+*/
+
+const allTags: any = [];
+
+// get all tags like this: [ 'nextjs', 'test' ]
+posts.map((post: any) => {
+  post.tags.map((postTag: any) => {
+    if (!allTags.includes(postTag)) {
+      allTags.push(postTag);
+    }
+  });
+});
+
+// count number of posts for each category
+const tags = allTags.map((tag: any) => {
+  return {
+    id: tag,
+    posts: getPosts({ tag: tag }).length,
+  };
+});
+
+// sort by number of posts for each category
+tags.sort(({ posts: a }: any, { posts: b }: any) => {
+  if (a < b) {
+    return 1;
+  } else if (a > b) {
+    return -1;
+  } else {
+    return 0;
+  }
+});
+
+export function getTags() {
+  return tags;
+}
+
+export function getAllTagIds() {
+  // Returns an array of possible value for id that looks like this:
+  // [
+  //   {
+  //     params: {
+  //       id: 'nextjs'
+  //     }
+  //   },
+  //   {
+  //     params: {
+  //       id: 'test'
+  //     }
+  //   }
+  // ]
+  /*
+  Important: The returned list is not just an array of strings —
+  it must be an array of objects that look like the comment above.
+  Each object must have the params key and contain an object with
+  the id key (because we’re using [id] in the file name).
+  Otherwise, getStaticPaths in pages/tags/[id].tsx will fail.
+  */
+  return allTags.map((tag: any) => {
+    return {
+      params: {
+        id: tag,
       },
     };
   });

@@ -38,7 +38,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: any) {
   const postsByCategoryData = {
     id: params.id,
-    allPostsData /* 4 */: getPosts(params.id) /* 3 */,
+    allPostsData: getPosts({ category: params.id }),
   };
   return {
     props: {
