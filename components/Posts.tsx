@@ -4,23 +4,26 @@ import Link from 'next/link';
 import Date from '../components/Date';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
-import Pagination from '../components/Pagination';
 
 import { useState } from 'react';
 
-export default function Posts({ posts, totalOfPosts }: any) {
-  const [paginationPage, setPaginationPage] = useState(1);
-  const [listOfPosts, setListOfPosts] = useState(posts);
+import Pagination from '../components/Pagination';
+
+export default function Posts({ posts, paginationLimit }: any) {
+  const [limit, setLimit] = useState(paginationLimit);
+  const [listOfPosts, setListOfPosts] = useState(
+    posts.slice(0, paginationLimit)
+  );
 
   const loadMorePosts = async () => {
-    const res = await fetch('/api/posts/' + (paginationPage + 1));
-    const posts = await res.json();
-    setListOfPosts((value: any) => [...value, ...posts]);
-    setPaginationPage(paginationPage + 1);
+    const newLimit = limit + paginationLimit;
+    setLimit(newLimit);
+    setListOfPosts(posts.slice(0, newLimit));
   };
+
   return (
     <>
-      <Pagination listOfPosts={listOfPosts} totalOfPosts={totalOfPosts} />
+      <Pagination posts={posts} limit={limit} />
       <ul>
         {listOfPosts.map((post: any) => {
           return (
@@ -39,11 +42,7 @@ export default function Posts({ posts, totalOfPosts }: any) {
           );
         })}
       </ul>
-      <Pagination
-        listOfPosts={listOfPosts}
-        totalOfPosts={totalOfPosts}
-        onClick={loadMorePosts}
-      />
+      <Pagination posts={posts} limit={limit} onClick={loadMorePosts} />
     </>
   );
 }

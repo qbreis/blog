@@ -595,6 +595,10 @@ draft: false
 /_ Keep the existing code here _/
 ```
 
+## 6.7 TODO: Meta Description With No Line Breaks
+
+To fix that...
+
 ## Reference links
 
 - [Environment Variables in next.config.js](https://nextjs.org/docs/api-reference/next.config.js/environment-variables) - To add environment variables to the JavaScript bundle, by adding the `env` config into `next.config.js`.

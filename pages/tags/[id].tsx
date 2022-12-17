@@ -20,7 +20,11 @@ export default function Tag({ postsByTagData }: any) {
           : postsByTagData.allPostsData.length + ' posts'}
       </div>
       <section className="all-post-data">
-        <Posts posts={postsByTagData.allPostsData} />
+        <Posts
+          posts={postsByTagData.allPostsData}
+          paginationLimit={process.env.paginationLimit}
+          key={`Tag: ${postsByTagData.id}`}
+        />
       </section>
     </Layout>
   );
