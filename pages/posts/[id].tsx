@@ -10,6 +10,10 @@ import { getAllPostIds, getPostData } from '../../lib/posts';
 import { newLinesIntoParagraphs } from '../../lib/functions';
 
 export default function Post({ postData }: any) {
+  if (!postData) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <Layout>
       <article>
@@ -44,10 +48,13 @@ export default function Post({ postData }: any) {
 }
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds();
+  const paths = getAllPostIds({ limit: 3 });
+  //const paths = getPostsPaginatedIds();
   return {
     paths,
-    fallback: false,
+    // fallback: false,
+    // fallback: true,
+    fallback: 'blocking',
   };
 }
 

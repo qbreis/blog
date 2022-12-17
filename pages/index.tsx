@@ -1,20 +1,20 @@
 // blog/pages/index.tsx
 
 import Layout from '../components/Layout';
-import { getPosts } from '../lib/posts';
 import Posts from '../components/Posts';
+import { getPosts } from '../lib/posts';
 import { newLinesIntoParagraphs } from '../lib/functions';
 
 export async function getStaticProps() {
-  const posts = getPosts();
+  const posts = getPosts({ limit: process.env.paginationLimit, start: 0 });
   return {
     props: {
-      posts,
+      posts
     },
   };
 }
 
-export default function Home({ posts }: any) {
+export default function Home({ posts, totalOfPosts }: any) {
   return (
     <Layout home>
       <div className="excerpt">
