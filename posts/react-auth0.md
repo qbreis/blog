@@ -12,12 +12,40 @@ draft: false
 
 To start a new Create React App project with [TypeScript](https://www.typescriptlang.org/), I can run:
 
-<pre><code class="language-bash contained">yarn create react-app react-auth0 typescript</code></pre>
+<pre><code class="language-bash contained">yarn create react-app react-auth0 --template typescript</code></pre>
 
 Once installed, in order to start the development server, I run:
 
 <pre><code class="language-bash contained">cd reac-auth0
 yarn start</code></pre>
+
+## 2 Setting up Github Repo
+
+Once in my project directory I check:
+
+To check git I run `git status`.\
+To check what is my Github user is set to I run: `git config user.name`.\
+To check what is my Github email is set to I run: `git config user.email`.\
+To change my Github user: `git config --local user.name "username"`.\
+To change my Github user: `git config --local user.email "username@gmail.com"`.
+
+I go to my Github account to create a new repository for my blog, I will name it just "react-auth0" and I will choose "public".
+
+Description: "Testing login with auth0 in React."
+
+Adding a README file to adapt later.
+
+I will use no .gitignore template and I select MIT license.
+
+Once I have created my repo I run: `git remote add origin git@github.com:qbreis/react-auth0.git`.
+
+Finally I create dev branch: `git checkout -b dev`.
+
+
+
+
+
+
 
 ## 2 Auth0
 
