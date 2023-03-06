@@ -8,18 +8,30 @@ repository: 'https://github.com/qbreis/blog/tree/dev-chapter-10-pagination'
 draft: false
 ---
 
-## 1 Auth0
+## 1. Create React App
+
+To start a new Create React App project with [TypeScript](https://www.typescriptlang.org/), I can run:
+
+<pre><code class="language-bash contained">yarn create react-app react-auth0 typescript</code></pre>
+
+Once installed, in order to start the development server, I run:
+
+<pre><code class="language-bash contained">cd reac-auth0
+yarn start</code></pre>
+
+## 2 Auth0
 
 First I go [Auth0](https://auth0.com/) to Sign up for free providing my email account and one password.
 
-### 1.1 Auth0 - Sign Up
+### 2.1 Auth0 - Sign Up
 
 - I choose Account Type: Other (not Company).
 - I check "I need advanced settings" - We’ve assigned your data region to the United States and given you a tenant name. Check this box If you need to process your data in a different region to comply with privacy laws.
 - Next you can change Tenant Domain, as long as it is not already taken: dev-b7f3v3uw3gj53q1y(.us.auth0.com).
 - I also want to select Region: EU
+- Do click Create Account
 
-### 1.1 Auth0 - Create Application
+### 2.2 Auth0 - Create Application
 
 Next I want to create new Application:
 
@@ -27,7 +39,7 @@ Next I want to create new Application:
 - Name: react-auth0
 - Choose an application type: Single Page Web Applications
 - What technology are you using for your web app: React
-- Settings / Application URIs:
+- I click tab Settings, down to Application URIs:
   - Allowed Callback URLs: http://localhost:3000/
   - Allowed Logout URLs: http://localhost:3000/
   - Allowed Web Origins: http://localhost:3000
@@ -60,17 +72,6 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
       clientId={clientId}
       redirectUri={window.location.origin}
     >
-
-## 2. Create React App
-
-To start a new Create React App project with [TypeScript](https://www.typescriptlang.org/), I can run:
-
-<pre><code class="language-bash contained">yarn create react-app react-auth0 typescript</code></pre>
-
-Once installed, in order to start the development server, I run:
-
-<pre><code class="language-bash contained">cd reac-auth0
-yarn start</code></pre>
 
 ## Reference links
 
