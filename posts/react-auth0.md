@@ -4,11 +4,11 @@ excerpt: 'In this chapter I build a simple React app to authenticate using auth0
 date: '2023-03-06'
 categories: ['react']
 tags: ['react', 'typescript', 'authentication', 'auth0']
-repository: 'https://github.com/qbreis/react-auth0'
+repository: 'https://github.com/qbreis/blog/tree/dev-chapter-10-pagination'
 draft: false
 ---
 
-## 1. Create React App
+## 1.1 Create React App
 
 To start a new Create React App project with [TypeScript](https://www.typescriptlang.org/), I can run:
 
@@ -19,7 +19,42 @@ Once installed, in order to start the development server, I run:
 <pre><code class="language-bash contained">cd reac-auth0
 yarn start</code></pre>
 
-## 2 Setting up Github Repo
+## 1.2 Clean Up
+
+I create `src\components\Header.tsx`:
+
+```typescript
+export default function Header() {
+    return (
+        <header>
+            <h1>React Auth0</h1>
+            <nav>
+                Nav
+            </nav>
+        </header>
+    );
+}
+```
+
+And in `src\App.tsx`:
+
+```typescript
+import "./App.css";
+import Header from "./components/Header";
+
+export default function App() {
+    return (
+        <>
+            <Header />
+        </>
+    );
+}
+```
+
+I also do some cleaning in `src\App.css`, I can check in [repository file](https://github.com/qbreis/react-auth0/blob/dev-chapter-1-setup/src/App.css).
+
+
+## 2. Setting up Github Repo
 
 Once in my project directory I check:
 
@@ -41,11 +76,11 @@ Once I have created my repo I run: `git remote add origin git@github.com:qbreis/
 
 Finally I create dev branch: `git checkout -b dev-chapter-1-setup`.
 
-## 2 Auth0
+## 3. Auth0 Account
 
 First I go [Auth0](https://auth0.com/) to Sign up for free providing my email account and one password.
 
-### 2.1 Auth0 - Sign Up
+### 3.1 Auth0 - Sign Up
 
 - I choose Account Type: Other (not Company).
 - I check "I need advanced settings" - We’ve assigned your data region to the United States and given you a tenant name. Check this box If you need to process your data in a different region to comply with privacy laws.
@@ -53,7 +88,7 @@ First I go [Auth0](https://auth0.com/) to Sign up for free providing my email ac
 - I also want to select Region: EU
 - Do click Create Account
 
-### 2.2 Auth0 - Create Application
+### 3.2 Auth0 - Create Application
 
 Next I want to create new Application:
 
@@ -75,7 +110,7 @@ I still want to do one thing here:
 - In default Settings tab, down, I want to check the option Disable Sign Ups, as it says, to:
   - Prevent new user sign ups to your application from public (unauthenticated) endpoints. You will still be able to create users with your API credentials or from the Management dashboard.
 
-### 2.3 Auth0 Domain and Client ID
+### 3.3 Auth0 Domain and Client ID
 
 To get Auth0 Domain and Client ID, in my Auth0 Dashboard:
 
@@ -101,7 +136,58 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
       redirectUri={window.location.origin}
     >
 
-## 3 Auth0
+## 4. Auth0 Login Authentication
+
+Install Auth0 Package:
+
+<pre><code class="language-bash contained">yarn add @auth0/auth0-react</code></pre>
+
+After that, in `src\index.tsx`:
+
+```typescript
+import ReactDOM from "react-dom";
+import { Auth0Provider } from "@auth0/auth0-react";
+import App from "./App";
+import "./index.css";
+
+const domain:string = process.env.REACT_APP_AUTH0_DOMAIN!; // Use type string + non-null assertion operator !
+const clientId:string = process.env.REACT_APP_AUTH0_CLIENT_ID!; // Use type string + non-null assertion operator !
+
+ReactDOM.render(
+    <Auth0Provider
+        domain={domain}
+        clientId={clientId}
+        authorizationParams={{
+            redirect_uri: window.location.origin,
+        }}
+    >
+        <App />
+    </Auth0Provider>,
+    document.getElementById("root")
+);
+
+/*
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+*/
+```
 
 ## Reference links
 
