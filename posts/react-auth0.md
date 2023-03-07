@@ -4,7 +4,7 @@ excerpt: 'In this chapter I build a simple React app to authenticate using auth0
 date: '2023-03-06'
 categories: ['react']
 tags: ['react', 'typescript', 'authentication', 'auth0']
-repository: 'https://github.com/qbreis/blog/tree/dev-chapter-10-pagination'
+repository: 'https://github.com/qbreis/react-auth0'
 draft: false
 ---
 
@@ -39,13 +39,7 @@ I will use no .gitignore template and I select MIT license.
 
 Once I have created my repo I run: `git remote add origin git@github.com:qbreis/react-auth0.git`.
 
-Finally I create dev branch: `git checkout -b dev`.
-
-
-
-
-
-
+Finally I create dev branch: `git checkout -b dev-chapter-1-setup`.
 
 ## 2 Auth0
 
@@ -81,15 +75,21 @@ I still want to do one thing here:
 - In default Settings tab, down, I want to check the option Disable Sign Ups, as it says, to:
   - Prevent new user sign ups to your application from public (unauthenticated) endpoints. You will still be able to create users with your API credentials or from the Management dashboard.
 
+### 2.3 Auth0 Domain and Client ID
 
+To get Auth0 Domain and Client ID, in my Auth0 Dashboard:
 
+- On the left side, under Application, I choose Applications and click my "react-auth0" application.
+- Next under default tab Settings I copy Domain and Client ID.
+- in my `.gitignore` file I add `.env`.
+- In root folder I create new file `.env`:
 
-On the left side, under Application, I choose Applications and click my "react-auth0" application.
-Next under default tab Settings I copy Domain and Client ID.
-In root folder I will create new file .env:
+```typescript
 REACT_APP_AUTH0_DOMAIN=DOMAIN
 REACT_APP_AUTH0_CLIENT_ID=CLIENT_ID
-I will change in previous file, DOMAIN and CLIENT_ID for the values I did copy.
+```
+
+- I must change in previous file, DOMAIN and CLIENT_ID for the values I did copy.
 
 In index.tsx I will do something like:
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -100,6 +100,8 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
       clientId={clientId}
       redirectUri={window.location.origin}
     >
+
+## 3 Auth0
 
 ## Reference links
 
