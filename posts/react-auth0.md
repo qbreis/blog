@@ -126,15 +126,12 @@ REACT_APP_AUTH0_CLIENT_ID=CLIENT_ID
 
 - I must change in previous file, DOMAIN and CLIENT_ID for the values I did copy.
 
-In index.tsx I will do something like:
-const domain = process.env.REACT_APP_AUTH0_DOMAIN;
-const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
-[...]
-<Auth0Provider
-      domain={domain}
-      clientId={clientId}
-      redirectUri={window.location.origin}
-    >
+### 3.2 Auth0 - User Management
+
+Finally i want to create a unic user to log into my new Reaact app.
+
+- On the left side, under User Management, I choose Users and click "+ Create User".
+- I fill in Email, Password and Connection (Username-Password-Authentication).
 
 ## 4. Auth0 Login Authentication
 
