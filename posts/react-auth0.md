@@ -1,10 +1,11 @@
 ---
-title: 'React Authentication App with typescript and auth0'
-excerpt: 'In this chapter I build a simple React app to authenticate using auth0, an authentication and authorization service for application developers.'
+title: 'Blog test'
+excerpt: ''In this chapter I build a simple React app to authenticate using auth0, an authentication and authorization service for application developers..'
 date: '2023-03-06'
 categories: ['react']
-tags: ['react', 'typescript', 'authentication', 'auth0']
-repository: 'https://github.com/qbreis/blog/tree/dev-chapter-10-pagination'
+tags:
+  ['react', 'typescript']
+repository: 'https://github.com/qbreis/blog/tree/react-auth0'
 draft: false
 ---
 
