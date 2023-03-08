@@ -1,5 +1,5 @@
 ---
-title: 'React Authentication App with typescript and auth0'
+title: 'Blog - Next.js - Chapter #10 - Pagination'
 excerpt: 'In this chapter I build a simple React app to authenticate using auth0, an authentication and authorization service for application developers.'
 date: '2023-03-06'
 categories: ['react']
