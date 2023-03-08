@@ -5,7 +5,7 @@ date: '2023-03-06'
 categories: ['react']
 tags:
   ['react', 'typescript', 'login', 'auth0']
-repository: 'https://github.com/qbreis/blog/tree/react-auth0'
+repository: 'https://github.com/qbreis/react-auth0'
 draft: false
 ---
 
@@ -52,7 +52,7 @@ export default function App() {
 }
 ```
 
-I also do some cleaning in `src\App.css`, I can check in [repository file](https://github.com/qbreis/react-auth0/blob/dev-chapter-1-setup/src/App.css).
+I also do some cleaning in `src\App.css`, I can check in [repository file](hhttps://github.com/qbreis/react-auth0/blob/main/src/App.css).
 
 
 ## 2. Setting up Github Repo
@@ -67,7 +67,7 @@ To change my Github user: `git config --local user.email "username@gmail.com"`.
 
 I go to my Github account to create a new repository for my blog, I will name it just "react-auth0" and I will choose "public".
 
-Description: "Testing login with auth0 in React."
+Description: "Testing login with Auth0 in React."
 
 Adding a README file to adapt later.
 
@@ -75,7 +75,7 @@ I will use no .gitignore template and I select MIT license.
 
 Once I have created my repo I run: `git remote add origin git@github.com:qbreis/react-auth0.git`.
 
-Finally I create dev branch: `git checkout -b dev-chapter-1-setup`.
+Finally I create dev branch: `git checkout -b dev`.
 
 ## 3. Auth0 Account
 
@@ -129,7 +129,7 @@ REACT_APP_AUTH0_CLIENT_ID=CLIENT_ID
 
 ### 3.2 Auth0 - User Management
 
-Finally i want to create a unic user to log into my new Reaact app.
+Finally i want to create a unique user to login to my new Reaact app.
 
 - On the left side, under User Management, I choose Users and click "+ Create User".
 - I fill in Email, Password and Connection (Username-Password-Authentication).
@@ -224,22 +224,16 @@ export default function Header() {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
 ## Reference links
 
 - [Auth0](https://auth0.com/) - Rapidly integrate authentication and authorization for web, mobile, and legacy applications so you can focus on your core business.
+- [Auth0 Documentation](https://auth0.com/docs/libraries/auth0-react) - Auth0 React SDK for Single Page Apps.
+- [Auth0 React SDK Quickstarts: Login](https://auth0.com/docs/quickstart/spa/react/01-login#add-login-to-your-application) - Add Login to Your Application.
 
 ## External links
 
 - [TypeScript - Wikipedia](https://en.wikipedia.org/wiki/TypeScript) - Just to know a bit more about Typescript programming language.
+- [React JS Crash Course](https://www.youtube.com/watch?v=w7ejDZ8SWv8) - YouTube tutorial by [Traversy Media](https://www.youtube.com/@TraversyMedia).
+- [React Authentication App With Okta](https://www.youtube.com/watch?v=5j4FXMQBzmg) - YouTube tutorial by [Traversy Media](https://www.youtube.com/@TraversyMedia).
+- [Simple React.js User Login Authentication | Auth0](https://www.youtube.com/watch?v=MqczHS3Z2bc&t=878s) - YouTube tutorial by [codeSTACKr](https://www.youtube.com/@codeSTACKr).
+- [Cómo hacer LOGIN y REGISTRO en REACT.js con AUTH0 - Tutorial de Autenticación](https://www.youtube.com/watch?v=sTJaHQINpTc) -  - YouTube tutorial by [Carlos Azaustre](https://www.youtube.com/@CarlosAzaustre).
