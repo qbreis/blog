@@ -8,7 +8,7 @@ const nextConfig = {
   swcMinify: true,
   
   // Adding policies:
-  
+  /*
   async headers() {
     return [
         {
@@ -18,13 +18,13 @@ const nextConfig = {
               key: 'X-Frame-Options',
               value: 'DENY',
             },
-            /*
+            
             {
               key: 'Content-Security-Policy',
               value:
                 "img-src data: w3.org/svg/2000;",
             },
-            */
+            
             {
               key: 'X-Content-Type-Options',
               value: 'nosniff',
@@ -41,7 +41,7 @@ const nextConfig = {
         },
       ];
   },
-  
+  */
   env: {
     siteInfoTitle: siteInfoTitle,
     siteInfoDescription: siteInfoDescription,
