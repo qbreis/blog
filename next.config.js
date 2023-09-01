@@ -8,7 +8,7 @@ const nextConfig = {
   swcMinify: true,
   
   // Adding policies:
-  /*
+  
   async headers() {
     return [
         {
@@ -21,7 +21,7 @@ const nextConfig = {
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self' 'https://blog.logrocket.com'; image-src 'https://unsplash.com'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+                "default-src 'self' 'https://blog.logrocket.com'; img-src data: w3.org/svg/2000; image-src 'https://unsplash.com'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
             },
             {
               key: 'X-Content-Type-Options',
@@ -39,7 +39,7 @@ const nextConfig = {
         },
       ];
   },
-  */
+  
   env: {
     siteInfoTitle: siteInfoTitle,
     siteInfoDescription: siteInfoDescription,
