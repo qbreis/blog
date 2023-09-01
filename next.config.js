@@ -20,7 +20,7 @@ const nextConfig = {
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self' 'https://blog-qbreis.vercel.app/'; image-src 'self' 'https://blog-qbreis.vercel.app/'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+                "default-src 'self' 'https://blog-qbreis.vercel.app/'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
             },
             {
               key: 'X-Content-Type-Options',
