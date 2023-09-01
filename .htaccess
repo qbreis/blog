@@ -1,7 +1,1 @@
-<IfModule mod_headers.c>
-X-Content-Type-Options: nosniff
-  <FilesMatch "\.(php|html)$">
-    Header set X-Frame-Options "DENY"
-    Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://blog-qbreis.vercel.app/; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://blog-qbreis.vercel.app/; style-src 'self' 'unsafe-inline' 'unsafe-eval' https://blog-qbreis.vercel.app/; img-src 'self' 'unsafe-inline' 'unsafe-eval' https://blog-qbreis.vercel.app/"
-  </FilesMatch>
-</IfModule>
+
