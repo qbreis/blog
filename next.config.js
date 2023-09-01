@@ -18,11 +18,13 @@ const nextConfig = {
               key: 'X-Frame-Options',
               value: 'DENY',
             },
+            /*
             {
               key: 'Content-Security-Policy',
               value:
                 "img-src data: w3.org/svg/2000;",
             },
+            */
             {
               key: 'X-Content-Type-Options',
               value: 'nosniff',
