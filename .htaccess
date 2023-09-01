@@ -1,0 +1,7 @@
+<IfModule headers_module>
+
+    RequestHeader set X-HTTPS 1
+
+Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' https://blog-qbreis.vercel.app;”
+
+</IfModule>
