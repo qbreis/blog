@@ -6,7 +6,6 @@ Many of these annotations are related to their corresponding Git repository.`;
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-
   // Adding policies:
   async headers() {
     return [
@@ -20,7 +19,7 @@ const nextConfig = {
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self' 'https://blog-qbreis.vercel.app/'; image-src 'https://blog-qbreis.vercel.app/'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+                "default-src 'self' 'https://blog-qbreis.vercel.app/'; image-src 'self'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
             },
             {
               key: 'X-Content-Type-Options',
@@ -33,14 +32,11 @@ const nextConfig = {
             {
               key: 'Referrer-Policy',
               value: 'origin-when-cross-origin',
-              
             },
           ],
         },
       ];
-  },  
-
-  
+  },
   env: {
     siteInfoTitle: siteInfoTitle,
     siteInfoDescription: siteInfoDescription,
