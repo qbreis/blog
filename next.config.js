@@ -21,7 +21,7 @@ const nextConfig = {
             {
               key: 'Content-Security-Policy',
               value:
-                "default-src 'self'; img-src data: w3.org/svg/2000;",
+                "img-src data: w3.org/svg/2000;",
             },
             {
               key: 'X-Content-Type-Options',
