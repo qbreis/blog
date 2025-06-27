@@ -1,7 +1,7 @@
 ---
 title: 'Blog - Next.js - Chapter #11 - Previous and Next Posts Navigation'
 excerpt: 'In this chapter I cover previous and next posts navigation.'
-date: '2025-06-27'
+date: '2025-06-26'
 categories: ['nextjs']
 tags: ['nextjs', 'typescript', 'pagination']
 repository: 'https://github.com/qbreis/blog/tree/dev-chapter-11-previous-next-post-nav'

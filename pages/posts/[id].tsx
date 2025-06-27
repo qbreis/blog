@@ -6,16 +6,28 @@ import MetaData from '../../components/MetaData';
 import Date from '../../components/Date';
 import Categories from '../../components/Categories';
 import Tags from '../../components/Tags';
-import { getAllPostIds, getPostData } from '../../lib/posts';
+import { 
+  getAllPostIds, 
+  getPostData, 
+  getPosts // ........ To get posts for navigation, if needed
+} from '../../lib/posts';
+import PostsNavigation from '../../components/PostsNavigation'; // ........ Importing the PostsNavigation component
 import { newLinesIntoParagraphs } from '../../lib/functions';
 
-export default function Post({ postData }: any) {
+export default function Post({ 
+  postData,
+  posts // ........ If I want to use posts for navigation, I can pass them here
+}: any) {
   if (!postData) {
     return <h1>Loading...</h1>;
   }
 
   return (
     <Layout>
+
+      {/* ........ Add navigation to previous and next posts */}
+      <PostsNavigation posts={posts} currentPostId={postData.id} />
+
       <article>
         <MetaData title={postData.title} description={postData.excerpt} />
         {postData.repository && (
@@ -43,26 +55,29 @@ export default function Post({ postData }: any) {
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
+
+      {/* ........ Add navigation to previous and next posts */}
+      <PostsNavigation posts={posts} currentPostId={postData.id} />
+
     </Layout>
   );
 }
 
 export async function getStaticPaths() {
   const paths = getAllPostIds({ limit: 3 });
-  //const paths = getPostsPaginatedIds();
   return {
     paths,
-    // fallback: false,
-    // fallback: true,
     fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params }: any) {
   const postData = await getPostData(params.id);
+  const posts = getPosts(); // ........ get full list of posts here
   return {
     props: {
       postData,
+      posts, // ........ Pass the posts to the component for navigation
     },
   };
 }

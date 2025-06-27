@@ -1,3 +1,5 @@
+// blog/components/PostsNavigation.tsx
+
 import Link from 'next/link';
 
 export default function PostsNavigation({ posts, currentPostId }: any) {

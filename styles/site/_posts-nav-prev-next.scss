@@ -66,6 +66,7 @@
                 transform: rotate(180deg);
                 right: 0;
                 left: inherit;
+
                 @media screen and (min-width: $query__small) {
                     top: 10px;
                     right: -30px;
