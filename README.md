@@ -25,14 +25,54 @@ This blog is deployed on [Vercel](https://vercel.com/) every time I push some co
 
 The temporary URL of this blog is [https://blog-qbreis.vercel.app](https://blog-qbreis.vercel.app), where I can read the step-by-step annotations for each stage, chapter or branch of the project.
 
-## Getting Started
+## Install
 
-First, run the development server:
+To get started, clone the repository and install the dependencies.
+
+### 1. Clone the repository
+
+Using SSH:
+
+```bash
+git clone git@github.com:qbreis/blog.git
+```
+
+This will create a new folder named `blog` containing the project files.
+
+### 2. Navigate into the project folder
+
+```bash
+cd blog
+```
+
+### 3. Install dependencies
+
+Using npm:
+
+```bash
+npm install
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### 5. Build and run for production
+
+To build the app for production:
+
+```bash
+npm run build
+```
+
+Then start the production server:
+
+```bash
+npm run start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
