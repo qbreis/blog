@@ -45,7 +45,7 @@ const nextConfig = {
   env: {
     siteInfoTitle: siteInfoTitle,
     siteInfoDescription: siteInfoDescription,
-    paginationLimit: 3,
+    paginationLimit: 10,
   },
 };
 
