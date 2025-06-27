@@ -1,5 +1,5 @@
 ---
-title: 'Blog - Next.js - Chapter #10 - Pagination'
+title: 'Blog - Next.js - Chapter #11 - Previous and Next Posts Navigation'
 excerpt: 'In this chapter I cover previous and next posts navigation.'
 date: '2025-06-27'
 categories: ['nextjs']
